@@ -1,0 +1,124 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{entry}{nty}
+    \entry{ben2010road}{article}{}
+      \name{labelname}{2}{}{%
+        {{hash=ff32c92afcdea56655ed2cca5959e413}{Ben-Elia}{B\bibinithyphendelim E\bibinitperiod}{Eran}{E\bibinitperiod}{}{}{}{}}%
+        {{hash=510859bf82d73f7e7f9d0639424affe1}{Shiftan}{S\bibinitperiod}{Yoram}{Y\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=ff32c92afcdea56655ed2cca5959e413}{Ben-Elia}{B\bibinithyphendelim E\bibinitperiod}{Eran}{E\bibinitperiod}{}{}{}{}}%
+        {{hash=510859bf82d73f7e7f9d0639424affe1}{Shiftan}{S\bibinitperiod}{Yoram}{Y\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{79d86690a50a6df6ea3abaacd93c90f3}
+      \strng{fullhash}{79d86690a50a6df6ea3abaacd93c90f3}
+      \field{sortinit}{B}
+      \field{labeltitle}{Which road do I take? A learning-based model of route-choice behavior with real-time information}
+      \field{journaltitle}{Transportation Research Part A: Policy and Practice}
+      \field{number}{4}
+      \field{title}{Which road do I take? A learning-based model of route-choice behavior with real-time information}
+      \field{volume}{44}
+      \field{year}{2010}
+      \field{pages}{249\bibrangedash 264}
+    \endentry
+    \entry{emele2013agent}{incollection}{}
+      \name{labelname}{8}{}{%
+        {{hash=37c1109de1a8927a61bbbcd65c215c9a}{Emele}{E\bibinitperiod}{C\bibnamedelima David}{C\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+        {{hash=acddd34fd40175b9ab46639b9f56e81e}{Oren}{O\bibinitperiod}{Nir}{N\bibinitperiod}{}{}{}{}}%
+        {{hash=e27c3fd98b4854d09f42719061443efd}{Zeng}{Z\bibinitperiod}{Cheng}{C\bibinitperiod}{}{}{}{}}%
+        {{hash=4b0489e93fe21a7f106227c134b80b1c}{Wright}{W\bibinitperiod}{Steve}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=106a9eb9d3ad9e93a124db55f6d69ab2}{Velaga}{V\bibinitperiod}{Nagendra}{N\bibinitperiod}{}{}{}{}}%
+        {{hash=fc00c0399b056d298791b9c4522db603}{Nelson}{N\bibinitperiod}{John}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=cc9b82d8030b25a857e1a4ecbe752149}{Norman}{N\bibinitperiod}{Timothy\bibnamedelima J}{T\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{hash=3299ba831e0c56ddd15024409442f329}{Farrington}{F\bibinitperiod}{John}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{8}{}{%
+        {{hash=37c1109de1a8927a61bbbcd65c215c9a}{Emele}{E\bibinitperiod}{C\bibnamedelima David}{C\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+        {{hash=acddd34fd40175b9ab46639b9f56e81e}{Oren}{O\bibinitperiod}{Nir}{N\bibinitperiod}{}{}{}{}}%
+        {{hash=e27c3fd98b4854d09f42719061443efd}{Zeng}{Z\bibinitperiod}{Cheng}{C\bibinitperiod}{}{}{}{}}%
+        {{hash=4b0489e93fe21a7f106227c134b80b1c}{Wright}{W\bibinitperiod}{Steve}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=106a9eb9d3ad9e93a124db55f6d69ab2}{Velaga}{V\bibinitperiod}{Nagendra}{N\bibinitperiod}{}{}{}{}}%
+        {{hash=fc00c0399b056d298791b9c4522db603}{Nelson}{N\bibinitperiod}{John}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=cc9b82d8030b25a857e1a4ecbe752149}{Norman}{N\bibinitperiod}{Timothy\bibnamedelima J}{T\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{hash=3299ba831e0c56ddd15024409442f329}{Farrington}{F\bibinitperiod}{John}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{ebe802cdbb4b3a4bbbdf2d771434995d}
+      \strng{fullhash}{2487544a30ec02176493f97897a62e65}
+      \field{sortinit}{E}
+      \field{labeltitle}{Agent-Driven Variable Pricing in Flexible Rural Transport Services}
+      \field{booktitle}{Highlights on Practical Applications of Agents and Multi-Agent Systems}
+      \field{title}{Agent-Driven Variable Pricing in Flexible Rural Transport Services}
+      \field{year}{2013}
+      \field{pages}{24\bibrangedash 35}
+    \endentry
+    \entry{lou2011optimal}{article}{}
+      \name{labelname}{3}{}{%
+        {{hash=b925836ab4b24c82e903cef0bb5dc1fb}{Lou}{L\bibinitperiod}{Yingyan}{Y\bibinitperiod}{}{}{}{}}%
+        {{hash=76a7ec1c01f4b1051b61e6bda9c7ed14}{Yin}{Y\bibinitperiod}{Yafeng}{Y\bibinitperiod}{}{}{}{}}%
+        {{hash=42685f92c48b79b7980e77c27b324533}{Laval}{L\bibinitperiod}{Jorge\bibnamedelima A}{J\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{hash=b925836ab4b24c82e903cef0bb5dc1fb}{Lou}{L\bibinitperiod}{Yingyan}{Y\bibinitperiod}{}{}{}{}}%
+        {{hash=76a7ec1c01f4b1051b61e6bda9c7ed14}{Yin}{Y\bibinitperiod}{Yafeng}{Y\bibinitperiod}{}{}{}{}}%
+        {{hash=42685f92c48b79b7980e77c27b324533}{Laval}{L\bibinitperiod}{Jorge\bibnamedelima A}{J\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{67c8d27c1aac9fc8c5062da875bb000f}
+      \strng{fullhash}{67c8d27c1aac9fc8c5062da875bb000f}
+      \field{sortinit}{L}
+      \field{labeltitle}{Optimal dynamic pricing strategies for high-occupancy/toll lanes}
+      \field{journaltitle}{Transportation Research Part C: Emerging Technologies}
+      \field{number}{1}
+      \field{title}{Optimal dynamic pricing strategies for high-occupancy/toll lanes}
+      \field{volume}{19}
+      \field{year}{2011}
+      \field{pages}{64\bibrangedash 74}
+    \endentry
+    \entry{tavares2012reinforcement}{inproceedings}{}
+      \name{labelname}{2}{}{%
+        {{hash=c49758e090adc97eb9035de6afa373b4}{Tavares}{T\bibinitperiod}{Anderson\bibnamedelima Rocha}{A\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+        {{hash=a25a1edcd3034e68dcf0855e15f466e1}{Bazzan}{B\bibinitperiod}{Ana\bibnamedelimb Lucia\bibnamedelima Cetertich}{A\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim C\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=c49758e090adc97eb9035de6afa373b4}{Tavares}{T\bibinitperiod}{Anderson\bibnamedelima Rocha}{A\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+        {{hash=a25a1edcd3034e68dcf0855e15f466e1}{Bazzan}{B\bibinitperiod}{Ana\bibnamedelimb Lucia\bibnamedelima Cetertich}{A\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim C\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{423be4dc9e03d98cd16b2ace65637820}
+      \strng{fullhash}{423be4dc9e03d98cd16b2ace65637820}
+      \field{sortinit}{T}
+      \field{labeltitle}{Reinforcement learning for route choice in an abstract traffic scenario}
+      \field{booktitle}{VI Workshop-Escola de Sistemas de Agentes, seus Ambientes e aplicaçoes (WESAAC)}
+      \field{title}{Reinforcement learning for route choice in an abstract traffic scenario}
+      \field{year}{2012}
+      \field{pages}{141\bibrangedash 153}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+
