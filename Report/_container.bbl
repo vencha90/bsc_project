@@ -1,0 +1,63 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{entry}{nty}
+    \entry{Yang2000taxi+utilization}{article}{}
+      \name{labelname}{4}{}{%
+        {{hash=255ee237fcf578055552d8fce6c93b9d}{Yang}{Y\bibinitperiod}{Hai}{H\bibinitperiod}{}{}{}{}}%
+        {{hash=ae5fe8c236285915f8a819ec79b95ef4}{Lau}{L\bibinitperiod}{YanWing}{Y\bibinitperiod}{}{}{}{}}%
+        {{hash=8436764d2ed5ea9cf2bec2f17e701cb7}{Wong}{W\bibinitperiod}{SzeChun}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=958bc8f48ea9aa1e445147cd04e380f5}{Lo}{L\bibinitperiod}{HongKam}{H\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{4}{}{%
+        {{hash=255ee237fcf578055552d8fce6c93b9d}{Yang}{Y\bibinitperiod}{Hai}{H\bibinitperiod}{}{}{}{}}%
+        {{hash=ae5fe8c236285915f8a819ec79b95ef4}{Lau}{L\bibinitperiod}{YanWing}{Y\bibinitperiod}{}{}{}{}}%
+        {{hash=8436764d2ed5ea9cf2bec2f17e701cb7}{Wong}{W\bibinitperiod}{SzeChun}{S\bibinitperiod}{}{}{}{}}%
+        {{hash=958bc8f48ea9aa1e445147cd04e380f5}{Lo}{L\bibinitperiod}{HongKam}{H\bibinitperiod}{}{}{}{}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \list{publisher}{1}{%
+        {Kluwer Academic Publishers}%
+      }
+      \strng{namehash}{e7e7a26e4428af03606ee83c34cef988}
+      \strng{fullhash}{d0ebc26cbea685781c244013ce03a2ce}
+      \field{sortinit}{Y}
+      \field{labeltitle}{A macroscopic taxi model for passenger demand, taxi utilization and level of services}
+      \field{issn}{0049-4488}
+      \field{journaltitle}{Transportation}
+      \field{number}{3}
+      \field{title}{A macroscopic taxi model for passenger demand, taxi utilization and level of services}
+      \field{volume}{27}
+      \field{year}{2000}
+      \field{pages}{317\bibrangedash 340}
+      \verb{doi}
+      \verb 10.1023/A:1005289504549
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1023/A:1005289504549
+      \endverb
+      \keyw{demand; level of service; model calibration; simultaneous equation system; supply; taxi regulation; taxi traffic; taxi utilization}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

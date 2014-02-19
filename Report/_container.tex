@@ -1,0 +1,51 @@
+\documentclass{csfourzero}
+\title{TODO TITLE}
+\author{Karlis Venters}
+\date{\today}
+% A useful package to support on-line references
+\usepackage{url}
+\usepackage[backend=biber,
+            style=numeric,
+            urldate=short,
+            texencoding=utf8,
+            bibencoding=utf8]
+  {biblatex}
+\addbibresource{../literature/ai.bib}
+\addbibresource{../literature/general.bib}
+\addbibresource{../literature/taxi.bib}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}~
+Abstract goes here
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+% \input{./introduction}
+
+\section{Literature survey}
+\label{sec:literature}
+\input{./literature}
+
+\section{Software and simulation design}
+\label{sec:software}
+% \input{./design}
+
+\section{Implementation and results}
+\label{sec:results}
+% \input{./results}
+
+\section{Evaluation and discussion}
+\label{sec:evaluation}
+% \input{./evaluation}
+
+\section{Conclusion}
+\label{sec:conclusion}
+% \input{./conclusion}
+
+\newpage
+\printbibliography
+
+\end{document}
