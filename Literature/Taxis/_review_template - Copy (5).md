@@ -1,3 +1,0 @@
-# overview
-# Strengths & Weaknesses
-# Opinion
