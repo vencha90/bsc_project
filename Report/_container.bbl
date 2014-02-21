@@ -93,7 +93,7 @@
       \field{labelyear}{2007}
       \field{datelabelsource}{}
       \field{labeltitle}{Taxi Services: Competition and Regulation}
-      \field{journaltitle}{Policy Roundtables. Competition Law & Policy}
+      \field{journaltitle}{Policy Roundtables. Competition Law \& Policy}
       \field{title}{Taxi Services: Competition and Regulation}
       \field{year}{2007}
       \verb{url}
@@ -130,13 +130,13 @@
     \endentry
     \entry{Wong2008taxi+modeling}{article}{}
       \name{labelname}{4}{}{%
-        {{uniquename=0,hash=b6e981b6881382fb49799fd1e94099f9}{Wong}{W\bibinitperiod}{KI}{K\bibinitperiod}{}{}{}{}}%
+        {{uniquename=1,hash=b6e981b6881382fb49799fd1e94099f9}{Wong}{W\bibinitperiod}{KI}{K\bibinitperiod}{}{}{}{}}%
         {{uniquename=0,hash=92a7213ae29c7a9039481bde280ad500}{Wong}{W\bibinitperiod}{SC}{S\bibinitperiod}{}{}{}{}}%
         {{uniquename=0,hash=255ee237fcf578055552d8fce6c93b9d}{Yang}{Y\bibinitperiod}{Hai}{H\bibinitperiod}{}{}{}{}}%
         {{uniquename=0,hash=cdab2d1d628b839a005b2c638af17610}{Wu}{W\bibinitperiod}{JH}{J\bibinitperiod}{}{}{}{}}%
       }
       \name{author}{4}{}{%
-        {{uniquename=0,hash=b6e981b6881382fb49799fd1e94099f9}{Wong}{W\bibinitperiod}{KI}{K\bibinitperiod}{}{}{}{}}%
+        {{uniquename=1,hash=b6e981b6881382fb49799fd1e94099f9}{Wong}{W\bibinitperiod}{KI}{K\bibinitperiod}{}{}{}{}}%
         {{uniquename=0,hash=92a7213ae29c7a9039481bde280ad500}{Wong}{W\bibinitperiod}{SC}{S\bibinitperiod}{}{}{}{}}%
         {{uniquename=0,hash=255ee237fcf578055552d8fce6c93b9d}{Yang}{Y\bibinitperiod}{Hai}{H\bibinitperiod}{}{}{}{}}%
         {{uniquename=0,hash=cdab2d1d628b839a005b2c638af17610}{Wu}{W\bibinitperiod}{JH}{J\bibinitperiod}{}{}{}{}}%
@@ -189,6 +189,46 @@
       \field{year}{2010}
       \field{pages}{337\bibrangedash 348}
     \endentry
+    \entry{Yang2000taxi+utilization}{article}{}
+      \name{labelname}{4}{uniquelist=2}{%
+        {{uniquename=0,hash=255ee237fcf578055552d8fce6c93b9d}{Yang}{Y\bibinitperiod}{Hai}{H\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=ae5fe8c236285915f8a819ec79b95ef4}{Lau}{L\bibinitperiod}{YanWing}{Y\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=8436764d2ed5ea9cf2bec2f17e701cb7}{Wong}{W\bibinitperiod}{SzeChun}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=958bc8f48ea9aa1e445147cd04e380f5}{Lo}{L\bibinitperiod}{HongKam}{H\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{4}{uniquelist=2}{%
+        {{uniquename=0,hash=255ee237fcf578055552d8fce6c93b9d}{Yang}{Y\bibinitperiod}{Hai}{H\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=ae5fe8c236285915f8a819ec79b95ef4}{Lau}{L\bibinitperiod}{YanWing}{Y\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=8436764d2ed5ea9cf2bec2f17e701cb7}{Wong}{W\bibinitperiod}{SzeChun}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=958bc8f48ea9aa1e445147cd04e380f5}{Lo}{L\bibinitperiod}{HongKam}{H\bibinitperiod}{}{}{}{}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \list{publisher}{1}{%
+        {Kluwer Academic Publishers}%
+      }
+      \strng{namehash}{78ae84662cdd5b76923649984743f761}
+      \strng{fullhash}{d0ebc26cbea685781c244013ce03a2ce}
+      \field{sortinit}{Y}
+      \field{labelyear}{2000}
+      \field{datelabelsource}{}
+      \field{labeltitle}{A macroscopic taxi model for passenger demand, taxi utilization and level of services}
+      \field{issn}{0049-4488}
+      \field{journaltitle}{Transportation}
+      \field{number}{3}
+      \field{title}{A macroscopic taxi model for passenger demand, taxi utilization and level of services}
+      \field{volume}{27}
+      \field{year}{2000}
+      \field{pages}{317\bibrangedash 340}
+      \verb{doi}
+      \verb 10.1023/A:1005289504549
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1023/A:1005289504549
+      \endverb
+      \keyw{demand; level of service; model calibration; simultaneous equation system; supply; taxi regulation; taxi traffic; taxi utilization}
+    \endentry
     \entry{Yang2010taxi+equilibria}{article}{}
       \name{labelname}{4}{uniquelist=2}{%
         {{uniquename=0,hash=255ee237fcf578055552d8fce6c93b9d}{Yang}{Y\bibinitperiod}{Hai}{H\bibinitperiod}{}{}{}{}}%
@@ -217,6 +257,31 @@
       \field{volume}{44}
       \field{year}{2010}
       \field{pages}{1067\bibrangedash 1083}
+    \endentry
+    \entry{Yang1998taxi+network}{article}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=255ee237fcf578055552d8fce6c93b9d}{Yang}{Y\bibinitperiod}{Hai}{H\bibinitperiod}{}{}{}{}}%
+        {{uniquename=1,hash=92a7213ae29c7a9039481bde280ad500}{Wong}{W\bibinitperiod}{SC}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=255ee237fcf578055552d8fce6c93b9d}{Yang}{Y\bibinitperiod}{Hai}{H\bibinitperiod}{}{}{}{}}%
+        {{uniquename=1,hash=92a7213ae29c7a9039481bde280ad500}{Wong}{W\bibinitperiod}{SC}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{2a6b057db5188d39d7d36f343e455ce8}
+      \strng{fullhash}{2a6b057db5188d39d7d36f343e455ce8}
+      \field{sortinit}{Y}
+      \field{labelyear}{1998}
+      \field{datelabelsource}{}
+      \field{labeltitle}{A network model of urban taxi services}
+      \field{journaltitle}{Transportation Research Part B: Methodological}
+      \field{number}{4}
+      \field{title}{A network model of urban taxi services}
+      \field{volume}{32}
+      \field{year}{1998}
+      \field{pages}{235\bibrangedash 246}
     \endentry
   \endsortlist
 \endrefsection

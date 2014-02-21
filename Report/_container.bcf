@@ -1970,12 +1970,14 @@
     <bcf:citekey order="2">Douglas1972taxi+regulation</bcf:citekey>
     <bcf:citekey order="3">Salanova2011taxi+review</bcf:citekey>
     <bcf:citekey order="4">Salanova2011taxi+review</bcf:citekey>
-    <bcf:citekey order="5">Wong2008taxi+modeling</bcf:citekey>
-    <bcf:citekey order="6">Yang2010taxi+equilibria</bcf:citekey>
-    <bcf:citekey order="7">Yang2010taxi+nonlinear</bcf:citekey>
-    <bcf:citekey order="8">Oecd2007taxi+policy</bcf:citekey>
-    <bcf:citekey order="9">Salanova2011taxi+review</bcf:citekey>
-    <bcf:citekey order="10">Gaunt1995taxi+newzealand</bcf:citekey>
+    <bcf:citekey order="5">Yang1998taxi+network</bcf:citekey>
+    <bcf:citekey order="6">Yang2000taxi+utilization</bcf:citekey>
+    <bcf:citekey order="7">Wong2008taxi+modeling</bcf:citekey>
+    <bcf:citekey order="8">Yang2010taxi+equilibria</bcf:citekey>
+    <bcf:citekey order="9">Yang2010taxi+nonlinear</bcf:citekey>
+    <bcf:citekey order="10">Oecd2007taxi+policy</bcf:citekey>
+    <bcf:citekey order="11">Salanova2011taxi+review</bcf:citekey>
+    <bcf:citekey order="12">Gaunt1995taxi+newzealand</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" type="entry" label="nyt">
   <bcf:sorting>
