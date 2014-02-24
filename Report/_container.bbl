@@ -19,6 +19,52 @@
 
 \refsection{0}
   \sortlist{entry}{nyt}
+    \entry{Cairns1996taxi+competition}{article}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=f96cae48aa4efc9ee035ab1ae427d2d7}{Cairns}{C\bibinitperiod}{Robert\bibnamedelima D}{R\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=0d719bc2fe2a5404c88b0e5c7e2e14e7}{Liston-Heyes}{L\bibinithyphendelim H\bibinitperiod}{Catherine}{C\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=f96cae48aa4efc9ee035ab1ae427d2d7}{Cairns}{C\bibinitperiod}{Robert\bibnamedelima D}{R\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=0d719bc2fe2a5404c88b0e5c7e2e14e7}{Liston-Heyes}{L\bibinithyphendelim H\bibinitperiod}{Catherine}{C\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{8fb00e62e7c11b956b30df9815771fb8}
+      \strng{fullhash}{8fb00e62e7c11b956b30df9815771fb8}
+      \field{sortinit}{C}
+      \field{labelyear}{1996}
+      \field{datelabelsource}{}
+      \field{labeltitle}{Competition and regulation in the taxi industry}
+      \field{journaltitle}{Journal of Public Economics}
+      \field{number}{1}
+      \field{title}{Competition and regulation in the taxi industry}
+      \field{volume}{59}
+      \field{year}{1996}
+      \field{pages}{1\bibrangedash 15}
+    \endentry
+    \entry{Devany1975taxi+capacity}{article}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=a001ceb28ec77c2c66b4c6e928b76c73}{De\bibnamedelima Vany}{D\bibinitperiod\bibinitdelim V\bibinitperiod}{Arthur\bibnamedelima S}{A\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=a001ceb28ec77c2c66b4c6e928b76c73}{De\bibnamedelima Vany}{D\bibinitperiod\bibinitdelim V\bibinitperiod}{Arthur\bibnamedelima S}{A\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{a001ceb28ec77c2c66b4c6e928b76c73}
+      \strng{fullhash}{a001ceb28ec77c2c66b4c6e928b76c73}
+      \field{sortinit}{D}
+      \field{labelyear}{1975}
+      \field{datelabelsource}{}
+      \field{labeltitle}{Capacity utilization under alternative regulatory restraints: an analysis of taxi markets}
+      \field{journaltitle}{The Journal of Political Economy}
+      \field{title}{Capacity utilization under alternative regulatory restraints: an analysis of taxi markets}
+      \field{year}{1975}
+      \field{pages}{83\bibrangedash 94}
+    \endentry
     \entry{Douglas1972taxi+regulation}{article}{}
       \name{labelname}{1}{}{%
         {{uniquename=0,hash=11cad179d7716b2a0e52ce86c8c1e377}{Douglas}{D\bibinitperiod}{George\bibnamedelima W.}{G\bibinitperiod\bibinitdelim W\bibinitperiod}{}{}{}{}}%
@@ -76,6 +122,25 @@
       \field{volume}{2}
       \field{year}{1995}
       \field{pages}{257\bibrangedash 262}
+    \endentry
+    \entry{Manski1967taxi+demand}{report}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=e24ee3424e3ab04bd1bfe4ba95987f51}{Manski}{M\bibinitperiod}{Charles\bibnamedelima F}{C\bibinitperiod\bibinitdelim F\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=d55247706b883e288e3a25c43271e984}{Wright}{W\bibinitperiod}{J\bibnamedelima David}{J\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=e24ee3424e3ab04bd1bfe4ba95987f51}{Manski}{M\bibinitperiod}{Charles\bibnamedelima F}{C\bibinitperiod\bibinitdelim F\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=d55247706b883e288e3a25c43271e984}{Wright}{W\bibinitperiod}{J\bibnamedelima David}{J\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{b61d42f17450e6c7a74d8a793ddee6be}
+      \strng{fullhash}{b61d42f17450e6c7a74d8a793ddee6be}
+      \field{sortinit}{M}
+      \field{labelyear}{1967}
+      \field{datelabelsource}{}
+      \field{labeltitle}{Nature of equilibrium in the market for taxi services}
+      \field{title}{Nature of equilibrium in the market for taxi services}
+      \field{type}{techreport}
+      \field{year}{1967}
     \endentry
     \entry{Oecd2007taxi+policy}{article}{}
       \name{labelname}{1}{}{%
@@ -283,7 +348,35 @@
       \field{year}{1998}
       \field{pages}{235\bibrangedash 246}
     \endentry
+    \entry{Yang2002taxi+demand}{article}{}
+      \name{labelname}{3}{}{%
+        {{uniquename=0,hash=255ee237fcf578055552d8fce6c93b9d}{Yang}{Y\bibinitperiod}{Hai}{H\bibinitperiod}{}{}{}{}}%
+        {{uniquename=1,hash=7d2341ab1c03d23f467daa01d2de6a30}{Wong}{W\bibinitperiod}{Sze\bibnamedelima Chun}{S\bibinitperiod\bibinitdelim C\bibinitperiod}{}{}{}{}}%
+        {{uniquename=1,hash=b6e981b6881382fb49799fd1e94099f9}{Wong}{W\bibinitperiod}{KI}{K\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=255ee237fcf578055552d8fce6c93b9d}{Yang}{Y\bibinitperiod}{Hai}{H\bibinitperiod}{}{}{}{}}%
+        {{uniquename=1,hash=7d2341ab1c03d23f467daa01d2de6a30}{Wong}{W\bibinitperiod}{Sze\bibnamedelima Chun}{S\bibinitperiod\bibinitdelim C\bibinitperiod}{}{}{}{}}%
+        {{uniquename=1,hash=b6e981b6881382fb49799fd1e94099f9}{Wong}{W\bibinitperiod}{KI}{K\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{b41f43ed46f8744498bdc4765cbdf9e0}
+      \strng{fullhash}{b41f43ed46f8744498bdc4765cbdf9e0}
+      \field{sortinit}{Y}
+      \field{labelyear}{2002}
+      \field{datelabelsource}{}
+      \field{labeltitle}{Demand--supply equilibrium of taxi services in a network under competition and regulation}
+      \field{journaltitle}{Transportation Research Part B: Methodological}
+      \field{number}{9}
+      \field{title}{Demand--supply equilibrium of taxi services in a network under competition and regulation}
+      \field{volume}{36}
+      \field{year}{2002}
+      \field{pages}{799\bibrangedash 819}
+    \endentry
   \endsortlist
+  \missing{Devany1975taxi +capacity}
 \endrefsection
 \endinput
 
