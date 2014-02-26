@@ -193,6 +193,27 @@
       \field{year}{2011}
       \field{pages}{150\bibrangedash 161}
     \endentry
+    \entry{Small2007taxi+urban}{book}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=f0663b87fe68f77064e2377797a7e18e}{Small}{S\bibinitperiod}{Kenneth\bibnamedelima A}{K\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=9e7a0b9069c0f91197810c27fcffb028}{Verhoef}{V\bibinitperiod}{Erik\bibnamedelima T}{E\bibinitperiod\bibinitdelim T\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=f0663b87fe68f77064e2377797a7e18e}{Small}{S\bibinitperiod}{Kenneth\bibnamedelima A}{K\bibinitperiod\bibinitdelim A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=9e7a0b9069c0f91197810c27fcffb028}{Verhoef}{V\bibinitperiod}{Erik\bibnamedelima T}{E\bibinitperiod\bibinitdelim T\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Routledge}%
+      }
+      \strng{namehash}{6a8cb50856cbc2d08f5815cf61e1069b}
+      \strng{fullhash}{6a8cb50856cbc2d08f5815cf61e1069b}
+      \field{sortinit}{S}
+      \field{labelyear}{2007}
+      \field{datelabelsource}{}
+      \field{labeltitle}{The economics of urban transportation}
+      \field{title}{The economics of urban transportation}
+      \field{year}{2007}
+    \endentry
     \entry{Wong2008taxi+modeling}{article}{}
       \name{labelname}{4}{}{%
         {{uniquename=1,hash=b6e981b6881382fb49799fd1e94099f9}{Wong}{W\bibinitperiod}{KI}{K\bibinitperiod}{}{}{}{}}%
@@ -376,7 +397,6 @@
       \field{pages}{799\bibrangedash 819}
     \endentry
   \endsortlist
-  \missing{Devany1975taxi +capacity}
 \endrefsection
 \endinput
 

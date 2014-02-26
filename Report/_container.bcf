@@ -1984,17 +1984,18 @@
     <bcf:citekey order="16">Wong2008taxi+modeling</bcf:citekey>
     <bcf:citekey order="17">Yang2010taxi+nonlinear</bcf:citekey>
     <bcf:citekey order="18">Yang2010taxi+equilibria</bcf:citekey>
-    <bcf:citekey order="19">Yang2002taxi+demand</bcf:citekey>
-    <bcf:citekey order="20">Manski1967taxi+demand</bcf:citekey>
-    <bcf:citekey order="21">Douglas1972taxi+regulation</bcf:citekey>
-    <bcf:citekey order="21">Devany1975taxi+capacity</bcf:citekey>
-    <bcf:citekey order="21">Cairns1996taxi+competition</bcf:citekey>
-    <bcf:citekey order="21">Yang2002taxi+demand</bcf:citekey>
-    <bcf:citekey order="22">Salanova2011taxi+review</bcf:citekey>
-    <bcf:citekey order="23">Manski1967taxi+demand</bcf:citekey>
-    <bcf:citekey order="24">Yang2002taxi+demand</bcf:citekey>
-    <bcf:citekey order="25">Yang2010taxi+nonlinear</bcf:citekey>
-    <bcf:citekey order="26">Yang2010taxi+equilibria</bcf:citekey>
+    <bcf:citekey order="19">Small2007taxi+urban</bcf:citekey>
+    <bcf:citekey order="20">Yang2002taxi+demand</bcf:citekey>
+    <bcf:citekey order="21">Manski1967taxi+demand</bcf:citekey>
+    <bcf:citekey order="22">Douglas1972taxi+regulation</bcf:citekey>
+    <bcf:citekey order="22">Devany1975taxi+capacity</bcf:citekey>
+    <bcf:citekey order="22">Cairns1996taxi+competition</bcf:citekey>
+    <bcf:citekey order="22">Yang2002taxi+demand</bcf:citekey>
+    <bcf:citekey order="23">Salanova2011taxi+review</bcf:citekey>
+    <bcf:citekey order="24">Manski1967taxi+demand</bcf:citekey>
+    <bcf:citekey order="25">Yang2002taxi+demand</bcf:citekey>
+    <bcf:citekey order="26">Yang2010taxi+nonlinear</bcf:citekey>
+    <bcf:citekey order="27">Yang2010taxi+equilibria</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" type="entry" label="nyt">
   <bcf:sorting>
