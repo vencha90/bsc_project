@@ -13,16 +13,26 @@
 \addbibresource{../literature/general.bib}
 \addbibresource{../literature/taxi.bib}
 
-\begin{document}
-\maketitle
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 
+\begin{document}
+
+\maketitle
 \begin{abstract}~
 Abstract goes here
 \end{abstract}
 
 \newpage
+\tableofcontents{}
+
+\newpage
+\listoffigures
+
+\newpage
 \section{Introduction}
 \label{sec:intro}
+\paragraph{Intro}
 % \input{./introduction}
 
 \newpage
@@ -35,7 +45,8 @@ Abstract goes here
 \newpage
 \section{Software and simulation design}
 \label{sec:software}
-\input{./design}
+\input{./design_simulation}
+\input{./design_software}
 
 \newpage
 \section{Implementation and results}

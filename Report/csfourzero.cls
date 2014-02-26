@@ -314,51 +314,6 @@
 \RequirePackage{amsfonts}
 \RequirePackage{amssymb}
 
-\renewcommand \tableofcontents{%
-    \if@twocolumn%
-        \@restonecoltrue \onecolumn%
-    \else%
-        \@restonecolfalse%
-    \fi%
-    \chapter*{%
-        \contentsname%
-        \@mkboth{\contentsname}{\contentsname}%
-    }%
-    \@starttoc{toc}%
-    \if@restonecol%
-        \twocolumn%
-    \fi%
-}
-\renewcommand \listoffigures{%
-    \if@twocolumn%
-        \@restonecoltrue \onecolumn%
-    \else%
-        \@restonecolfalse%
-    \fi%
-    \chapter*{%
-        \listfigurename%
-        \@mkboth{\listfigurename}{\listfigurename}%
-    }%
-    \@starttoc{lof}%
-    \if@restonecol%
-        \twocolumn%
-    \fi%
-}
-\renewcommand \listoftables{%
-    \if@twocolumn%
-        \@restonecoltrue \onecolumn%
-    \else%
-        \@restonecolfalse%
-    \fi%
-    \chapter*{%
-        \listtablename%
-        \@mkboth{\listtablename}{\listtablename}%
-    }%
-    \@starttoc{lot}%
-    \if@restonecol%
-        \twocolumn%
-    \fi%
-}
 \renewenvironment{thebibliography}[1]{%
     \chapter*{%
         \bibname%

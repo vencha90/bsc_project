@@ -1996,6 +1996,7 @@
     <bcf:citekey order="25">Yang2002taxi+demand</bcf:citekey>
     <bcf:citekey order="26">Yang2010taxi+nonlinear</bcf:citekey>
     <bcf:citekey order="27">Yang2010taxi+equilibria</bcf:citekey>
+    <bcf:citekey order="28">Small2007taxi+urban</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" type="entry" label="nyt">
   <bcf:sorting>
