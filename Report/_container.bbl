@@ -44,6 +44,26 @@
       \field{year}{1996}
       \field{pages}{1\bibrangedash 15}
     \endentry
+    \entry{Cli1997taxi+bargaining}{article}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=23e20d2623f2aa60c513b7795fce6858}{Cli}{C\bibinitperiod}{Dave}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=23e20d2623f2aa60c513b7795fce6858}{Cli}{C\bibinitperiod}{Dave}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Citeseer}%
+      }
+      \strng{namehash}{23e20d2623f2aa60c513b7795fce6858}
+      \strng{fullhash}{23e20d2623f2aa60c513b7795fce6858}
+      \field{sortinit}{C}
+      \field{labelyear}{1997}
+      \field{datelabelsource}{}
+      \field{labeltitle}{Minimal-intelligence agents for bargaining behaviors in market-based environments}
+      \field{journaltitle}{Hewlett-Packard Labs Technical Reports}
+      \field{title}{Minimal-intelligence agents for bargaining behaviors in market-based environments}
+      \field{year}{1997}
+    \endentry
     \entry{Devany1975taxi+capacity}{article}{}
       \name{labelname}{1}{}{%
         {{uniquename=0,hash=a001ceb28ec77c2c66b4c6e928b76c73}{De\bibnamedelima Vany}{D\bibinitperiod\bibinitdelim V\bibinitperiod}{Arthur\bibnamedelima S}{A\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
@@ -164,6 +184,26 @@
       \verb{url}
       \verb http://www.oecd.org/regreform/sectors/41472612.pdf
       \endverb
+    \endentry
+    \entry{Rubinstein1982taxi+bargaining}{article}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=6dd390184a4a0f79f72fd43d5772433b}{Rubinstein}{R\bibinitperiod}{Ariel}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=6dd390184a4a0f79f72fd43d5772433b}{Rubinstein}{R\bibinitperiod}{Ariel}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{6dd390184a4a0f79f72fd43d5772433b}
+      \strng{fullhash}{6dd390184a4a0f79f72fd43d5772433b}
+      \field{sortinit}{R}
+      \field{labelyear}{1982}
+      \field{datelabelsource}{}
+      \field{labeltitle}{Perfect equilibrium in a bargaining model}
+      \field{journaltitle}{Econometrica}
+      \field{number}{1}
+      \field{title}{Perfect equilibrium in a bargaining model}
+      \field{volume}{50}
+      \field{year}{1982}
+      \field{pages}{97\bibrangedash 109}
     \endentry
     \entry{Salanova2011taxi+review}{article}{}
       \name{labelname}{4}{}{%

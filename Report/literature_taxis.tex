@@ -31,6 +31,7 @@ distance, but are not forced to follow them
 \parencite{Gaunt1995taxi+newzealand}.
 
 \subsubsection{Economic modelling} 
+\label{sec:literature:taxis:modelling}
 
 \paragraph{}Taxi market modelling was first done by
 \textcite{Douglas1972taxi+regulation}, according to
@@ -80,16 +81,28 @@ markets were investigated: free entry and unconstrained fare, free entry and
 regulated fare, regulated entry and unconstrained fare, and regulated entry and
 regulated fare. All of these cases were investigated with both competitive and
 monopilistic markets, and equilibria were found.
+\textcite{Wong2008taxi+modeling} extended this model to heterogenous vehicle
+and user classes, and included congestion which is a major issue in reality but
+was ignored by earlier research. \textcite{Yang2010taxi+nonlinear} proposed a
+nonlinear fare structure to correct market and regulatory inefficiencies, and
+applied it to a similar model.
 
-\paragraph{}\textcite{Wong2008taxi+modeling} extended this model to
-heterogenous vehicle and user classes, and included congestion which is a major
-issue in reality but was ignored by earlier research.
-\textcite{Yang2010taxi+nonlinear} proposed a nonlinear fare structure to
-correct market and regulatory inefficiencies, and applied it to a similar
-model. The way how cruising taxis and customers find each other was researched
-by \textcite{Yang2010taxi+equilibria}, paying particular attention to customer
-behaviour: this study permitted customers to use other modes of transport e.g.
-public transit or walking to find taxis and/or reach their destinations.
+\paragraph{} The way how cruising taxis and customers find each other was
+researched by \textcite{Yang2010taxi+equilibria}, paying particular attention
+to customer behaviour: this study permitted customers to use other modes of
+transport e.g. public transit or walking to find taxis and/or reach their
+destinations. However, this study was based on a taxi market with fixed fares.
+When fares can be negotiated, taxis and customers are likely to do some
+bargaining over the amount of fare. \textcite{Cairns1996taxi+competition} gives
+a quick overview of bargaining and its implications in different markets, with
+customers having more power in taxi rank and phone order markets due to easily
+available competition, and high costs to search for alternatives in cruising
+taxi market for both parties resulting in higher willingness to agree.
+Bargaining of minimal-intelligence agents in competitive markets was
+investigated and implemented in software by \textcite{Cli1997taxi+bargaining},
+where a bargaining performance similar to humans was achieved.
+\textcite{Rubinstein1982taxi+bargaining} described equilibria for a bargaining
+model where each round of barganing has costs to participants.
 
 \subsubsection{Demand and supply}
 \label{sec:literature:taxis:demand}
@@ -142,7 +155,7 @@ for taxis in this study was only a part of the total demand for transportation.
   \begin{center}
     \includegraphics{../figures/taxi_demand}
     \caption{
-      Demand–-availibility–-utilization–-supply relation in a taxi market. 
+      Demand-availibility-utilization-supply relation in a taxi market. 
       \textbf{NEED PERMISSION}
       \label{figure:taxi}
     }

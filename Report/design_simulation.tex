@@ -69,19 +69,49 @@ fare price \(F\) can be expressed as:
 If \(Q\) is greater than a certain threshold, then the passenger accepts the 
 fare, and declines otherwise. This exact threshold \textbf{what will it be?}
 
-\subsubsection{Interaction} how do taxis and passengers interact
+\paragraph{} The relevant variables for passengers can be generated using a
+stochastic process. Similarly, passenger distribution within the network can be
+generated using a stochastic process. These processes can take in account some
+characteristics observed in reality such as demand variance during the day,
+lower passenger income in some areas resulting in lower willingness to pay, whether a trip is for pleasure or business and others.
 
-\subsubsection{Supply: modelling taxis} 
+\subsubsection{Supply} 
 
-\paragraph{} Taxis have variable costs (e.g. wages and fuel) and fixed costs
-(e.g. deprecation, insurance, business overheads, lease payments). 
+\paragraph{} Let taxis have variable costs \(VC\) consisting of driver's wage
+costs \(w\) and fuel expenses \(f\), and a sum of fixed costs \(FC\) including
+e.g. deprecation, insurance, business overheads, lease payments. For simplicity
+it is assumed that wages are paid for all of the time that a taxi is operating,
+and a constant amount of fuel costing \(f\) is used for a unit of distance
+covered. Then total taxi costs \(TC\) for a total time \(t\) and an amount
+total distance covered \(d\) can be expressed as:
+\[ TC = VC + FC = t \cdot w + d \cdot f + FC \]
+
+\subsubsection{Market System}
+
+\paragraph{} The market is represented as a graph constructed of edges (roads)
+and vertices (origins/destinations). Each vertex has associated properties: a
+list of connected edges, a list of passengers, potentially a list of taxiss.
+Each edge has associated properties: length, potentially speed limit, toll
+Taxis can travel between vertices using edges. Taxis are assumed to take the
+shortest routes and travel at a constant speed. Passengers appear at nodes and
+when taxi is at a node it is assumed that they can interact.
+
+\paragraph{} When taxis interact with customers in reality in a market with no
+fare regulation, bargaining is likely to happen: taxis bid passengers a fare,
+and passengers can agree with it, or decline it and give a countering bid or
+abandon the process. Bargaining allows taxis and passengers to agree on a
+mutually acceptable price, but has a cost (caused by the time used for
+communication) that can be assumed constant for each bid. To simulate real-
+world behaviour, the bargaining process will use reinforcement learning as
+described in \textcite{Cli1997taxi+bargaining}.
 
 \paragraph{Behaviour: AI}
 
 \subsubsection{Benchmark} 
 
-\paragraph{} Benchmark the system using a linear pricing tarriff,
-reasonable profit margins or something
+\paragraph{} To evaluate the variable pricing approach, benchmarks measuring
+taxi profitability need to be established using the linear pricing approach.
+A market equilibrium fare price can be calculated from the stochastic processes, and a linear tarriff set and a simulation ran with it.
 
 \paragraph{} Comparable simulation runs
 
