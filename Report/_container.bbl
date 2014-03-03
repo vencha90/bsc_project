@@ -120,6 +120,41 @@
       \verb http://www.jstor.org/stable/20052271
       \endverb
     \endentry
+    \entry{Emele2013pricing+rural}{incollection}{}
+      \name{labelname}{8}{}{%
+        {{uniquename=0,hash=37c1109de1a8927a61bbbcd65c215c9a}{Emele}{E\bibinitperiod}{C\bibnamedelima David}{C\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=acddd34fd40175b9ab46639b9f56e81e}{Oren}{O\bibinitperiod}{Nir}{N\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=e27c3fd98b4854d09f42719061443efd}{Zeng}{Z\bibinitperiod}{Cheng}{C\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=4b0489e93fe21a7f106227c134b80b1c}{Wright}{W\bibinitperiod}{Steve}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=106a9eb9d3ad9e93a124db55f6d69ab2}{Velaga}{V\bibinitperiod}{Nagendra}{N\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=fc00c0399b056d298791b9c4522db603}{Nelson}{N\bibinitperiod}{John}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=cc9b82d8030b25a857e1a4ecbe752149}{Norman}{N\bibinitperiod}{Timothy\bibnamedelima J}{T\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=3299ba831e0c56ddd15024409442f329}{Farrington}{F\bibinitperiod}{John}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{8}{}{%
+        {{uniquename=0,hash=37c1109de1a8927a61bbbcd65c215c9a}{Emele}{E\bibinitperiod}{C\bibnamedelima David}{C\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=acddd34fd40175b9ab46639b9f56e81e}{Oren}{O\bibinitperiod}{Nir}{N\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=e27c3fd98b4854d09f42719061443efd}{Zeng}{Z\bibinitperiod}{Cheng}{C\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=4b0489e93fe21a7f106227c134b80b1c}{Wright}{W\bibinitperiod}{Steve}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=106a9eb9d3ad9e93a124db55f6d69ab2}{Velaga}{V\bibinitperiod}{Nagendra}{N\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=fc00c0399b056d298791b9c4522db603}{Nelson}{N\bibinitperiod}{John}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=cc9b82d8030b25a857e1a4ecbe752149}{Norman}{N\bibinitperiod}{Timothy\bibnamedelima J}{T\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=3299ba831e0c56ddd15024409442f329}{Farrington}{F\bibinitperiod}{John}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{ebe802cdbb4b3a4bbbdf2d771434995d}
+      \strng{fullhash}{2487544a30ec02176493f97897a62e65}
+      \field{sortinit}{E}
+      \field{labelyear}{2013}
+      \field{datelabelsource}{}
+      \field{labeltitle}{Agent-driven variable pricing in flexible rural transport services}
+      \field{booktitle}{Highlights on Practical Applications of Agents and Multi-Agent Systems}
+      \field{title}{Agent-driven variable pricing in flexible rural transport services}
+      \field{year}{2013}
+      \field{pages}{24\bibrangedash 35}
+    \endentry
     \entry{Gaunt1995taxi+newzealand}{article}{}
       \name{labelname}{1}{}{%
         {{uniquename=0,hash=85503ec7ec9ecf4e04f49a744534e5ee}{Gaunt}{G\bibinitperiod}{Clive}{C\bibinitperiod}{}{}{}{}}%
@@ -143,6 +178,30 @@
       \field{year}{1995}
       \field{pages}{257\bibrangedash 262}
     \endentry
+    \entry{Kaddoura2013social+cost}{article}{}
+      \name{labelname}{4}{}{%
+        {{uniquename=0,hash=7195d80407bf7a98bb5f150d239115d1}{Kaddoura}{K\bibinitperiod}{Ihab}{I\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=854ddc16a2e7388d896cc1931cf8a1e3}{Kickhöfer}{K\bibinitperiod}{Benjamin}{B\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=d956c46105c794825eb9258dac177cb6}{Neumann}{N\bibinitperiod}{Andreas}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=66eb5a15670674ff4bdd8f89970a6966}{Tirachini}{T\bibinitperiod}{Alejandro}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{4}{}{%
+        {{uniquename=0,hash=7195d80407bf7a98bb5f150d239115d1}{Kaddoura}{K\bibinitperiod}{Ihab}{I\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=854ddc16a2e7388d896cc1931cf8a1e3}{Kickhöfer}{K\bibinitperiod}{Benjamin}{B\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=d956c46105c794825eb9258dac177cb6}{Neumann}{N\bibinitperiod}{Andreas}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=66eb5a15670674ff4bdd8f89970a6966}{Tirachini}{T\bibinitperiod}{Alejandro}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{5edd979959847c080abfb1e9e01f954d}
+      \strng{fullhash}{9ff59b0f5ae2f44c43210f2f84305ff5}
+      \field{sortinit}{K}
+      \field{labelyear}{2013}
+      \field{datelabelsource}{}
+      \field{labeltitle}{Optimal public transport pricing: Towards an agent-based marginal social cost approach}
+      \field{journaltitle}{hEART}
+      \field{title}{Optimal public transport pricing: Towards an agent-based marginal social cost approach}
+      \field{year}{2013}
+      \field{pages}{13\bibrangedash 09}
+    \endentry
     \entry{Manski1967taxi+demand}{report}{}
       \name{labelname}{2}{}{%
         {{uniquename=0,hash=e24ee3424e3ab04bd1bfe4ba95987f51}{Manski}{M\bibinitperiod}{Charles\bibnamedelima F}{C\bibinitperiod\bibinitdelim F\bibinitperiod}{}{}{}{}}%
@@ -161,6 +220,29 @@
       \field{title}{Nature of equilibrium in the market for taxi services}
       \field{type}{techreport}
       \field{year}{1967}
+    \endentry
+    \entry{Neumann2011berlin}{report}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=d956c46105c794825eb9258dac177cb6}{Neumann}{N\bibinitperiod}{Andreas}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=e3790668bd926d13c0933c390acf0bac}{Balmer}{B\bibinitperiod}{Michael}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=d956c46105c794825eb9258dac177cb6}{Neumann}{N\bibinitperiod}{Andreas}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=e3790668bd926d13c0933c390acf0bac}{Balmer}{B\bibinitperiod}{Michael}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \list{institution}{2}{%
+        {VSP Working Paper 11-14, TU Berlin, Transport Systems Planning}%
+        {Transport Telematics, see www. vsp. tu-berlin. de/publications}%
+      }
+      \strng{namehash}{50a53f6309dde7f00020e47def589282}
+      \strng{fullhash}{50a53f6309dde7f00020e47def589282}
+      \field{sortinit}{N}
+      \field{labelyear}{2011}
+      \field{datelabelsource}{}
+      \field{labeltitle}{Micro meets macro: A combined approach for a large-scale, agent-based, multi-modal and dynamic transport model for Berlin}
+      \field{title}{Micro meets macro: A combined approach for a large-scale, agent-based, multi-modal and dynamic transport model for Berlin}
+      \field{type}{techreport}
+      \field{year}{2011}
     \endentry
     \entry{Oecd2007taxi+policy}{article}{}
       \name{labelname}{1}{}{%
@@ -204,6 +286,28 @@
       \field{volume}{50}
       \field{year}{1982}
       \field{pages}{97\bibrangedash 109}
+    \endentry
+    \entry{Russell2010ai+modern}{book}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=0784d2ea27596a7eed871af226f62299}{Russell}{R\bibinitperiod}{Stuart\bibnamedelima Jonathan}{S\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=5de798d5fa3c0236c0478134cd23f52a}{Norvig}{N\bibinitperiod}{Peter}{P\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=0784d2ea27596a7eed871af226f62299}{Russell}{R\bibinitperiod}{Stuart\bibnamedelima Jonathan}{S\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=5de798d5fa3c0236c0478134cd23f52a}{Norvig}{N\bibinitperiod}{Peter}{P\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Prentice Hall}%
+      }
+      \strng{namehash}{81003a1be339f841b3e22775567e9b47}
+      \strng{fullhash}{81003a1be339f841b3e22775567e9b47}
+      \field{sortinit}{R}
+      \field{labelyear}{2010}
+      \field{datelabelsource}{}
+      \field{labeltitle}{Artificial intelligence: a modern approach}
+      \field{edition}{3}
+      \field{title}{Artificial intelligence: a modern approach}
+      \field{year}{2010}
     \endentry
     \entry{Salanova2011taxi+review}{article}{}
       \name{labelname}{4}{}{%

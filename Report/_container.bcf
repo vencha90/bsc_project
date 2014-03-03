@@ -1966,7 +1966,9 @@
     <bcf:datasource type="file" datatype="bibtex">../literature/taxi.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">(</bcf:citekey>
+    <bcf:citekey order="1">Emele2013pricing+rural</bcf:citekey>
+    <bcf:citekey order="1">Kaddoura2013social+cost</bcf:citekey>
+    <bcf:citekey order="1">Neumann2011berlin</bcf:citekey>
     <bcf:citekey order="2">Salanova2011taxi+review</bcf:citekey>
     <bcf:citekey order="3">Cairns1996taxi+competition</bcf:citekey>
     <bcf:citekey order="4">Oecd2007taxi+policy</bcf:citekey>
@@ -2000,8 +2002,16 @@
     <bcf:citekey order="29">Yang2002taxi+demand</bcf:citekey>
     <bcf:citekey order="30">Yang2010taxi+nonlinear</bcf:citekey>
     <bcf:citekey order="31">Yang2010taxi+equilibria</bcf:citekey>
-    <bcf:citekey order="32">Small2007taxi+urban</bcf:citekey>
-    <bcf:citekey order="33">Cli1997taxi+bargaining</bcf:citekey>
+    <bcf:citekey order="32">Russell2010ai+modern</bcf:citekey>
+    <bcf:citekey order="33">Russell2010ai+modern</bcf:citekey>
+    <bcf:citekey order="34">Russell2010ai+modern</bcf:citekey>
+    <bcf:citekey order="35">Russell2010ai+modern</bcf:citekey>
+    <bcf:citekey order="36">Russell2010ai+modern</bcf:citekey>
+    <bcf:citekey order="37">Russell2010ai+modern</bcf:citekey>
+    <bcf:citekey order="38">Russell2010ai+modern</bcf:citekey>
+    <bcf:citekey order="39">Russell2010ai+modern</bcf:citekey>
+    <bcf:citekey order="40">Small2007taxi+urban</bcf:citekey>
+    <bcf:citekey order="41">Cli1997taxi+bargaining</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" type="entry" label="nyt">
   <bcf:sorting>

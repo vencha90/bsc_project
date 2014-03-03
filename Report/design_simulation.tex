@@ -1,66 +1,66 @@
-\paragraph{} This section formalises the simulation based on related work in
-Section \ref{sec:literature} and applying the results to the context of this
-project. Firstly, models for passengers and taxis are described in Section
+This section formalises the simulation based on related work in Section
+\ref{sec:literature} and applying the results to the context of this project.
+Firstly, models for passengers and taxis are described in Section
 \ref{sec:design:simulation}. Then Section \ref{sec:design:software} discusses
 how these models are going to be implemented as software.
 
 \subsection{Simulation design}
 \label{sec:design:simulation}
 
-\paragraph{} The approach suggested by this project is not
-compatible with a market where fares are regulated, at least in the current
-form of regulation that specifies a formula to calculate fares based on some
-variables, usually time and distance. Other ways of regulation that do not
-affect pricing, for example, market entry conditions, are compatible with the
-suggested variable pricing approach.
+The approach suggested by this project is not compatible with a market where
+fares are regulated, at least in the current form of regulation that specifies
+a formula to calculate fares based on some variables, usually time and
+distance. Other ways of regulation that do not affect pricing, for example,
+market entry conditions, are compatible with the suggested variable pricing
+approach.
 
-\paragraph{}Three different operational types of taxi markets were introduced
-in Section \ref{sec:literature:taxis}: phone-order market, cruising taxi market
-and taxi rank market. In the phone-order market and taxi rank customers are
-actively seeking a taxi, while in the cruising taxi market passengers can only
-wait for a taxi to drive by. Therefore the cruising taxi market is chosen as
-the easiest target for simulation, extending it to phone-order and taxi rank
-markets if the initial experiment is successful.
+Three different operational types of taxi markets were introduced in Section
+\ref{sec:literature:taxis}: phone-order market, cruising taxi market and taxi
+rank market. In the phone-order market and taxi rank customers are actively
+seeking a taxi, while in the cruising taxi market passengers can only wait for
+a taxi to drive by. Therefore the cruising taxi market is chosen as the easiest
+target for simulation, extending it to phone-order and taxi rank markets if the
+initial experiment is successful.
 
 
 \subsubsection{Competition}
 
-\paragraph{} The relationship between taxi demand and supply and vice versa was
-established in Section \ref{sec:literature:taxis:demand}. This relationship
-largely depends on the competitive situation in a taxi market. As the
-simulation initially involves only a single taxi, the competition needs to be
-replicated by other means. When the simulation is expanded to multiple taxis
+The relationship between taxi demand and supply and vice versa was established
+in Section \ref{sec:literature:taxis:demand}. This relationship largely depends
+on the competitive situation in a taxi market. As the simulation initially
+involves only a single taxi, the competition needs to be replicated by other
+means. When the simulation is expanded to multiple taxis
 
 \subsubsection{Demand: modelling passengers} 
 
-\paragraph{} Customer demand was reviewed in Section
-\ref{sec:literature:taxis:demand} where two approaches to modelling demand were
-shown: aggregate and disaggregate. An aggregate demand model "for some portion
-of the travel market is a function of variables that describe the product or
-its consumers" \parencite{Small2007taxi+urban} The disaggregate approach
-specifies a set of variables for each individual passenger. The project goal is
-investigating taxi pricing on an individual basis, therefore a disaggregate
-approach is preferrable as it allows individual modelling of passengers.
-\textbf{review this claim!} Of course, to express demand as a single variable
-it needs to be an aggregation of the relevant individual variables.
+Customer demand was reviewed in Section \ref{sec:literature:taxis:demand} where
+two approaches to modelling demand were shown: aggregate and disaggregate. An
+aggregate demand model "for some portion of the travel market is a function of
+variables that describe the product or its consumers"
+\parencite{Small2007taxi+urban} The disaggregate approach specifies a set of
+variables for each individual passenger. The project goal is investigating taxi
+pricing on an individual basis, therefore a disaggregate approach is
+preferrable as it allows individual modelling of passengers. \textbf{review
+this claim!} Of course, to express demand as a single variable it needs to be
+an aggregation of the relevant individual variables.
 
-\paragraph{} Therefore each passenger's demand is a function that of some
-variables. The different types of variables affecting taxi demand were
-discussed in Section \ref{sec:literature:taxis:demand}. Exogenous demand
-variables are value of time and value of reliability that can be derived from a
-passenger's income, hour of day when travelling, purpose of travel, social
-status, cost of waiting and others; these can be modelled for each individual
-passenger. Taxi availability is a variable directly depending on the number of
-vacant taxis in an area, this is something that passenger's perceive in
-reality. However, for the simulation, taxi availability needs to be assumed a
-constant, at least until machine learning capabilities are added to passengers
-and a competitive market established beyond the very basic simulation, so that
-passangers can learn the availability on their own.
+Therefore each passenger's demand is a function that of some variables. The
+different types of variables affecting taxi demand were discussed in Section
+\ref{sec:literature:taxis:demand}. Exogenous demand variables are value of time
+and value of reliability that can be derived from a passenger's income, hour of
+day when travelling, purpose of travel, social status, cost of waiting and
+others; these can be modelled for each individual passenger. Taxi availability
+is a variable directly depending on the number of vacant taxis in an area, this
+is something that passenger's perceive in reality. However, for the simulation,
+taxi availability needs to be assumed a constant, at least until machine
+learning capabilities are added to passengers and a competitive market
+established beyond the very basic simulation, so that passanger agents can
+learn the availability on their own.
 
-\paragraph{} Let \(P\) be the set of the relevant variables \(p_1,..,p_n\) for
+Let \(P\) be the set of the relevant variables \(p_1,..,p_n\) for
 a  passenger: \(P = \{p_1,..,p_n\}\), \newline
-where each \(p_i\) has a function \(f_i (p_i) \) that returns a unity-based  
-normalised value of \(p_i\), \newline 
+where each \(p_i : i \in \{1, .., n\}\) has a function \(f_i (p_i) \) that
+returns a unity-based  normalised value of \(p_i\), \newline 
 and each \(p_i\) has a weight \(w_i\) representing its relative importance  
 compared to other variables, where \(\sum_{i=1}^n (w_i) = 1 \). \newline 
 Then demand \(Q\) for a taxi ride from origin \(o\) to destination \(d\) at a  
@@ -69,36 +69,38 @@ fare price \(F\) can be expressed as:
 If \(Q\) is greater than a certain threshold, then the passenger accepts the 
 fare, and declines otherwise. This exact threshold \textbf{what will it be?}
 
-\paragraph{} The relevant variables for passengers can be generated using a
-stochastic process. Similarly, passenger distribution within the network can be
-generated using a stochastic process. These processes can take in account some
+The relevant variables for passengers can be generated using a stochastic
+process. Similarly, passenger distribution within the network can be generated
+using a stochastic process. These processes can take in account some
 characteristics observed in reality such as demand variance during the day,
-lower passenger income in some areas resulting in lower willingness to pay, whether a trip is for pleasure or business and others.
+lower passenger income in some areas resulting in lower willingness to pay,
+whether a trip is for pleasure or business, and others.
 
 \subsubsection{Supply} 
 
-\paragraph{} Let taxis have variable costs \(VC\) consisting of driver's wage
-costs \(w\) and fuel expenses \(f\), and a sum of fixed costs \(FC\) including
-e.g. deprecation, insurance, business overheads, lease payments. For simplicity
-it is assumed that wages are paid for all of the time that a taxi is operating,
+Let taxis have variable costs \(VC\) consisting of driver's wage costs \(w\)
+and fuel expenses \(f\), and a sum of fixed costs \(FC\) including e.g.
+deprecation, insurance, business overheads, lease payments. For simplicity it
+is assumed that wages are paid for all of the time that a taxi is operating,
 and a constant amount of fuel costing \(f\) is used for a unit of distance
 covered. Then total taxi costs \(TC\) for a total time \(t\) and an amount
 total distance covered \(d\) can be expressed as:
+
 \[ TC = VC + FC = t \cdot w + d \cdot f + FC \]
 
-\subsubsection{Market System}
+\subsubsection{The Market}
 
-\paragraph{} The market is represented as a graph constructed of edges (roads)
-and vertices (origins/destinations). Each vertex has associated properties: a
-list of connected edges, a list of passengers, potentially a list of taxiss.
-Each edge has associated properties: length, potentially speed limit, toll
-Taxis can travel between vertices using edges. Taxis are assumed to take the
-shortest routes and travel at a constant speed. Passengers appear at nodes and
-when taxi is at a node it is assumed that they can interact.
+The market is represented as a graph constructed of edges (roads) and vertices
+(origins/destinations). Each vertex has associated properties: a list of
+connected edges, a list of passengers, potentially a list of taxiss. Each edge
+has associated properties: length, potentially speed limit, toll Taxis can
+travel between vertices using edges. Taxis are assumed to take the shortest
+routes and travel at a constant speed. Passengers appear at nodes and when taxi
+is at a node it is assumed that they can interact.
 
-\paragraph{} When taxis interact with customers in reality in a market with no
-fare regulation, bargaining is likely to happen: taxis bid passengers a fare,
-and passengers can agree with it, or decline it and give a countering bid or
+When taxis interact with customers in reality in a market with no fare
+regulation, bargaining is likely to happen: taxis bid passengers a fare, and
+passengers can agree with it, or decline it and give a countering bid or
 abandon the process. Bargaining allows taxis and passengers to agree on a
 mutually acceptable price, but has a cost (caused by the time used for
 communication) that can be assumed constant for each bid. To simulate real-
@@ -109,10 +111,13 @@ described in \textcite{Cli1997taxi+bargaining}.
 
 \subsubsection{Benchmark} 
 
-\paragraph{} To evaluate the variable pricing approach, benchmarks measuring
-taxi profitability need to be established using the linear pricing approach.
-A market equilibrium fare price can be calculated from the stochastic processes, and a linear tarriff set and a simulation ran with it.
+To evaluate the variable pricing approach, benchmarks measuring taxi
+profitability need to be established using the linear pricing approach. Market
+equilibrium demand and fare prices can be calculated from the stochastic
+processes, and a linear tarriff set and a simulation ran with it.
 
-\paragraph{} Comparable simulation runs
+\subsubsection{Data}
 
-\subsubsection{Data} What data will be gathered and how?
+Data on profitability will be gathered and recorded as simulation progresses.
+This data will later be used to find environmental conditions where variable
+pricing is more profitable than a set linear fare and vice versa.
