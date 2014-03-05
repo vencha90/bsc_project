@@ -1,4 +1,4 @@
-\subsection{Reinforcement learning}
+\subsection{Reinforcement Learning}
 \label{sec:ai}
 
 \subsubsection{Basics}
@@ -6,88 +6,120 @@
 Reinforecement learning is software agents being rewarded or punished
 (receiving negative reward) for their actions so that they can hopefully learn
 an optimal policy for acting in some environment, maximising the economic
-outcome (\textit{utility}).
+outcome (\textbf{utility}).
 
-\textit{Policy} is defined as the mapping of actions from any possible state to
-the highest utility outcome from that state. Thus for each state there is a
-maximum utility that can be reached. Agents have a set of possible actions that
-they can take, depending on the state they are in. Agents also have a set of
-rules for what they can observe from the environment. \textit{Transition model}
-is the description of how applying actions to states result in new states. All
-of the states, actions and the transition models together define the
-\textit{state space}. \parencite{Russell2010ai+modern}
+\textbf{Optimal policy} is defined as the mapping of actions from any possible
+state to the highest utility outcome from that state. Thus for each state there
+is a maximum utility that can be reached. Agents have a set of possible actions
+that they can take, depending on the state they are in. Agents also have a set
+of rules for what they can observe from the environment. \textbf{Transition
+model} is the description of how applying actions to states result in new
+states. All of the states, actions and the transition models together define
+the \textbf{state space}. \parencite{Russell2010ai+modern,
+Sutton1998ai+reinforcement}
 
-Reward is the relative utility what an agent gets for being in a certain state.
+\textbf{Reward} is the relative utility (positive or negative) what an agent
+gets for being in a certain state, and the goal of the agent is to maximise the
+cumulative reward over time. The cumulative reward is known as the
+\textbf{value function} or \textbf{utility function}, giving a long-term
+outlook in contrast to immediate rewards. Searching and learning the value
+function is central to reinforcement learning. \parencite{Russell2010ai+modern,
+Sutton1998ai+reinforcement}
+
+Evolutionary methods \parencite{Sutton1998ai+reinforcement} also known as
+genetic algorithms \parencite{Russell2010ai+modern} are a branch of artificial
+intelligence that could potentially be used for solving reinforcement learning
+problems. Evolutionary methods do not learn from individual experiences, and
+therefore \textcite{Sutton1998ai+reinforcement} do not recommend using them for
+reinforcement learning problems, although they agree that evolutionary methods
+could be useful in specific cases. Similarly \textcite{Russell2010ai+modern}
+states that genetic algorithms do not cope well with increasing complexity and
+are the most useful in optimisation problems.
 
 
-MDP
+\subsubsection{Markov Decision Processes}
 
-POMDP
+An agent having the \textbf{Markov property} means that only the current state
+of the agent matters to the probability distribution of future states i.e. any
+other states and actions do not influence the future state. Even in cases when
+the Markov property does not strictly apply, often approximations can be made
+and reinforcement learning theory still applies.
+\parencite{Sutton1998ai+reinforcement}
 
-Two types of learning are distinguished: passive and active. This distinction
-is made for simplicity as the problems that active learning solves is mostly a
-superset of those of passive learning. Therefore it is reasonable to look at
-the common issues in isolation while investigating passive learning, and
-extending the solutions to work with active learning later.
+A process satisfying the Markov property is a
+\textbf{Markov decision process (MDP)}. It consists of the state space and
+reward functions. It can be seen that all MDPs have a policy, the one with the
+highest expected utility called the \textbf{optimal policy}. It is important to
+note that it is the \textit{expected} utility because the environment could be
+(and usually is) stochastic. \parencite{Russell2010ai+modern}
 
-Three approaches to estimate utilities are developed and tested: direct utility
-estimation, adaptive dynamic programming and temporal difference.
-\parencite{Russell2010ai+modern} discusses these approaches and gives the basic
-algorithms. Initially a perfectly observable passive learning situation is
-discussed, followed by adapting the same approaches to active learning by
-introducing exploration in partially observable environments.
+Considering MDPs over time, two cases can be distinguished: finite and infinite
+horizon. While the optimal action in a given state could change when having a
+finite horizon, it never would with an infinite horizon as there is no
+differing time pressure. To solve MDPs with an infinite horizon and no terminal
+states, rewards need to be discounted. Finding an optimal policy is not always
+possible due to the large state space, therefore approximation may be needed.
+Approximation can give good results because reaching many states has a very
+small probability and they have very low effect on the overall utility of a
+policy. \parencite{Russell2010ai+modern}
 
-\subsubsection{Learning approaches}
+The simple model of MDPs assumed that the environment was perfectly observable
+i.e. the agent knew which state it is in at all times. This assumption is
+unrealistic in the real world -- for example, a taxi driver does not know
+whether a passenger will accept their offered fare. To account for this,
+\textbf{Partially observable Markov decision processes} add the notion of a
+\textbf{sensor model} specifying the probabilities of perceiving evidence.
+Therefore now the set of states is a set of probability distributions for a
+POMDP -- the belief state. \parencite{Russell2010ai+modern}
 
-\textbf{Direct utility estimation} uses the fact that utility of a state is the
-expected total reward from that state onward, called the reward-to-go. (Widrow
-and Hoff, 1960 cited by \textcite{Russell2010ai+modern}) After a large number
-of estimations giving samples for the states, the observed reward-to-go is
-likely to converge to the actual utility of a state. However, this approach is
-inefficient, mainly because it ignores that utilities of states are related to
-each other. \parencite{Russell2010ai+modern}
+Furthermore, the MDP assumes that the reward functions are known. In reality
+the environment might be unknown and rewards occasional -- as would happen to
+an agent simulating a taxi. In such a case, MDPs or POMDPs cannot be solved
+\textbf{REVIEW}.
 
-\textbf{Dynamic programming (ADP)}, unlike direct utility estimation,
-takes in account the interdependence of utilities of states by learning the
+\subsubsection{Solving Reinforcement Learning Problems}
+
+An agent in reinforcement learning does not know what it actions do and how the
+environment works, thus it is facing an unknown MDP. Three practically useful
+approaches for solving reinforcement learning problems (finding optimal
+policies) are identified by both \textcite{Russell210ai+modern} and
+\textcite{Sutton1998ai+reinforcement}: dynamic programming, Monte Carlo methods
+and temporal difference methods. In this section these will be looked at in
+detail, later followed by an overview of how elements of them can be used
+together in synergistic methods.
+
+The simplest naive approach to solve reinforcement learning problems is
+\textbf{direct utility estimation}. It uses the fact that utility of a state is
+the expected total reward from that state onward, called the reward-to-go.
+(Widrow and Hoff, 1960 cited by \textcite{Russell2010ai+modern}) After a large
+number of estimations giving samples for the states, the observed reward-to-go
+is likely to converge to the actual utility of a state. However, this approach
+is inefficient, mainly because it ignores that utilities of states are related
+to each other. \parencite{Russell2010ai+modern}
+
+\textbf{Dynamic programming} methods, unlike direct utility estimation, takes
+in account the interdependence of utilities of states by learning the
 transition model that connects them, and uses dynamic programming to solve the
-corresponding Markov decision process. A Markov decision process is a model of
-a discrete time stochastic control process: a decision maker (the agent) who is
-in a certain state can choose an action, and the process will stochastically
-move to a new state and reward the agent. \parencite{Russell2010ai+modern}
+corresponding Markov decision process. However, this requires a perfectly known
+model of the environment which in practice is infeasible. Dynamic programming
+is also computationally expensive. The two most popular dynamic programming
+methods are value iteration and policy iteration.s
+\parencite{Sutton1998ai+reinforcement}
 
-Utility estimates can then be learned by solving this model and there are
-multiple ways to do it. Modified policy iteration is the simplest, but its
-results are based on the estimated transition model which may be incorrect. To 
-cater for a range of possible models, Bayesian reinforcement learning and an
-approach derived from robust control theory are suggested.
-\parencite{Russell2010ai+modern}
-
-\textbf{Temporal difference (TD)} does not use a transition and therefore is
-simpler and requires less computation, alas at a price of slower learning. TD
-works by adjusting the utility estimates based on the differences observed in
-the last state transition, and over time the \textit{average} utility values
-converge to the correct values. To ensure that utility values in TD converge to
-the correct value, visited states can be stored and their repeated impact
-reduced. \parencite{Russell2010ai+modern}
-
-ADP's efficiency can be improved by using prioritised sweeping heuristic which
-only takes in account utility transitions that are significantly large. This
-approximated ADP can learn about as quickly as the basic ADP, but is magnitudes
-more efficient because it operates on a much smaller state space.
-\parencite{Russell2010ai+modern}
-
-\textbf{Monte Carlo methods} 
-
-\subsubsection{Active learning}
-
-Agents performing active learning need to take sequential decisions on their
-actions, maximising the eventual utility. This problem is known as a Markov
-decision process consisting of a set of states, as set of actions in each
-state, a transition model, and a reward function for each state.
+\subsubsection{Monte Carlo methods} 
 
 
 
-\subsubsection{Inductive learning}
+\subsubsection{Temporal difference methods}
+
+\textbf{Temporal difference (TD)} does not use a transition model and therefore
+is simpler and requires less computation than dynamic programming, alas at a
+price of slower learning. TD works by adjusting the utility estimates based on
+the differences observed in the last state transition, and over time the
+\textit{average} utility values converge to the correct values. To ensure that
+utility values in TD converge to the correct value, visited states can be
+stored and their repeated impact reduced. \parencite{Russell2010ai+modern}
+
 
 \subsubsection{}
 
