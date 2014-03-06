@@ -1,6 +1,8 @@
 *.pdf
 *.ppt
 
+*.bcf
+*.fig
 *.run.xml
 *.synctex.gz
 
