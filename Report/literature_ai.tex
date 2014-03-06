@@ -2,6 +2,7 @@
 \label{sec:ai}
 
 \subsubsection{Basics}
+\label{sec:ai:basics}
 
 Reinforecement learning is software agents being rewarded or punished
 (receiving negative reward) for their actions so that they can hopefully learn
@@ -38,6 +39,7 @@ are the most useful in optimisation problems.
 
 
 \subsubsection{Markov Decision Processes}
+\label{sec:ai:mdp}
 
 An agent having the \textbf{Markov property} means that only the current state
 of the agent matters to the probability distribution of future states i.e. any
@@ -57,11 +59,11 @@ Considering MDPs over time, two cases can be distinguished: finite and infinite
 horizon. While the optimal action in a given state could change when having a
 finite horizon, it never would with an infinite horizon as there is no
 differing time pressure. To solve MDPs with an infinite horizon and no terminal
-states, rewards need to be discounted. Finding an optimal policy is not always
-possible due to the large state space, therefore approximation may be needed.
-Approximation can give good results because reaching many states has a very
-small probability and they have very low effect on the overall utility of a
-policy. \parencite{Russell2010ai+modern}
+states, rewards need to be discounted using a discount parameter \(\gamma\).
+Finding an optimal policy is not always possible due to the large state space,
+therefore approximation may be needed. Approximation can give good results
+because reaching many states has a very small probability and they have very
+low effect on the overall utility of a policy. \parencite{Russell2010ai+modern}
 
 The simple model of MDPs assumed that the environment was perfectly observable
 i.e. the agent knew which state it is in at all times. This assumption is
@@ -70,20 +72,108 @@ whether a passenger will accept their offered fare. To account for this,
 \textbf{Partially observable Markov decision processes} (POMDP) add the notion
 of a \textbf{sensor model} specifying the probabilities of perceiving evidence.
 Therefore now the set of states is a set of probability distributions for a
-POMDP -- the belief state. \parencite{Russell2010ai+modern}
+POMDP -- the belief state as discussed by \textcite{Russell2010ai+modern}.
+\textcite{Wiering2012ai+reinforcement} go in more detail and specify that to
+form belief models, an agent needs some form of memory to record observations.
+With continuous states or with large planning horizons storing the history
+directly is infeasible. For the transformation of POMDP to a MDP
+\textcite[391-393]{Wiering2012ai+reinforcement} suggest a method summarising
+agents' observation history to a belief vector of continuous probability
+distributions\(b\), described by Stratonovich, 1960, Dynkin, 1965 and Åström,
+1965. This method will be discussed in more detail in Section
+\ref{sec:ai:pomdp}.
 
-Therefore it can be concluded that the taxi in the problem in this paper is in a POMDP situation. There is a clear reward function between states - the fare. However, the taxi does not know the exact state it is in i.e. how much the passenger is willing to pay.
+Therefore it can be concluded that the taxi in the problem of this paper is in
+a POMDP situation. There is a clear reward function between states - the fare.
+However, the taxi does not know the exact state it is in i.e. how much the
+passenger is willing to pay. This violates the Markov property which is a key
+assumption for most reinforcement learning methods
+\parencite{Sutton1998ai+reinforcement}.
 
-\subsubsection{Solving POMDPs}
+\subsubsection{Solving Partially Observable Markov Decision Processes (POMDPs)}
+\label{sec:ai:pomdp}
+
+The partial observability of POMDPs can lead an agent perceiving two different
+states as similar to take the same action in both, while in fact the agent
+should have taken different actions. POMDP captures the partial observability
+of the environment in a probabilistic observation model - the belief state. As
+the belief state is a probability distribution, it is a continuous state space
+where approximations need to be made in order to use reinforcement learning
+methods. \parencite{Russell2010ai+modern}
+
+According to \textcite{Wiering2012ai+reinforcement}, fully observavle finite
+MDPs can be defined as follows. Time has discrete steps, and an agent has to
+execute an action at each step (unless the action lasts multiple steps). The
+environment is desccribed by a set of states \(S = \{s_1,..,s_n\}\), and the
+agent has a set of actions \(A = \{a_1,..,a_n\}\). Each time the agent takes an
+action \(a\) in a state \(s\), the environment transitions to a new state
+\(s'\) according to a probabilistic transition function \(T(s,a,s')\), and the
+agent receives an immediate reward \(R(s,a,s')\).
+
+In the case of a POMDP, \(s'\) cannot be perceived directly. Instead the agent
+perceives an observation \(o \in \Omega : \Omega = \{o_1,..,o_m\}\), where
+\(\Omega\) is the set of all possible observations. The probability of
+observing \(o\) in state \(s\) after executing \(a\) is calculated by an
+observation function \(O\), where \(O : S \times A \times \Omega \rightarrow
+[0,1] \). It is required that \(\forall s' \in S, a \in A, o \in O ~ O (s', a,
+o) \geq 0 \) and that \(\sum_{o \in \Omega}^{} O (s', a, o) = 1 \). It is worth
+noting that the action is not always required in the definition, as the
+observation could be independent of the action i.e. \(O : S \times \Omega
+\rightarrow [0,1] \). \parencite{Wiering2012ai+reinforcement}
+
+Continuous models are a natural way to model many real world problems. Methods
+have been developed to solve POMDPs with continuous state spaces, continuous
+observation spaces and continuous action spaces. In the continuous cases models
+need to have simple parametrisations, and result in finite belief updates and
+history of states. \parencite{Wiering2012ai+reinforcement}
+
+Reinforcement learning for finite space POMDPs is more developed than for
+continuous spaces. Most commonly dynamic Bayesian networks (probabilistic
+graphical models) are used. Further methods have been developed to tackle more
+complex or specific cases: relational models, hierarchical models structuring
+problem solving in multiple levels, and decentralised models for multi-agent
+POMDPs. \parencite{Wiering2012ai+reinforcement}
+
+Belief states for POMDPs can be calculated using the method mentioned in
+Section \ref{sec:ai:mdp}. Assuming an initial belief state \(b_0\), every time
+an agent takes an action \(a\) and observes \(o\), its belief is updated by
+this rule: \[ b_{ao}(s') = \frac{ p(o|s',a) }{ p(o|b,a) } \sum_{s \in S}
+p(s'|s,a) b(s) \] where probabilities \(p(o|s',a)\) and \(p(o|b,a)\) are
+defined by the model and where \[p(o|b,a) = \sum_{s' \in S} p(o|s',a) \sum_{s
+\in S} p(s'|s,a) b(s) \] is a normalising constant.
+\parencite{Wiering2012ai+reinforcement}
+
+As mentioned in Section \ref{sec:ai:basics}, the goal of reinforcement learning
+is finding an optimal value function. If \(b\) is the belief vector as
+described in Section \ref{sec:ai:mdp}, an optimal policy \(\pi^*(b)\) maps
+beliefs to actions. As the belief vector is a set of continuous probability
+distributions, a policy can be characterised by a value function defining the
+expected future reward \(V^{\pi}(b)\) the agent can acquire if following
+\(\pi\) starting from \(b\): \newline 
+\[ V^{\pi}(b) = 
+E_{\pi} \left [ \sum_{t=0}^h \gamma^t R(b_t, \pi(b_t)) | b_0 = b \right ] \]
+where \( R(b_t, \pi (b_t)) = \sum_{s \in S} R(s, \pi (b_t)) b_t(s) \) and 
+\(\gamma\) is a discount parameter as mentioned in Section \ref{sec:ai:mdp}
+
+NEXT BELLMAN EQUATION p394 Wiering
 
 
-HEREHEREHERE
+
+\subsubsection{Model-based POMDP methods}
+
+In model-based agent if the transition model and observation functions are
+known, the POMDP can be transformed to a belief-state MDP
+
+\subsubsection{Model-free POMDP methods}
 
 
+
+
+Needed?? :
 \subsubsection{Solving Reinforcement Learning Problems}
 
 Three groups of approaches for solving reinforcement learning problems (finding
-optimal policies) are covered by both \textcite{Russell210ai+modern} and
+optimal policies) are covered by both \textcite{Russell2010ai+modern} and
 \textcite{Sutton1998ai+reinforcement} can be categorised as follows: model-
 free methods (examined in more detail in Section \ref{sec:ai:model_free} and
 model-based methods (Section \ref{sec:ai:model_based}). To understand why this
@@ -117,7 +207,7 @@ policy and updates the existing value function to be closer to the newly
 calculated value function. Policy improvement uses the updated value function
 to calculate a new policy and then updates the existing policy to be closer to
 the newly calculated policy. Most reinforcement learning problems use this
-algorithm. \perencite{Sutton1998ai+reinforcement}
+algorithm. \parencite{Sutton1998ai+reinforcement}
 
 
 \subsubsection{Model-free methods}
