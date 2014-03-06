@@ -67,26 +67,27 @@ The simple model of MDPs assumed that the environment was perfectly observable
 i.e. the agent knew which state it is in at all times. This assumption is
 unrealistic in the real world -- for example, a taxi driver does not know
 whether a passenger will accept their offered fare. To account for this,
-\textbf{Partially observable Markov decision processes} add the notion of a
-\textbf{sensor model} specifying the probabilities of perceiving evidence.
+\textbf{Partially observable Markov decision processes} (POMDP) add the notion
+of a \textbf{sensor model} specifying the probabilities of perceiving evidence.
 Therefore now the set of states is a set of probability distributions for a
 POMDP -- the belief state. \parencite{Russell2010ai+modern}
 
-Furthermore, the MDP assumes that the reward functions are known. In reality
-the environment might be unknown and rewards occasional -- as would happen to
-an agent simulating a taxi. In such a case, MDPs or POMDPs cannot be solved
-\textbf{REVIEW}.
+Therefore it can be concluded that the taxi in the problem in this paper is in a POMDP situation. There is a clear reward function between states - the fare. However, the taxi does not know the exact state it is in i.e. how much the passenger is willing to pay.
+
+\subsubsection{Solving POMDPs}
+
+
+HEREHEREHERE
+
 
 \subsubsection{Solving Reinforcement Learning Problems}
 
-An agent in reinforcement learning does not know what it actions do and how the
-environment works, thus it is facing an unknown MDP. Three practically useful
-approaches for solving reinforcement learning problems (finding optimal
-policies) are identified by both \textcite{Russell210ai+modern} and
-\textcite{Sutton1998ai+reinforcement}: dynamic programming, Monte Carlo methods
-and temporal difference methods. In this section these will be looked at in
-detail, later followed by an overview of how elements of them can be used
-together in synergistic methods.
+Three groups of approaches for solving reinforcement learning problems (finding
+optimal policies) are covered by both \textcite{Russell210ai+modern} and
+\textcite{Sutton1998ai+reinforcement} can be categorised as follows: model-
+free methods (examined in more detail in Section \ref{sec:ai:model_free} and
+model-based methods (Section \ref{sec:ai:model_based}). To understand why this
+distinction is made, their common background needs to be investigated first.
 
 The simplest naive approach to solve reinforcement learning problems is
 \textbf{direct utility estimation}. It uses the fact that utility of a state is
@@ -97,20 +98,45 @@ is likely to converge to the actual utility of a state. However, this approach
 is inefficient, mainly because it ignores that utilities of states are related
 to each other. \parencite{Russell2010ai+modern}
 
-\textbf{Dynamic programming} methods, unlike direct utility estimation, takes
-in account the interdependence of utilities of states by learning the
-transition model that connects them, and uses dynamic programming to solve the
+Dynamic programming methods, unlike direct utility estimation, takes in
+account the interdependence of utilities of states by learning the transition
+model that connects them, and uses dynamic programming to solve the
 corresponding Markov decision process. However, this requires a perfectly known
 model of the environment which in practice is infeasible. Dynamic programming
 is also computationally expensive. The two most popular dynamic programming
-methods are value iteration and policy iteration.s
+methods are value iteration and policy iteration. Dynamic programming is the
+basis for both the developed model-based and model-free methods looked at here.
 \parencite{Sutton1998ai+reinforcement}
 
-\subsubsection{Monte Carlo methods} 
+The \textbf{generalized policy iteration} (GPI) (policy iteration ins
+\textcite{Russell2010ai+modern}) has been proven to converge to optimal
+policies and value functions when using dynamic programming methods. GPI
+repeatedly alternates between these two steps: policy evaluation and policy
+improvement. Policy evaluation calculates a value function based on the current
+policy and updates the existing value function to be closer to the newly
+calculated value function. Policy improvement uses the updated value function
+to calculate a new policy and then updates the existing policy to be closer to
+the newly calculated policy. Most reinforcement learning problems use this
+algorithm. \perencite{Sutton1998ai+reinforcement}
 
+
+\subsubsection{Model-free methods}
+\label{sec:ai:model_free}
+
+There are two categories of model-free agents: reflex agents and Q-learning
+agents. Q-learning agents learn an action-utility function, giving the expected
+utility of taking an action in a given state. Reflex agents learn a policy that
+is a direct mapping from states to actions.
+
+Reflex agents are more primitive and 
+
+
+\subsubsection{Model-based methods}
+\label{sec:ai:model_based}
 
 
 \subsubsection{Temporal difference methods}
+\label{sec:ai:temporal}
 
 \textbf{Temporal difference (TD)} does not use a transition model and therefore
 is simpler and requires less computation than dynamic programming, alas at a
@@ -121,6 +147,5 @@ utility values in TD converge to the correct value, visited states can be
 stored and their repeated impact reduced. \parencite{Russell2010ai+modern}
 
 
-\subsubsection{}
-
-
+\subsubsection{Synergy}
+\label{sec:ai:synergy}
