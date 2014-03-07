@@ -73,15 +73,14 @@ whether a passenger will accept their offered fare. To account for this,
 of a \textbf{sensor model} specifying the probabilities of perceiving evidence.
 Therefore now the set of states is a set of probability distributions for a
 POMDP -- the belief state as discussed by \textcite{Russell2010ai+modern}.
-\textcite{Wiering2012ai+reinforcement} go in more detail and specify that to
-form belief models, an agent needs some form of memory to record observations.
-With continuous states or with large planning horizons storing the history
-directly is infeasible. For the transformation of POMDP to a MDP
-\textcite[391-393]{Wiering2012ai+reinforcement} suggest a method summarising
-agents' observation history to a belief vector of continuous probability
-distributions\(b\), described by Stratonovich, 1960, Dynkin, 1965 and Åström,
-1965. This method will be discussed in more detail in Section
-\ref{sec:ai:pomdp}.
+\textcite{Spaan2012ai+pomdp} go in more detail and specify that to form belief
+models, an agent needs some form of memory to record observations. With
+continuous states or with large planning horizons storing the history directly
+is infeasible. For the transformation of POMDP to a MDP
+\textcite{Spaan2012ai+pomdp} suggest a method summarising agents' observation
+history to a belief vector of continuous probability distributions\(b\),
+described by Stratonovich, 1960, Dynkin, 1965 and Åström, 1965. This method
+will be discussed in more detail in Section \ref{sec:ai:pomdp}.
 
 Therefore it can be concluded that the taxi in the problem of this paper is in
 a POMDP situation. There is a clear reward function between states - the fare.
@@ -101,14 +100,14 @@ the belief state is a probability distribution, it is a continuous state space
 where approximations need to be made in order to use reinforcement learning
 methods. \parencite{Russell2010ai+modern}
 
-According to \textcite{Wiering2012ai+reinforcement}, fully observavle finite
-MDPs can be defined as follows. Time has discrete steps, and an agent has to
-execute an action at each step (unless the action lasts multiple steps). The
-environment is desccribed by a set of states \(S = \{s_1,..,s_n\}\), and the
-agent has a set of actions \(A = \{a_1,..,a_n\}\). Each time the agent takes an
-action \(a\) in a state \(s\), the environment transitions to a new state
-\(s'\) according to a probabilistic transition function \(T(s,a,s')\), and the
-agent receives an immediate reward \(R(s,a,s')\).
+According to \textcite{Spaan2012ai+pomdp}, fully observavle finite MDPs can be
+defined as follows. Time has discrete steps, and an agent has to execute an
+action at each step (unless the action lasts multiple steps). The environment
+is desccribed by a set of states \(S = \{s_1,..,s_n\}\), and the agent has a
+set of actions \(A = \{a_1,..,a_n\}\). Each time the agent takes an action
+\(a\) in a state \(s\), the environment transitions to a new state \(s'\)
+according to a probabilistic transition function \(T(s,a,s')\), and the agent
+receives an immediate reward \(R(s,a,s')\).
 
 In the case of a POMDP, \(s'\) cannot be perceived directly. Instead the agent
 perceives an observation \(o \in \Omega : \Omega = \{o_1,..,o_m\}\), where
@@ -119,20 +118,20 @@ observation function \(O\), where \(O : S \times A \times \Omega \rightarrow
 o) \geq 0 \) and that \(\sum_{o \in \Omega}^{} O (s', a, o) = 1 \). It is worth
 noting that the action is not always required in the definition, as the
 observation could be independent of the action i.e. \(O : S \times \Omega
-\rightarrow [0,1] \). \parencite{Wiering2012ai+reinforcement}
+\rightarrow [0,1] \). \parencite{Spaan2012ai+pomdp}
 
 Continuous models are a natural way to model many real world problems. Methods
 have been developed to solve POMDPs with continuous state spaces, continuous
 observation spaces and continuous action spaces. In the continuous cases models
 need to have simple parametrisations, and result in finite belief updates and
-history of states. \parencite{Wiering2012ai+reinforcement}
+history of states. \parencite{Spaan2012ai+pomdp}
 
 Reinforcement learning for finite space POMDPs is more developed than for
 continuous spaces. Most commonly dynamic Bayesian networks (probabilistic
 graphical models) are used. Further methods have been developed to tackle more
 complex or specific cases: relational models, hierarchical models structuring
 problem solving in multiple levels, and decentralised models for multi-agent
-POMDPs. \parencite{Wiering2012ai+reinforcement}
+POMDPs. \parencite{Spaan2012ai+pomdp}
 
 Belief states for POMDPs can be calculated using the method mentioned in
 Section \ref{sec:ai:mdp}. Assuming an initial belief state \(b_0\), every time
@@ -141,7 +140,10 @@ this rule: \[ b_{ao}(s') = \frac{ p(o|s',a) }{ p(o|b,a) } \sum_{s \in S}
 p(s'|s,a) b(s) \] where probabilities \(p(o|s',a)\) and \(p(o|b,a)\) are
 defined by the model and where \[p(o|b,a) = \sum_{s' \in S} p(o|s',a) \sum_{s
 \in S} p(s'|s,a) b(s) \] is a normalising constant.
-\parencite{Wiering2012ai+reinforcement}
+\parencite{Spaan2012ai+pomdp}
+
+
+PROBABLY NOT NEEDED:
 
 As mentioned in Section \ref{sec:ai:basics}, the goal of reinforcement learning
 is finding an optimal value function. If \(b\) is the belief vector as
@@ -149,27 +151,91 @@ described in Section \ref{sec:ai:mdp}, an optimal policy \(\pi^*(b)\) maps
 beliefs to actions. As the belief vector is a set of continuous probability
 distributions, a policy can be characterised by a value function defining the
 expected future reward \(V^{\pi}(b)\) the agent can acquire if following
-\(\pi\) starting from \(b\): \newline 
+\(\pi\) starting from \(b\):
 \[ V^{\pi}(b) = 
 E_{\pi} \left [ \sum_{t=0}^h \gamma^t R(b_t, \pi(b_t)) | b_0 = b \right ] \]
 where \( R(b_t, \pi (b_t)) = \sum_{s \in S} R(s, \pi (b_t)) b_t(s) \) and 
 \(\gamma\) is a discount parameter as mentioned in Section \ref{sec:ai:mdp}
 
-NEXT BELLMAN EQUATION p394 Wiering
-
-
 
 \subsubsection{Model-based POMDP methods}
+\label{sec:ai:model:based}
 
-In model-based agent if the transition model and observation functions are
-known, the POMDP can be transformed to a belief-state MDP
+In model-based agent the main consideration is the memory space and
+computational complexity of representing and working with multi-dimensional
+belief space. There are optimal solutions that are easily computable for small,
+discrete POMDPs but infeasible on a larger scale. Therefore some form of
+approximation is needed in order to produce scalable methods.
+\parencite{Spaan2012ai+pomdp}
+
+Point-based methods work by interacting only with a sample of the belief space
+that is reachable, for example, by letting an agent interact with the
+environment beforehand in a simulation. Other sampling schemes are proposed as
+well and different sampling strategies are recommended for different
+situations. Point-based methods allow to get good approximated results for
+large problems from a small, representative set of beliefs.
+\parencite{Spaan2012ai+pomdp}
+
+\textcite{Spaan2012ai+pomdp} mentions three less successful methods that use
+approximation. Grid-based approximations perform value backups for each point
+on a grid of belief simplex, and define the value of non-grid points by an
+interpolation rule. Policy search methods have demonstrated success in several
+cases but often stick to locally optimal policies instead of finding a global
+optimum. Finally, heuristic search methods are also used for specific cases.
+
 
 \subsubsection{Model-free POMDP methods}
+\label{sec:ai:model:free}
+
+All of the methods previously mentioned in Section \ref{sec:ai:model:based}
+require a complete knowledge of the POMDP model: the transition and reward
+model is needed for all methods, while some of them require the observation
+model. Unfortunately none of these are known for the research problem central
+to this paper. According to \textcite{Spaan2012ai+pomdp}, there are two
+approaches to solving model-free POMDPs: direct (memoryless) techniques do not
+try to keep track of the POMDP and directly map observations to actions, while
+indirect methods try to construct the POMDP from observations.
+
+Memoryless policies do not keep track of the POMDP i.e. they have no internal
+state. They can be deterministic mappings \(\pi : \Omega \rightarrow A \) or
+probabilistic mappings \(\pi : \Omega \rightarrow \Delta A \). Probabilistic
+policies cannot be enumerated and thus have a large policy search space, but
+have higher payoffs than deterministic mappings. Methods are named for
+stationary deterministic policies, non-stationary deterministic policies and
+stochastic policies. An different approcah is hierarchical Q-learning which
+learns a subgoal sequence, where each of the subgoals can be reached by a
+memoryless policy. \parencite{Spaan2012ai+pomdp}
+
+The memoryless policies are limited because they do not store any history of
+actions and observations. Storing the complete history is infeasible with long
+horizons. Storing a fixed window of history is also impractical as some
+observations may be important and others can be safely discarded. A way to deal
+with this issue is extending the history window for potentially worthwile
+observations, and ways to do this have been developed. A promising alternative
+to POMDPs suggested for modelling stochastic partially observable environments
+is predictively defined representations of state (PSR).
+\parencite{Spaan2012ai+pomdp}
+
+PSRs are proven to be at least as compact as POMDPs with a similar
+computational complexity, but allow more expressiveness. PSRs define state
+differently than POMDPs - state in a PSR represents the complete history of
+observations and is sufficient to predict the future distribution of
+observations and rewards. Partly due to this representation PSRs allow
+increased learnability, representational ability and generalisation. PSRs have
+also been proven to be translatable from POMDPs. However, when comparing to
+POMDPs, only a few solution methods have been adapted and no completely unique
+methods developed, showing no significant improvement over POMDPs. This area is
+still relatively young and promising in the future.
+\parencite{Wingate2012ai+psr}
 
 
 
 
-Needed?? :
+
+
+
+\subsubsection{Any of the further Needed??}
+
 \subsubsection{Solving Reinforcement Learning Problems}
 
 Three groups of approaches for solving reinforcement learning problems (finding
@@ -208,21 +274,6 @@ calculated value function. Policy improvement uses the updated value function
 to calculate a new policy and then updates the existing policy to be closer to
 the newly calculated policy. Most reinforcement learning problems use this
 algorithm. \parencite{Sutton1998ai+reinforcement}
-
-
-\subsubsection{Model-free methods}
-\label{sec:ai:model_free}
-
-There are two categories of model-free agents: reflex agents and Q-learning
-agents. Q-learning agents learn an action-utility function, giving the expected
-utility of taking an action in a given state. Reflex agents learn a policy that
-is a direct mapping from states to actions.
-
-Reflex agents are more primitive and 
-
-
-\subsubsection{Model-based methods}
-\label{sec:ai:model_based}
 
 
 \subsubsection{Temporal difference methods}
