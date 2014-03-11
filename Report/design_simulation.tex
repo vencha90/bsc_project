@@ -1,11 +1,7 @@
-This section formalises the simulation based on related work in Section
-\ref{sec:literature} and applying the results to the context of this project.
-Firstly, models for passengers and taxis are described in Section
-\ref{sec:design:simulation}. Then Section \ref{sec:design:software} discusses
-how these models are going to be implemented as software.
-
 \subsection{Simulation design}
 \label{sec:design:simulation}
+
+\subsubsection{Market Considerations}
 
 The approach suggested by this project is not compatible with a market where
 fares are regulated, at least in the current form of regulation that specifies
@@ -22,9 +18,6 @@ a taxi to drive by. Therefore the cruising taxi market is chosen as the easiest
 target for simulation, extending it to phone-order and taxi rank markets if the
 initial experiment is successful.
 
-
-\subsubsection{Demand and Competition}
-
 The relationship between taxi demand and supply and vice versa was established
 in Section \ref{sec:literature:taxis:demand}. This relationship largely depends
 on the competitive situation in a taxi market. As the simulation initially
@@ -32,7 +25,8 @@ involves only a single taxi, the competition needs to be replicated by other
 means. When the simulation is expanded to multiple taxis \textbf{EXTEND}
 
 
-\subsubsection{Demand: Modelling Passengers} 
+\subsubsection{Demand: Modelling Passengers}
+\label{sec:design:passenger}
 
 Customer demand was reviewed in Section \ref{sec:literature:taxis:demand} where
 two approaches to modelling demand were shown: aggregate and disaggregate. An
@@ -78,7 +72,34 @@ lower passenger income in some areas resulting in lower willingness to pay,
 whether a trip is for pleasure or business, and others.
 
 
-\subsubsection{The Taxi Market}
+\subsubsection{Simulating a Road network}
+\label{sec:design:network}
+
+The market is represented as a weighted graph constructed of edges
+(roads) and vertices (origins/destinations). Each vertex has associated
+properties: a list of connected edges with their lengths (weights), a list of
+passengers, potentially a list of taxis. Each edge has associated properties:
+length, potentially speed limit and toll. Taxis can travel between vertices
+using edges. Taxis are assumed to take the shortest routes and travel at a
+constant speed. Passengers appear at nodes and when taxi is at a node it is
+assumed that they can interact, and the passengers wait for a set amount of
+time.
+
+Road networks have a specific structure that is different from generic randomly
+generated graphs. \textcite{Eisenstat2011graphs+quadtree} believes that the
+structure of the graphs is important for optimisation problems, giving the
+example of optimising logistics operations for a fleet of vehicles where
+algorithmic performance greatly differs from that on generic graphs. Uniform
+planar graphs are a reasonably realistic way to represent road networks
+\parencite{Eisenstat2011graphs+quadtree, Masucci2009graphs+london}. A way to
+generate random planar graphs is suggested by
+\textcite{Brinkmann2007graphs+generate}, for which ready-to-use software called
+\textit{plantri} is available.
+
+Shortest path
+
+
+\subsubsection{Taxis in Taxi Market}
 \label{sec:design:taxi}
 
 Let taxis have variable costs \(VC\) consisting of driver's wage costs \(w\)
@@ -90,15 +111,6 @@ covered. Then total taxi costs \(TC\) for a total time \(t\) and an amount
 total distance covered \(d\) can be expressed as:
 
 \[ TC = VC + FC = t \cdot w + d \cdot f + FC \]
-
-The market is represented as a graph constructed of edges (roads) and vertices
-(origins/destinations). Each vertex has associated properties: a list of
-connected edges, a list of passengers, potentially a list of taxiss. Each edge
-has associated properties: length, potentially speed limit and toll. Taxis can
-travel between vertices using edges. Taxis are assumed to take the shortest
-routes and travel at a constant speed. Passengers appear at nodes and when taxi
-is at a node it is assumed that they can interact, and the passengers wait for
-a set amount of time.
 
 Taxis have a set of available actions. When stopped at a location, they can
 decide to drive to another location or wait. If there is a passenger present,
@@ -120,39 +132,50 @@ bid which is immediately accepted or declined by the passenger based on the
 demand \(Q\). To incentivise the taxi agent, each bid has a cost in time.
 
 
-\subsection{Modelling reinforcement learning}
+\subsubsection{Modelling reinforcement learning}
 \label{sec:design:ai}
 
 The research problem needs to be formally defined from a reinforcement learning
 point of view according to the definitions in sections \ref{sec:ai:mdp} and
 \ref{sec:ai:pomdp}.
 
-It can be assumed that taxi has a complete knowledge of the set of states i.e.
-the road network - a realistic assumption given modern GPS navigation systems.
-In reality this set would be infinite but it can be simplified to a finite set.
-The actions that a taxi can take were discussed in \ref{sec:design:taxi} and
-directly correspond to rewards. Transition function following the definition in
-Section \ref{sec:ai:mdp} would depend on the old state, new state and the
-action that a taxi takes. However, for the research problem this function also depends on the passenger's demand.
+It can be assumed that taxi has a complete knowledge of the road network it is
+operating in - a realistic assumption given modern GPS navigation systems. In
+reality this set would be infinite but it can be simplified to a finite set.
+This network forms a part of the total state space. The rest of the state space
+is formed of the passenger origin-destination pairs i.e. some state \(s = (o,
+d) \). The passenger demand for each of these origin-destination states is
+stochastic as mentioned in Section \ref{sec:design:passenger}. 
 
-If passengers are at a location for a longer time, then taxis can form
+The actions that a taxi can take were discussed in \ref{sec:design:taxi}. A
+simple reward function is as follows. For each moment of time that a taxi is
+active, there is an immediate negative reward based on fixed costs and salary
+variable costs. If the taxi takes travels, it suffers a negative reward based
+on travel variable costs. The only positive reward it gains is from passengers
+paying their fares.
+
+If passengers wait at a location for a longer time, then taxis can form
 expectations about the possibility of encountering passengers at each location.
 To keep track of this uncertainty an agent would need a belief model as
 discussed in Section \ref{sec:ai:pomdp}. This complexity can be avoided by
 assuming that passengers do not wait for taxis and appear at a location for a
-single moment in time only. 
+single moment in time only.
 
 
+\subsubsection{Fixing Stochastic Variability}
 
 \subsubsection{Benchmark} 
 
 To evaluate the variable pricing approach, benchmarks measuring taxi
 profitability need to be established using the linear pricing approach. Market
 equilibrium demand and fare prices can be calculated from the stochastic
-processes, and a linear tarriff set and a simulation ran with it.
+processes, and a linear tarriff set and a simulation ran with it. It will
+establish the average best-case scenario for both passengers and taxis. If the
+reinforcement learning agent can approach or exceed similar profits it will
+mean that the experiment was a success.
+
 
 \subsubsection{Data}
 
-Data on profitability will be gathered and recorded as simulation progresses.
-This data will later be used to find environmental conditions where variable
-pricing is more profitable than a set linear fare and vice versa.
+It is possible to record rewards for each step of time. This data will show
+overall profits and reveal how quickly profitability was reached, if at all.

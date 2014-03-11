@@ -174,16 +174,17 @@ the belief state is a probability distribution, it is a continuous state space
 where approximations need to be made in order to use reinforcement learning
 methods. \parencite{Russell2010ai+modern}
 
-In the case of a POMDP, \(s'\) cannot be perceived directly. Instead the agent
-perceives an observation \(o \in \Omega : \Omega = \{o_1,..,o_m\}\), where
-\(\Omega\) is the set of all possible observations. The probability of
-observing \(o\) in state \(s\) after executing \(a\) is calculated by an
-observation function \(O\), where \(O : S \times A \times \Omega \rightarrow
-[0,1] \). It is required that \(\forall s' \in S, a \in A, o \in O ~ O (s', a,
-o) \geq 0 \) and that \(\sum_{o \in \Omega}^{} O (s', a, o) = 1 \). It is worth
-noting that the action is not always required in the definition, as the
-observation could be independent of the action i.e. \(O : S \times \Omega
-\rightarrow [0,1] \). \parencite{Spaan2012ai+pomdp}
+Comparing POMDPs with the definition of MDPs in Section \ref{sec:ai:pomdp}, the
+new state \(s'\) cannot be perceived directly. Instead the agent perceives an
+observation \(o \in \Omega : \Omega = \{o_1,..,o_m\}\), where \(\Omega\) is the
+set of all possible observations. The probability of observing \(o\) in state
+\(s\) after executing \(a\) is calculated by an observation function \(O\),
+where \(O : S \times A \times \Omega \rightarrow [0,1] \). It is required that
+\(\forall s' \in S, a \in A, o \in O ~ O (s', a, o) \geq 0 \) and that
+\(\sum_{o \in \Omega}^{} O (s', a, o) = 1 \). It is worth noting that the
+action \(a\) is not always required in the definition, as the observation could
+be independent of the action i.e. \(O : S \times \Omega \rightarrow [0,1] \).
+\parencite{Spaan2012ai+pomdp}
 
 Belief states for POMDPs can be calculated using the method mentioned in
 Section \ref{sec:ai:mdp}. Assuming an initial belief state \(b_0\), every time
