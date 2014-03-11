@@ -1,2 +1,30 @@
 \subsection{Software design}
 \label{sec:design:software}
+
+Global properties: time; Taxis
+can enquire for the route from A to B at a small cost, and receive distance.
+When taxis decide to go from A to B, they go at a constant speed for the
+calculated time. No actions can be taken and they are marked as travelling.
+
+Network of nodes, not known to taxi as a whole
+
+Node has a list of neighbours and distances.
+Node has a list of present passengers and taxis.
+
+Taxi model: fixed and variable costs, has a set of actions:
+getDistance(A,B),drive(A,B), askDestination(P), offerFare(P).
+
+Passenger model: probabilistic properties with set relative weights to
+calculate demand, responds to bids with Y/N.
+
+\subsubsection{Benchmark}
+
+\subsubsection{Learning}
+
+State is based on the origin, passenger and intended destination. Actions a
+taxi can take is enquiring a passenger for destination, offering a price or
+driving to another place. If the passenger accepts the price, taxi drives the
+passenger to the destination and receives a reward. Keeping track of the exact
+passenger is not important. Each time step has a negative reward based on what
+action the taxi is taking, always depending on time but also could depend on
+distance travelled.

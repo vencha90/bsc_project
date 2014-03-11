@@ -38,7 +38,7 @@ states that genetic algorithms do not cope well with increasing complexity and
 are the most useful in optimisation problems.
 
 
-\subsubsection{Markov Decision Processes}
+\subsubsection{Markov Decision Processes (MDPs)}
 \label{sec:ai:mdp}
 
 An agent having the \textbf{Markov property} means that only the current state
@@ -67,27 +67,29 @@ low effect on the overall utility of a policy. \parencite{Russell2010ai+modern}
 
 The simple model of MDPs assumed that the environment was perfectly observable
 i.e. the agent knew which state it is in at all times. This assumption is
-unrealistic in the real world -- for example, a taxi driver does not know
-whether a passenger will accept their offered fare. To account for this,
-\textbf{Partially observable Markov decision processes} (POMDP) add the notion
-of a \textbf{sensor model} specifying the probabilities of perceiving evidence.
-Therefore now the set of states is a set of probability distributions for a
-POMDP -- the belief state as discussed by \textcite{Russell2010ai+modern}.
-\textcite{Spaan2012ai+pomdp} go in more detail and specify that to form belief
-models, an agent needs some form of memory to record observations. With
-continuous states or with large planning horizons storing the history directly
-is infeasible. For the transformation of POMDP to a MDP
-\textcite{Spaan2012ai+pomdp} suggest a method summarising agents' observation
-history to a belief vector of continuous probability distributions\(b\),
-described by Stratonovich, 1960, Dynkin, 1965 and Åström, 1965. This method
-will be discussed in more detail in Section \ref{sec:ai:pomdp}.
+unrealistic in the real world -- for example, a taxi driver does not know when
+they will find a passenger and if the passenger will accept their offered fare.
+To account for this, \textbf{Partially observable Markov decision processes}
+(POMDP) add the notion of a \textbf{sensor model} specifying the probabilities
+of perceiving evidence. Therefore now the set of states is a set of probability
+distributions for a POMDP -- the belief state as discussed by
+\textcite{Russell2010ai+modern}. \textcite{Spaan2012ai+pomdp} go in more detail
+and specify that to form belief models, an agent needs some form of memory to
+record observations. With continuous states or with large planning horizons
+storing the history directly is infeasible. For the transformation of POMDP to
+a MDP \textcite{Spaan2012ai+pomdp} suggest a method summarising agents'
+observation history to a belief vector of continuous probability
+distributions\(b\), described by Stratonovich, 1960, Dynkin, 1965 and Åström,
+1965. This method will be discussed in more detail in Section
+\ref{sec:ai:pomdp}.
 
-Therefore it can be concluded that the taxi in the problem of this paper is in
-a POMDP situation. There is a clear reward function between states - the fare.
-However, the taxi does not know the exact state it is in i.e. how much the
-passenger is willing to pay. This violates the Markov property which is a key
-assumption for most reinforcement learning methods
-\parencite{Sutton1998ai+reinforcement}.
+It can be concluded that the problem of this paper could be a POMDP and could
+be the simpler MDP, depending on the specification. There is a clear reward
+function between states - the fare a passenger pays. The agent (taxi) may or
+may not be aware of the full model of the environment. If passengers are
+waiting, taxis not in the immediate vicinity will now be aware of it. Partially
+observable Markov decision processes will be discussed in more detal in Section
+\ref{sec:ai:pomdp} to find out whether defining the problem as a MDP or a POMDP is important.
 
 \subsubsection{Solving Partially Observable Markov Decision Processes (POMDPs)}
 \label{sec:ai:pomdp}
@@ -120,6 +122,15 @@ noting that the action is not always required in the definition, as the
 observation could be independent of the action i.e. \(O : S \times \Omega
 \rightarrow [0,1] \). \parencite{Spaan2012ai+pomdp}
 
+Belief states for POMDPs can be calculated using the method mentioned in
+Section \ref{sec:ai:mdp}. Assuming an initial belief state \(b_0\), every time
+an agent takes an action \(a\) and observes \(o\), its belief is updated by
+this rule: \[ b_{ao}(s') = \frac{ p(o|s',a) }{ p(o|b,a) } \sum_{s \in S}
+p(s'|s,a) b(s) \] where probabilities \(p(o|s',a)\) and \(p(o|b,a)\) are
+defined by the model and where \[p(o|b,a) = \sum_{s' \in S} p(o|s',a) \sum_{s
+\in S} p(s'|s,a) b(s) \] is a normalising constant.
+\parencite{Spaan2012ai+pomdp}
+
 Continuous models are a natural way to model many real world problems. Methods
 have been developed to solve POMDPs with continuous state spaces, continuous
 observation spaces and continuous action spaces. In the continuous cases models
@@ -133,15 +144,11 @@ complex or specific cases: relational models, hierarchical models structuring
 problem solving in multiple levels, and decentralised models for multi-agent
 POMDPs. \parencite{Spaan2012ai+pomdp}
 
-Belief states for POMDPs can be calculated using the method mentioned in
-Section \ref{sec:ai:mdp}. Assuming an initial belief state \(b_0\), every time
-an agent takes an action \(a\) and observes \(o\), its belief is updated by
-this rule: \[ b_{ao}(s') = \frac{ p(o|s',a) }{ p(o|b,a) } \sum_{s \in S}
-p(s'|s,a) b(s) \] where probabilities \(p(o|s',a)\) and \(p(o|b,a)\) are
-defined by the model and where \[p(o|b,a) = \sum_{s' \in S} p(o|s',a) \sum_{s
-\in S} p(s'|s,a) b(s) \] is a normalising constant.
-\parencite{Spaan2012ai+pomdp}
-
+Two methods of solving POMDPs are developed based on their approach to dealing
+with environment. Model-based methods have an agent using internal
+representations of the environment and relating that to their learning. Model-
+free method agents do not store any direct representation of the environment,
+instead keeping track of their experiences, often in an approximated form.
 
 PROBABLY NOT NEEDED:
 
@@ -190,11 +197,11 @@ optimum. Finally, heuristic search methods are also used for specific cases.
 All of the methods previously mentioned in Section \ref{sec:ai:model:based}
 require a complete knowledge of the POMDP model: the transition and reward
 model is needed for all methods, while some of them require the observation
-model. Unfortunately none of these are known for the research problem central
-to this paper. According to \textcite{Spaan2012ai+pomdp}, there are two
-approaches to solving model-free POMDPs: direct (memoryless) techniques do not
-try to keep track of the POMDP and directly map observations to actions, while
-indirect methods try to construct the POMDP from observations.
+model. Unfortunately none of these are usually known in the real world.
+According to \textcite{Spaan2012ai+pomdp}, there are two approaches to solving
+model-free POMDPs: direct (memoryless) techniques do not try to keep track of
+the POMDP and directly map observations to actions, while indirect methods try
+to construct the POMDP from observations.
 
 Memoryless policies do not keep track of the POMDP i.e. they have no internal
 state. They can be deterministic mappings \(\pi : \Omega \rightarrow A \) or
@@ -211,9 +218,9 @@ actions and observations. Storing the complete history is infeasible with long
 horizons. Storing a fixed window of history is also impractical as some
 observations may be important and others can be safely discarded. A way to deal
 with this issue is extending the history window for potentially worthwile
-observations, and ways to do this have been developed. A promising alternative
-to POMDPs suggested for modelling stochastic partially observable environments
-is predictively defined representations of state (PSR).
+observations, and ways to do this have been developed. An alternative to POMDPs
+suggested for modelling stochastic partially observable environments is
+predictively defined representations of state (PSR).
 \parencite{Spaan2012ai+pomdp}
 
 PSRs are proven to be at least as compact as POMDPs with a similar
@@ -229,21 +236,15 @@ still relatively young and promising in the future.
 \parencite{Wingate2012ai+psr}
 
 
-
-
-
-
-
-\subsubsection{Any of the further Needed??}
-
-\subsubsection{Solving Reinforcement Learning Problems}
+\subsubsection{MDP Methods}
 
 Three groups of approaches for solving reinforcement learning problems (finding
 optimal policies) are covered by both \textcite{Russell2010ai+modern} and
-\textcite{Sutton1998ai+reinforcement} can be categorised as follows: model-
-free methods (examined in more detail in Section \ref{sec:ai:model_free} and
-model-based methods (Section \ref{sec:ai:model_based}). To understand why this
-distinction is made, their common background needs to be investigated first.
+\textcite{Sutton1998ai+reinforcement}, and can be categorised as follows:
+model-free methods (examined in more detail in Section \ref{sec:ai:model_free}
+and model-based methods (Section \ref{sec:ai:model_based}). To understand why
+this distinction is made, their common background needs to be investigated
+first.
 
 The simplest naive approach to solve reinforcement learning problems is
 \textbf{direct utility estimation}. It uses the fact that utility of a state is
@@ -272,8 +273,7 @@ improvement. Policy evaluation calculates a value function based on the current
 policy and updates the existing value function to be closer to the newly
 calculated value function. Policy improvement uses the updated value function
 to calculate a new policy and then updates the existing policy to be closer to
-the newly calculated policy. Most reinforcement learning problems use this
-algorithm. \parencite{Sutton1998ai+reinforcement}
+the newly calculated policy. Most reinforcement learning problems use GPI. \parencite{Sutton1998ai+reinforcement}
 
 
 \subsubsection{Temporal difference methods}
@@ -286,7 +286,3 @@ the differences observed in the last state transition, and over time the
 \textit{average} utility values converge to the correct values. To ensure that
 utility values in TD converge to the correct value, visited states can be
 stored and their repeated impact reduced. \parencite{Russell2010ai+modern}
-
-
-\subsubsection{Synergy}
-\label{sec:ai:synergy}

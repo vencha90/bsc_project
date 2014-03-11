@@ -93,19 +93,25 @@ total distance covered \(d\) can be expressed as:
 The market is represented as a graph constructed of edges (roads) and vertices
 (origins/destinations). Each vertex has associated properties: a list of
 connected edges, a list of passengers, potentially a list of taxiss. Each edge
-has associated properties: length, potentially speed limit, toll Taxis can
+has associated properties: length, potentially speed limit and toll. Taxis can
 travel between vertices using edges. Taxis are assumed to take the shortest
 routes and travel at a constant speed. Passengers appear at nodes and when taxi
-is at a node it is assumed that they can interact.
+is at a node it is assumed that they can interact, and the passengers wait for
+a set amount of time.
 
 When taxis interact with customers in reality in a market with no fare
-regulation, bargaining is likely to happen: taxis bid passengers a fare, and
-passengers can agree with it, or decline it and give a countering bid or
-abandon the process. Bargaining allows taxis and passengers to agree on a
-mutually acceptable price, but has a cost (caused by the time used for
-communication) that can be assumed constant for each bid. To simulate real-
-world behaviour, the bargaining process will use reinforcement learning as
+regulation, bargaining is likely to happen: passengers state a destination,
+taxis bid passengers a fare, and passengers can agree with it, or decline it
+and give a countering bid or abandon the process. Bargaining allows taxis and
+passengers to agree on a mutually acceptable price. To simulate real-world
+behaviour, a reinforcement learning-based bargaining process can be used as
 described in \textcite{Cli1997taxi+bargaining}.
+
+However, sophisticated bargaining can be disregarded in the simulation if the
+horizon is significantly long as the agreed fares should converge, albeit at a
+slower rate. A simpler approach is limiting the bargaining process to a single
+bid which is immediately accepted or declined by the passenger based on the
+demand \(Q\). To incentivise the taxi agent, each bid has a cost in time.
 
 \paragraph{Behaviour: AI}
 
