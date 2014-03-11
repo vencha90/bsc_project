@@ -23,15 +23,16 @@ target for simulation, extending it to phone-order and taxi rank markets if the
 initial experiment is successful.
 
 
-\subsubsection{Competition}
+\subsubsection{Demand and Competition}
 
 The relationship between taxi demand and supply and vice versa was established
 in Section \ref{sec:literature:taxis:demand}. This relationship largely depends
 on the competitive situation in a taxi market. As the simulation initially
 involves only a single taxi, the competition needs to be replicated by other
-means. When the simulation is expanded to multiple taxis
+means. When the simulation is expanded to multiple taxis \textbf{EXTEND}
 
-\subsubsection{Demand: modelling passengers} 
+
+\subsubsection{Demand: Modelling Passengers} 
 
 Customer demand was reviewed in Section \ref{sec:literature:taxis:demand} where
 two approaches to modelling demand were shown: aggregate and disaggregate. An
@@ -76,7 +77,9 @@ characteristics observed in reality such as demand variance during the day,
 lower passenger income in some areas resulting in lower willingness to pay,
 whether a trip is for pleasure or business, and others.
 
-\subsubsection{Supply} 
+
+\subsubsection{The Taxi Market}
+\label{sec:design:taxi}
 
 Let taxis have variable costs \(VC\) consisting of driver's wage costs \(w\)
 and fuel expenses \(f\), and a sum of fixed costs \(FC\) including e.g.
@@ -88,8 +91,6 @@ total distance covered \(d\) can be expressed as:
 
 \[ TC = VC + FC = t \cdot w + d \cdot f + FC \]
 
-\subsubsection{The Market}
-
 The market is represented as a graph constructed of edges (roads) and vertices
 (origins/destinations). Each vertex has associated properties: a list of
 connected edges, a list of passengers, potentially a list of taxiss. Each edge
@@ -98,6 +99,11 @@ travel between vertices using edges. Taxis are assumed to take the shortest
 routes and travel at a constant speed. Passengers appear at nodes and when taxi
 is at a node it is assumed that they can interact, and the passengers wait for
 a set amount of time.
+
+Taxis have a set of available actions. When stopped at a location, they can
+decide to drive to another location or wait. If there is a passenger present,
+they can start interacting with the passenger, ask for a desired destination
+and offer a price.
 
 When taxis interact with customers in reality in a market with no fare
 regulation, bargaining is likely to happen: passengers state a destination,
@@ -113,7 +119,30 @@ slower rate. A simpler approach is limiting the bargaining process to a single
 bid which is immediately accepted or declined by the passenger based on the
 demand \(Q\). To incentivise the taxi agent, each bid has a cost in time.
 
-\paragraph{Behaviour: AI}
+
+\subsection{Modelling reinforcement learning}
+\label{sec:design:ai}
+
+The research problem needs to be formally defined from a reinforcement learning
+point of view according to the definitions in sections \ref{sec:ai:mdp} and
+\ref{sec:ai:pomdp}.
+
+It can be assumed that taxi has a complete knowledge of the set of states i.e.
+the road network - a realistic assumption given modern GPS navigation systems.
+In reality this set would be infinite but it can be simplified to a finite set.
+The actions that a taxi can take were discussed in \ref{sec:design:taxi} and
+directly correspond to rewards. Transition function following the definition in
+Section \ref{sec:ai:mdp} would depend on the old state, new state and the
+action that a taxi takes. However, for the research problem this function also depends on the passenger's demand.
+
+If passengers are at a location for a longer time, then taxis can form
+expectations about the possibility of encountering passengers at each location.
+To keep track of this uncertainty an agent would need a belief model as
+discussed in Section \ref{sec:ai:pomdp}. This complexity can be avoided by
+assuming that passengers do not wait for taxis and appear at a location for a
+single moment in time only. 
+
+
 
 \subsubsection{Benchmark} 
 
