@@ -58,11 +58,14 @@ where each \(p_i : i \in \{1, .., n\}\) has a function \(f_i (p_i) \) that
 returns a unity-based  normalised value of \(p_i\), \newline 
 and each \(p_i\) has a weight \(w_i\) representing its relative importance  
 compared to other variables, where \(\sum_{i=1}^n (w_i) = 1 \). \newline 
+Let \(\delta(o,d)\) be the distance between origin to destination.
+Let the passenger's expected fare \(F_{expect}\) depend only on distance
+
 Then demand \(Q\) for a taxi ride from origin \(o\) to destination \(d\) at a  
-fare price \(F\) can be expressed as: 
-\[ Q _{o \rightarrow d} (P,F) = \sum_{i=1}^{n} (w_i \cdot f_i (p_i) )) \]
-If \(Q\) is greater than a certain threshold, then the passenger accepts the 
-fare, and declines otherwise. This exact threshold \textbf{what will it be?}
+fare price \(F_{offer}\) can be expressed as: 
+\[ Q _{o \rightarrow d} (P,F_{offer}) = \sum_{i=1}^{n} (w_i \cdot f_i (p_i) )) \]
+
+The demand \(Q\) can be used as a probability of a passenger accepting a fare.
 
 The relevant variables for passengers can be generated using a stochastic
 process. Similarly, passenger distribution within the network can be generated
@@ -70,33 +73,6 @@ using a stochastic process. These processes can take in account some
 characteristics observed in reality such as demand variance during the day,
 lower passenger income in some areas resulting in lower willingness to pay,
 whether a trip is for pleasure or business, and others.
-
-
-\subsubsection{Simulating a Road network}
-\label{sec:design:network}
-
-The market is represented as a weighted graph constructed of edges
-(roads) and vertices (origins/destinations). Each vertex has associated
-properties: a list of connected edges with their lengths (weights), a list of
-passengers, potentially a list of taxis. Each edge has associated properties:
-length, potentially speed limit and toll. Taxis can travel between vertices
-using edges. Taxis are assumed to take the shortest routes and travel at a
-constant speed. Passengers appear at nodes and when taxi is at a node it is
-assumed that they can interact, and the passengers wait for a set amount of
-time.
-
-Road networks have a specific structure that is different from generic randomly
-generated graphs. \textcite{Eisenstat2011graphs+quadtree} believes that the
-structure of the graphs is important for optimisation problems, giving the
-example of optimising logistics operations for a fleet of vehicles where
-algorithmic performance greatly differs from that on generic graphs. Uniform
-planar graphs are a reasonably realistic way to represent road networks
-\parencite{Eisenstat2011graphs+quadtree, Masucci2009graphs+london}. A way to
-generate random planar graphs is suggested by
-\textcite{Brinkmann2007graphs+generate}, for which ready-to-use software called
-\textit{plantri} is available.
-
-Shortest path
 
 
 \subsubsection{Taxis in Taxi Market}
@@ -172,8 +148,13 @@ equilibrium demand and fare prices can be calculated from the stochastic
 processes, and a linear tarriff set and a simulation ran with it. It will
 establish the average best-case scenario for both passengers and taxis. If the
 reinforcement learning agent can approach or exceed similar profits it will
-mean that the experiment was a success.
+mean that the experiment was a success. A simple example of this follows based on sections \ref{sec:design:taxi} and \ref{sec:design:passenger}.
 
+We assume that a passenger's yearly income is their only determinant of demand
+and that the yearly income for all passengers is linearly distributed with an
+average of £25,000. Then a passenger \(P = {p_1} \) where income \(p_1 = £
+20,000\), and the unity- based normalising function \( f_1(p_1) \) will return
+0.4. HEREHERE Therefore
 
 \subsubsection{Data}
 

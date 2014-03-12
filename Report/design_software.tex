@@ -17,7 +17,38 @@ getDistance(A,B),drive(A,B), askDestination(P), offerFare(P).
 Passenger model: probabilistic properties with set relative weights to
 calculate demand, responds to bids with Y/N.
 
-\subsubsection{Benchmark}
+\subsubsection{A Road Network}
+\label{sec:design:network}
+
+The market is represented as a weighted connected graph constructed of edges
+(roads) and vertices (origins/destinations). Each vertex has associated
+properties: a list of connected edges with their lengths (weights), a list of
+passengers, potentially a list of taxis. Each edge has associated properties:
+length, potentially speed limit and toll. Taxis can travel between vertices
+using edges. Taxis are assumed to take the shortest routes and travel at a
+constant speed. Passengers appear at nodes and when taxi is at a node it is
+assumed that they can interact, and the passengers wait for a set amount of
+time.
+
+Road networks have a specific structure that is different from generic randomly
+generated graphs. \textcite{Eisenstat2011graphs+quadtree} believes that the
+structure of the graphs is important for optimisation problems, giving the
+example of optimising logistics operations for a fleet of vehicles where
+algorithmic performance greatly differs from that on generic graphs. Uniform
+planar graphs are a reasonably realistic way to represent road networks
+\parencite{Eisenstat2011graphs+quadtree, Masucci2009graphs+london}. A way to
+generate random planar graphs is suggested by
+\textcite{Brinkmann2007graphs+generate}, for which ready-to-use software called
+\textit{plantri} is available. 
+
+Shortest paths in graphs can be calculated by Djikstra's algorithm
+\parencite{Cormen2009algorithms}. However, calculating all possible shortest
+paths is not necessary as some routes could never be travelled. Furthermore,
+that may be unfeasible in a very large network as the number of paths grows
+exponentially. Online calculation of a shortest path between two nodes in a
+graph can be efficiently done using \textit{A-star} algorithm by
+\textcite{Hart1968paths}.
+
 
 \subsubsection{Learning}
 
@@ -28,3 +59,8 @@ passenger to the destination and receives a reward. Keeping track of the exact
 passenger is not important. Each time step has a negative reward based on what
 action the taxi is taking, always depending on time but also could depend on
 distance travelled.
+
+\subsubsection{Software Development}
+Ask Nir if this is needed at all?
+
+A paragraph on Kanban? \parencite{Anderson2010kanban}
