@@ -52,24 +52,38 @@ learning capabilities are added to passengers and a competitive market
 established beyond the very basic simulation, so that passanger agents can
 learn the availability on their own.
 
-Let \(P\) be the set of the relevant variables \(p_1,..,p_n\) for
-a  passenger: \(P = \{p_1,..,p_n\}\), \newline
-where each \(p_i : i \in \{1, .., n\}\) has a function \(f_i (p_i) \) that
-returns a unity-based  normalised value of \(p_i\), \newline 
-and each \(p_i\) has a weight \(w_i\) representing its relative importance  
-compared to other variables, where \(\sum_{i=1}^n (w_i) = 1 \). \newline 
-Let \(\delta(o,d)\) be the distance between origin to destination.
-Let the passenger's expected fare \(F_{expect}\) depend only on distance
+Let \(P\) be the set of relevant characteristic variables \(c_1,..,c_n\) for a
+passenger: \(P = \{c_1,..,c_n\}\), \newline
+where each \(c_i : i \in \{1, .., n\}\) has a function \(f_i (c_i) \) that
+returns a unity-based normalised value of \(c_i\), \newline
+and each \(c_i\) has a weight \(w_i\) representing its relative importance
+compared to other variables, where \(\sum_{i=1}^n (w_i) = 1 \). \newline
+Then the total probablilstic value \(V(P)\) of a passenger is \[ V(P) =
+\sum_{i=1}^{n} (w_i \cdot f_i(c_i) )) \] \newline
 
-Then demand \(Q\) for a taxi ride from origin \(o\) to destination \(d\) at a  
+Let \(\Delta(o,d)\) be the distance between origin \(o\) to destination \(d\). 
+\newline
+Let the passenger's expected fare \(F_{expect}\) linearly depend on distance
+and a set price \(p\) for a unit of distance. \(F_{expect} = \Delta(o,d) \cdot
+p \). \newline
+Let the price sensitivity of customers be \(\frac{F_{expect}}{F_{offer}}\). It
+is worth noting that a price sensitivity value specific to an individual could
+be already included in the passenger characteristics and this is just a global
+representation for the whole of system. \newline
+
+Then the probability of a customer accepting a fare \(Q\) for a taxi ride at a
 fare price \(F_{offer}\) can be expressed as: 
-\[ Q _{o \rightarrow d} (P,F_{offer}) = \sum_{i=1}^{n} (w_i \cdot f_i (p_i) )) \]
-
-The demand \(Q\) can be used as a probability of a passenger accepting a fare.
+\begin{equation} 
+  \label{eq:design:demand}
+  Q_{o \rightarrow d} (P,F_{offer}) = \frac{F_{expect}}{F_{offer}} \cdot V(P)
+\end{equation}
+This formula is sufficient for the basic case of simulation. It can later be
+extended to take in account other determinants of demand as seen in Figure
+\ref{figure:taxi} and discussed in Section \ref{sec:literature:taxis:demand}.
 
 The relevant variables for passengers can be generated using a stochastic
 process. Similarly, passenger distribution within the network can be generated
-using a stochastic process. These processes can take in account some
+using a stochastic process. These processes could take in account some
 characteristics observed in reality such as demand variance during the day,
 lower passenger income in some areas resulting in lower willingness to pay,
 whether a trip is for pleasure or business, and others.
@@ -137,9 +151,6 @@ discussed in Section \ref{sec:ai:pomdp}. This complexity can be avoided by
 assuming that passengers do not wait for taxis and appear at a location for a
 single moment in time only.
 
-
-\subsubsection{Fixing Stochastic Variability}
-
 \subsubsection{Benchmark} 
 
 To evaluate the variable pricing approach, benchmarks measuring taxi
@@ -148,13 +159,26 @@ equilibrium demand and fare prices can be calculated from the stochastic
 processes, and a linear tarriff set and a simulation ran with it. It will
 establish the average best-case scenario for both passengers and taxis. If the
 reinforcement learning agent can approach or exceed similar profits it will
-mean that the experiment was a success. A simple example of this follows based on sections \ref{sec:design:taxi} and \ref{sec:design:passenger}.
+mean that the experiment was a success. 
 
-We assume that a passenger's yearly income is their only determinant of demand
-and that the yearly income for all passengers is linearly distributed with an
-average of £25,000. Then a passenger \(P = {p_1} \) where income \(p_1 = £
-20,000\), and the unity- based normalising function \( f_1(p_1) \) will return
-0.4. HEREHERE Therefore
+HEREHEREHERE 
+
+A simple example of this follows based on sections \ref{sec:design:taxi} and
+\ref{sec:design:passenger}, and Equation \ref{eq:design:demand}. We assume that
+a passenger's yearly income is their only determinant of demand and that the
+yearly income for all passengers is linearly distributed with an average of
+£25,000. Let a passenger \(P = {c_1} \) where income \(c_1 = £ 25,000\), and
+the unity-based normalising function \( f_1(c_1) \) return 0.5. Let the
+distance between a passenger's desired origin and destination \(\Delta(o,d) =
+12km\), and the price the passenger expects to pay £2/km. Then the expected
+fare price \(F_{expect} = £24\). If a taxi offers a fare \(F_{offer}\), then
+the probability of a passenger accepting the fare price is \(Q_{o \rightarrow
+d} (P,F_{offer}) = \frac{24}{F_{offer}} \cdot 0.5 = \frac{12}{F_{offer}}\).
+
+To find an equilibrum price, taxi costs need to be known and will be assumed a
+total cost of £18 for the journey. The fare that the taxi offer should aim to
+cover the £18 expense and include a profit margin. An equilibrium price is one
+maximising the profit and can be calculated by \(max(\gamma p\ - (1-\gamma)c)\)
 
 \subsubsection{Data}
 
