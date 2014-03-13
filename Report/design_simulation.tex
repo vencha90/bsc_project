@@ -154,31 +154,24 @@ single moment in time only.
 \subsubsection{Benchmark} 
 
 To evaluate the variable pricing approach, benchmarks measuring taxi
-profitability need to be established using the linear pricing approach. Market
-equilibrium demand and fare prices can be calculated from the stochastic
-processes, and a linear tarriff set and a simulation ran with it. It will
+profitability need to be established using the linear pricing approach. It will
 establish the average best-case scenario for both passengers and taxis. If the
-reinforcement learning agent can approach or exceed similar profits it will
-mean that the experiment was a success. 
+reinforcement learning agent can reach or exceed similar profits it will mean
+that the experiment was a success.
 
-HEREHEREHERE 
+As noted in \ref{sec:literature:taxis:demand}, the demand and supply
+relationship is complex in taxi market. Therefore an equilibrum cannot be
+easily calculated and is unlikely to have real value. However, the expected
+fare from the Equation \ref{eq:design:demand} linearly depends on distance just
+like taxi costs, therefore it is a good indicator for taxi efficiency. The
+exact tarriff can be calculated by fixing probability distributions for the
+stochastic process and using average values. 
 
-A simple example of this follows based on sections \ref{sec:design:taxi} and
-\ref{sec:design:passenger}, and Equation \ref{eq:design:demand}. We assume that
-a passenger's yearly income is their only determinant of demand and that the
-yearly income for all passengers is linearly distributed with an average of
-£25,000. Let a passenger \(P = {c_1} \) where income \(c_1 = £ 25,000\), and
-the unity-based normalising function \( f_1(c_1) \) return 0.5. Let the
-distance between a passenger's desired origin and destination \(\Delta(o,d) =
-12km\), and the price the passenger expects to pay £2/km. Then the expected
-fare price \(F_{expect} = £24\). If a taxi offers a fare \(F_{offer}\), then
-the probability of a passenger accepting the fare price is \(Q_{o \rightarrow
-d} (P,F_{offer}) = \frac{24}{F_{offer}} \cdot 0.5 = \frac{12}{F_{offer}}\).
+When a tarriff is chosen, the simulation can be run the exact same way as with
+a reinforcement learning, the only difference being the agent having no say
+about the fare. As the agent faces the same costs in both simulations, costs
+need not be taken in account.
 
-To find an equilibrum price, taxi costs need to be known and will be assumed a
-total cost of £18 for the journey. The fare that the taxi offer should aim to
-cover the £18 expense and include a profit margin. An equilibrium price is one
-maximising the profit and can be calculated by \(max(\gamma p\ - (1-\gamma)c)\)
 
 \subsubsection{Data}
 
