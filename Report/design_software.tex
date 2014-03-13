@@ -58,7 +58,13 @@ driving to another place. If the passenger accepts the price, taxi drives the
 passenger to the destination and receives a reward. Keeping track of the exact
 passenger is not important. Each time step has a negative reward based on what
 action the taxi is taking, always depending on time but also could depend on
-distance travelled.
+distance travelled. The probability of the passenger accepting the fare is the
+transition probability. This specifies the research problem as a finite MDP
+according to the definition in Section \ref{sec:literature:ai:mdp} (although it
+can be argued that prices could theoretically be a continuous space, in reality
+they are not).
+
+As Q-learning has been proven to 
 
 \subsubsection{Software Development}
 Ask Nir if this is needed at all?

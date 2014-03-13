@@ -48,12 +48,12 @@ the Markov property does not strictly apply, often approximations can be made
 and reinforcement learning theory still applies.
 \parencite{Sutton1998ai+reinforcement}
 
-A process satisfying the Markov property is a
-\textbf{Markov decision process (MDP)}. It consists of the state space and
-reward functions. It can be seen that all MDPs have a policy, the one with the
-highest expected utility called the \textbf{optimal policy}. It is important to
-note that it is the \textit{expected} utility because the environment could be
-(and usually is) stochastic. \parencite{Russell2010ai+modern}
+A process satisfying the Markov property is a \textbf{Markov decision process
+(MDP)}. It consists of the state space and reward functions. It can be seen
+that all MDPs have a policy, the one with the highest expected utility called
+the \textbf{optimal policy}. It is important to note that it is the
+\textit{expected} utility because the environment could be (and usually is)
+stochastic. \parencite{Russell2010ai+modern}
 
 Considering MDPs over time, two cases can be distinguished: finite and infinite
 horizon. While the optimal action in a given state could change when having a
@@ -146,6 +146,15 @@ calculated policy. Most reinforcement learning problems use GPI.
 \subsubsection{Advanced MDP Methods}
 \label{sec:ai:mdp:methods:advanced}
 
+Two groups of methods are distinguished by
+\textcite{Sutton1998ai+reinforcement}: \textit{off-policy} and \textit{on-
+policy}. Off-policy methods are called that way because they do not operate
+based on the estimated optimal policy, but have a behaviour policy that could
+even be completely unrelated to the estimated optimal policy. This allows for
+exploration, while an on-policy agent operates on and estimates a single
+policy. If an agend does not explore, it can easily settle on a sub-optimal
+policy.
+
 \textbf{Temporal difference (TD)} in its basic form is a model-based method. TD
 methods do not use a transition model and therefore are simpler and require
 less computation than basic dynamic programming, alas at a price of slower
@@ -155,12 +164,23 @@ utility values converge to the correct values. To ensure that utility values in
 TD converge to the correct value, visited states can be stored and their
 repeated impact reduced. \parencite{Russell2010ai+modern}
 
-The most developed model-free method is Q-learning, which is based on the TD
-approach. A Q-learning agent works by learning an action-value function for
-each state that ultimately gives the expected utility of taking a given action
-and following the optimal policy thereafter. The optimal policy can be
-constructed by simply selecting the action with the highest value in each state
-when the action-value function is learned.
+A popular off-policy model-free method is \textbf{Q-learning}, which is based
+on the TD approach. A Q-learning agent works by learning an action-value
+function for each state that ultimately gives the expected utility of taking a
+given action and following the optimal policy thereafter. The optimal policy
+can be constructed by simply selecting the action with the highest value in
+each state when the action-value function is learned. Q-learning is proven to
+converge to optimal policies over time. \parencite{Russell2010ai+modern}
+
+The space that an agent operates on could be very large, for example, having a
+near infinite set of states or actions. In the case of having multiple states
+function approximation is suggested by \textcite{Sutton1998ai+reinforcement}
+and \textcite{Russell2010ai+modern}. \textcite{Szepesvari2010ai+algorithms}
+notes that it is not known if function approximation when used for Q-learning
+will converge to optimal policies, although it has been proven to work and
+converge to an optimal policy in very specific restricted conditions.
+
+EXPLORATION!!!
 
 
 \subsubsection{Partially Observable Markov Decision Processes (POMDPs)}
@@ -252,20 +272,18 @@ approaches to solving model-free POMDPs: direct (memoryless) techniques do not
 try to keep track of the POMDP and directly map observations to actions, while
 indirect methods try to construct the POMDP from observations.
 
-Memoryless policies do not keep track of the POMDP i.e. they have no internal
-state. They can be deterministic mappings \(\pi : \Omega \rightarrow A \) or
-probabilistic mappings \(\pi : \Omega \rightarrow \Delta A \). Probabilistic
-policies cannot be enumerated and thus have a large policy search space, but
-have higher payoffs than deterministic mappings. Methods are named for
-stationary deterministic policies, non-stationary deterministic policies and
-stochastic policies. An different approcah is hierarchical Q-learning which
-learns a subgoal sequence, where each of the subgoals can be reached by a
-memoryless policy. \parencite{Spaan2012ai+pomdp}
-
-Q-learning has been adapted to work with POMDPs
-\parencite{Russell2010ai+modern, Spaan2012ai+pomdp}. A similar method called
-\textsc{Sarsa\((\lambda)\)} has been proven to work well for a number of cases
-of POMDPs.
+Q-learning and SARSA that were mentioned in \ref{sec:literature:ai:mdp:methods}
+have been adapted to work with POMDPs according to both
+\textcite{Russell2010ai+modern, Spaan2012ai+pomdp}. Memoryless policies do not
+keep track of the POMDP i.e. they have no internal state. They can be
+deterministic mappings \(\pi : \Omega \rightarrow A \) or probabilistic
+mappings \(\pi : \Omega \rightarrow \Delta A \). Probabilistic policies cannot
+be enumerated and thus have a large policy search space, but have higher
+payoffs than deterministic mappings. Methods are named for stationary
+deterministic policies, non-stationary deterministic policies and stochastic
+policies. An different approcah is hierarchical Q-learning which learns a
+subgoal sequence, where each of the subgoals can be reached by a memoryless
+policy. \parencite{Spaan2012ai+pomdp}
 
 The memoryless policies are limited because they do not store any history of
 actions and observations. Storing the complete history is infeasible with long
