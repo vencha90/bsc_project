@@ -133,14 +133,13 @@ looked at in Section \ref{sec:ai:mdp:methods:advanced}.
 \parencite{Sutton1998ai+reinforcement}
 
 Dynamic programming methods are based on generalized policy iteration (GPI)
-(also \textit{policy iteration} in \textcite{Russell2010ai+modern}) which has
-been proven to converge to optimal policies and value functions. GPI repeatedly
-alternates between these two steps: policy evaluation and policy improvement.
-Policy evaluation calculates a value function based on the current policy and
-updates the existing value function to be closer to the newly calculated value
-function. Policy improvement uses the updated value function to calculate a new
-policy and then updates the existing policy to be closer to the newly
-calculated policy. Most reinforcement learning problems use GPI.
+which has been proven to converge to optimal policies and value functions. GPI
+repeatedly alternates between these two steps: policy evaluation and policy
+improvement. Policy evaluation calculates a value function based on the current
+policy and updates the existing value function to be closer to the newly
+calculated value function. Policy improvement uses the updated value function
+to calculate a new policy and then updates the existing policy to be closer to
+the newly calculated policy. Most reinforcement learning problems use GPI.
 \parencite{Sutton1998ai+reinforcement}
 
 \subsubsection{Advanced MDP Methods}
@@ -170,7 +169,7 @@ function for each state that ultimately gives the expected utility of taking a
 given action and following the optimal policy thereafter. The optimal policy
 can be constructed by simply selecting the action with the highest value in
 each state when the action-value function is learned. Q-learning is proven to
-converge to optimal policies over time. \parencite{Russell2010ai+modern}
+converge to optimal policies over time. However, Q-learning is believed to be limited in complex environments as it cannot simulate possible courses of action. \parencite{Russell2010ai+modern}
 
 The space that an agent operates on could be very large, for example, having a
 near infinite set of states or actions. In the case of having multiple states
@@ -180,8 +179,19 @@ notes that it is not known if function approximation when used for Q-learning
 will converge to optimal policies, although it has been proven to work and
 converge to an optimal policy in very specific restricted conditions.
 
-EXPLORATION!!!
-
+A final issue not yet covered is exploration. GPI-based methods (see Section
+\ref{sec:ai:mdp:methods:basic}) covered here in their naive forms are greedy,
+meaning that they will often converge to a policy optimal for the subset of
+states they have experienced (a suboptimal policy)
+\parencite{Russell2010ai+modern}. Instead, the agent should find a globally
+optimal policy. The agent faces a trade-off between exploration and
+exploitation. \textcite{Sutton1998ai+reinforcement} describe
+\(\varepsilon\)-greedy methods to deal with this trade-off. This simply fixes
+how inclined an agent is to choose an action which it considers optimal with a
+variable \(\varepsilon\), choosing a random action with a probability
+\(1-\varepsilon\). If the environment does not change over time, then it is
+suggested to reduce \(\varepsilon\) as the agent is more likely to have found a
+good policy.
 
 \subsubsection{Partially Observable Markov Decision Processes (POMDPs)}
 \label{sec:ai:pomdp}

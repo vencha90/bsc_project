@@ -92,15 +92,14 @@ whether a trip is for pleasure or business, and others.
 \subsubsection{Taxis in Taxi Market}
 \label{sec:design:taxi}
 
-Let taxis have variable costs \(VC\) consisting of driver's wage costs \(w\)
-and fuel expenses \(f\), and a sum of fixed costs \(FC\) including e.g.
-deprecation, insurance, business overheads, lease payments. For simplicity it
-is assumed that wages are paid for all of the time that a taxi is operating,
-and a constant amount of fuel costing \(f\) is used for a unit of distance
-covered. Then total taxi costs \(TC\) for a total time \(t\) and an amount
-total distance covered \(d\) can be expressed as:
-
-\[ TC = VC + FC = t \cdot w + d \cdot f + FC \]
+Let taxis have some variable costs \(VC\) for a unit of time directly related
+to driving and some of fixed costs \(FC\) for a unit of time. Examples of fixed
+costs are business overheads, insurance and deprecation. Examples of variable
+costs is fuel costs and taxi running costs. In this case drivers' wages are a
+fixed cost because it is assumed that the taxi is always active. For simplicity
+it is assumed that the variable cost depends only on the distance covered
+\(d\). Then total taxi costs \(TC\) for a total time \(t\) can be expressed as:
+\[ TC = t(VC\cdot d + FC) \]
 
 Taxis have a set of available actions. When stopped at a location, they can
 decide to drive to another location or wait. If there is a passenger present,

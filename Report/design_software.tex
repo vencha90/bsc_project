@@ -1,24 +1,7 @@
 \subsection{Software design}
-\label{sec:design:software}
-
-Global properties: time; Taxis
-can enquire for the route from A to B at a small cost, and receive distance.
-When taxis decide to go from A to B, they go at a constant speed for the
-calculated time. No actions can be taken and they are marked as travelling.
-
-Network of nodes, not known to taxi as a whole
-
-Node has a list of neighbours and distances.
-Node has a list of present passengers and taxis.
-
-Taxi model: fixed and variable costs, has a set of actions:
-getDistance(A,B),drive(A,B), askDestination(P), offerFare(P).
-
-Passenger model: probabilistic properties with set relative weights to
-calculate demand, responds to bids with Y/N.
 
 \subsubsection{A Road Network}
-\label{sec:design:network}
+\label{sec:design:software:network}
 
 The market is represented as a weighted connected graph constructed of edges
 (roads) and vertices (origins/destinations). Each vertex has associated
@@ -51,6 +34,7 @@ graph can be efficiently done using \textit{A-star} algorithm by
 
 
 \subsubsection{Learning}
+\label{sec:design:software:ai}
 
 State is based on the origin, passenger and intended destination. Actions a
 taxi can take is enquiring a passenger for destination, offering a price or
@@ -64,9 +48,55 @@ according to the definition in Section \ref{sec:literature:ai:mdp} (although it
 can be argued that prices could theoretically be a continuous space, in reality
 they are not).
 
-As Q-learning has been proven to 
+As described in Section \ref{sec:ai:mdp:methods:advanced}) one of the simplest
+solution methods for finite MDP reinforcement learning problems is the basic
+temporal difference learning method. Of course, it needs to be extended to
+accomodate exploration in this paricular case of having an active agent.
+Temporal difference and its underlying ideas is in the basis of many solution
+methods both for MDPs and POMDPs (see Section \ref{sec:ai:pomdp}). Therefore
+this approach is the best starting point to examine the research problem on a
+small scale. It can later be extended and updated for more complex situations.
+
+HEREHEREHERE
+
 
 \subsubsection{Software Development}
 Ask Nir if this is needed at all?
 
 A paragraph on Kanban? \parencite{Anderson2010kanban}
+
+
+\subsubsection{Software outline}
+\label{sec:design:software}
+
+Expressing the simulation design in Section \ref{sec:design:simulation} and
+other software-related considerations discussed in sections
+\ref{sec:design:software:network} and \ref{sec:design:software:ai}
+
+Global properties: time; Taxis
+can enquire for the route from A to B at a small cost, and receive distance.
+When taxis decide to go from A to B, they go at a constant speed for the
+calculated time. No actions can be taken and they are marked as travelling.
+
+Network of nodes, not known to taxi as a whole
+
+Node has a list of neighbours and distances.
+Node has a list of present passengers and taxis.
+
+Taxi model: fixed cost (per unit of time) and variable costs (per unit of
+distance), has a set of actions.
+
+Passenger model: probabilistic properties with set relative weights to
+calculate demand, responds to bids with Y/N.
+
+Shown in Figure \ref{figure:design:software}.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=\textwidth]{../figures/software_diagram}
+    \caption{
+      Software diagram
+      \label{figure:design:software}
+    }
+  \end{center}
+\end{figure}
