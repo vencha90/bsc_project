@@ -163,13 +163,25 @@ utility values converge to the correct values. To ensure that utility values in
 TD converge to the correct value, visited states can be stored and their
 repeated impact reduced. \parencite{Russell2010ai+modern}
 
+To take in account more of the observed history than just the last state
+transition, TD(\(\lambda\)) is named by \textcite(Sutton1998ai+reinforcement)
+as an improved method. The parameter \(\lambda\) regulates how much of the
+transition history is used when updating policy to correct for errors observed
+in the last transition. \textcite(Szepesvari2010ai+algorithms) notes that
+finding the best value of \(\lambda\) is usually done by trial and error.
+However, this only affects the speed at which the method converges to an
+optimal policy, and \(\lambda\) can be adjusted as needed when using the
+method.
+
 A popular off-policy model-free method is \textbf{Q-learning}, which is based
 on the TD approach. A Q-learning agent works by learning an action-value
 function for each state that ultimately gives the expected utility of taking a
 given action and following the optimal policy thereafter. The optimal policy
 can be constructed by simply selecting the action with the highest value in
 each state when the action-value function is learned. Q-learning is proven to
-converge to optimal policies over time. However, Q-learning is believed to be limited in complex environments as it cannot simulate possible courses of action. \parencite{Russell2010ai+modern}
+converge to optimal policies over time. However, Q-learning is believed to be
+limited in complex environments as it cannot simulate possible courses of
+action. \parencite{Russell2010ai+modern}
 
 The space that an agent operates on could be very large, for example, having a
 near infinite set of states or actions. In the case of having multiple states

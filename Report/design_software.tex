@@ -50,14 +50,31 @@ they are not).
 
 As described in Section \ref{sec:ai:mdp:methods:advanced}) one of the simplest
 solution methods for finite MDP reinforcement learning problems is the basic
-temporal difference learning method. Of course, it needs to be extended to
+temporal difference (TD) learning method. Of course, it needs to be extended to
 accomodate exploration in this paricular case of having an active agent.
 Temporal difference and its underlying ideas is in the basis of many solution
 methods both for MDPs and POMDPs (see Section \ref{sec:ai:pomdp}). Therefore
 this approach is the best starting point to examine the research problem on a
 small scale. It can later be extended and updated for more complex situations.
 
-HEREHEREHERE
+\begin{algorithm}
+  \begin{algorithmic}
+  \Function{TD\_lambda}{$Sa,Sb,R,V,z$}
+
+    \State $Sa$ is the last state and $Sb$ is the next state, $R$ is the
+    immediate reward associated with this transition, $V$ is the array storing 
+    the current value function estiimate, $z$ is the array storing the eligibility traces.
+
+
+    \Return (V,z)
+  \EndFunction
+  \end{algorithmic}
+
+  \caption{
+  TD(\(\lambda\)) Algorithm that needs to be called after each transition. 
+  adapted from \textcite{Szepesvari2010ai+algorithms}
+  \label{algorithm:td:lambda}}
+\end{algorithm}
 
 
 \subsubsection{Software Development}
