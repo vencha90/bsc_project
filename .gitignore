@@ -1,5 +1,9 @@
 *.pdf
 *.ppt
+*.doc
+*.docx
+*.xls
+*.xlsx
 
 *.bcf
 *.fig

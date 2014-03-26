@@ -103,14 +103,14 @@ sections \ref{sec:ai:pomdp}, \ref{sec:ai:pomdp:model:based} and
 \ref{sec:ai:pomdp:model:free}.
 
 
-\subsubsection{Basic MDP Methods}
-\label{sec:ai:mdp:methods:basic}
+\subsubsection{Solving MDPs}
+\label{sec:ai:mdp:solving}
 
 Two groups of approaches for solving reinforcement learning problems (finding
 optimal policies) are covered by both \textcite{Russell2010ai+modern} and
 \textcite{Sutton1998ai+reinforcement} and can be categorised as model-free
 methods and model-based methods (discussed in Section
-\ref{sec:ai:mdp:methods:advanced}). However, both types of methods have a
+\ref{sec:ai:mdp:methods}). However, both types of methods have a
 common background that first needs to be looked at in this section.
 
 The simplest naive approach to solve reinforcement learning problems is
@@ -129,7 +129,7 @@ Markov decision process. However, this requires a perfectly known model of the
 environment which in practice is infeasible. Dynamic programming is also
 computationally expensive. The simplest dynamic programming method is value
 iteration. Dynamic programming is also the basis for the advanced methods
-looked at in Section \ref{sec:ai:mdp:methods:advanced}.
+looked at in Section \ref{sec:ai:mdp:methods}.
 \parencite{Sutton1998ai+reinforcement}
 
 Dynamic programming methods are based on generalized policy iteration (GPI)
@@ -142,8 +142,8 @@ to calculate a new policy and then updates the existing policy to be closer to
 the newly calculated policy. Most reinforcement learning problems use GPI.
 \parencite{Sutton1998ai+reinforcement}
 
-\subsubsection{Advanced MDP Methods}
-\label{sec:ai:mdp:methods:advanced}
+\subsubsection{Traditional MDP Methods}
+\label{sec:ai:mdp:methods}
 
 Two groups of methods are distinguished by
 \textcite{Sutton1998ai+reinforcement}: \textit{off-policy} and \textit{on-
@@ -154,14 +154,14 @@ exploration, while an on-policy agent operates on and estimates a single
 policy. If an agend does not explore, it can easily settle on a sub-optimal
 policy.
 
-\textbf{Temporal difference (TD)} in its basic form is a model-based method. TD
-methods do not use a transition model and therefore are simpler and require
-less computation than basic dynamic programming, alas at a price of slower
-learning. TD works by adjusting the utility estimates based on the differences
-observed in the last state transition, and over time the \textit{average}
-utility values converge to the correct values. To ensure that utility values in
-TD converge to the correct value, visited states can be stored and their
-repeated impact reduced. \parencite{Russell2010ai+modern}
+\textbf{Temporal difference (TD)} methods do not use a transition model and
+therefore are simpler and require less computation than basic dynamic
+programming, alas at a price of slower learning. TD works by adjusting the
+utility estimates based on the differences observed in the last state
+transition, and over time the \textit{average} utility values converge to the
+correct values. To ensure that utility values in TD converge to the correct
+value, visited states can be stored and their repeated impact reduced.
+\parencite{Russell2010ai+modern}
 
 To take in account more of the observed history than just the last state
 transition, TD(\(\lambda\)) is named by \textcite(Sutton1998ai+reinforcement)
@@ -189,21 +189,40 @@ function approximation is suggested by \textcite{Sutton1998ai+reinforcement}
 and \textcite{Russell2010ai+modern}. \textcite{Szepesvari2010ai+algorithms}
 notes that it is not known if function approximation when used for Q-learning
 will converge to optimal policies, although it has been proven to work and
-converge to an optimal policy in very specific restricted conditions.
+converge to an optimal policy in very specific restricted conditions. A
+different approach for continuous state and action spaces using actor-critic
+Monte Carlo methods is described by \textcite{Lazaric2008ai+smc}. \textbf{MORE ON ACTOR-CRITIC OR MONTE CARLO?}
+
+\subsubsection{Exploration}
+\label{sec:ai:exploration}
 
 A final issue not yet covered is exploration. GPI-based methods (see Section
-\ref{sec:ai:mdp:methods:basic}) covered here in their naive forms are greedy,
+\ref{sec:ai:mdp:solving}) covered here in their naive forms are greedy,
 meaning that they will often converge to a policy optimal for the subset of
 states they have experienced (a suboptimal policy)
 \parencite{Russell2010ai+modern}. Instead, the agent should find a globally
 optimal policy. The agent faces a trade-off between exploration and
-exploitation. \textcite{Sutton1998ai+reinforcement} describe
-\(\varepsilon\)-greedy methods to deal with this trade-off. This simply fixes
-how inclined an agent is to choose an action which it considers optimal with a
-variable \(\varepsilon\), choosing a random action with a probability
-\(1-\varepsilon\). If the environment does not change over time, then it is
-suggested to reduce \(\varepsilon\) as the agent is more likely to have found a
-good policy.
+exploitation. 
+
+\textcite{Sutton1998ai+reinforcement} describe \(\varepsilon\)-greedy methods
+to deal with this trade-off. This simply fixes how inclined an agent is to
+choose an action which it considers optimal with a variable \(\varepsilon\),
+choosing a random action with a probability \(1-\varepsilon\). If the
+environment does not change over time, then it is suggested to reduce
+\(\varepsilon\) as the agent is more likely to have found a good policy.
+
+However, taking an action randomly after some experience with the environment
+is naive. A common method for discrete action spaces is Boltzmann exploration.
+The Boltzmann exploration strategy privileges the execution of actions with
+higher estimated utility values, increasing the bias towards greater
+exploitation over time. Gaussian exploration is a similar approach for
+continuous action spaces. \parencite{Hasselt2012ai+continuous}
+
+
+
+
+
+
 
 \subsubsection{Partially Observable Markov Decision Processes (POMDPs)}
 \label{sec:ai:pomdp}

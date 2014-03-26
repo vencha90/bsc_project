@@ -89,9 +89,9 @@ for simplicity the function can be fixed as \(\alpha(n)=\frac{1}{n}\).
       \Statex $f\alpha$ is the step-size function,
       \Statex $\gamma$ is a discount factor.
 
-    \Function{TD\_basic}{$S\_old,S\_new,R,V,z$}
+    \Function{TD\_basic}{$S\_old,S\_new,R,V$}
       \State $\delta \gets R + \gamma \cdot V[S\_new] - V[S\_old]$
-      \State $V[S\_old] \gets V[S\_old] + \alpha \cdot \delta \cdot z[S\_old]$
+      \State $V[S\_old] \gets V[S\_old] + \alpha \cdot \delta$
       \State $H(S\_new) \gets H(S\_new) + 1$
       \State \Return ($V$)
     \EndFunction
@@ -129,6 +129,39 @@ for simplicity the function can be fixed as \(\alpha(n)=\frac{1}{n}\).
       \EndFor
       \State $H[S\_new] \gets H[S\_new] + 1$
       \State \Return ($V,z$)
+    \EndFunction
+  \end{algorithmic}
+
+\end{algorithm}
+
+
+\begin{algorithm}
+  \caption{
+  Q-learning. Algorithm that needs to be called after each transition. 
+  Adapted from \textcite{Sutton1998ai+reinforcement}. Explain the history and alpha!!
+  \label{algorithm:td:sarsa}}
+
+  \begin{algorithmic}[1]
+    \Require 
+      \Statex $s$ is the last state,
+      \Statex $s'$ is the next state,
+      \Statex $a$ is the last action,
+      \Statex $A(s)$ is a set of actions for a state,
+      \Statex $R$ is the immediate reward received,
+      \Statex $Q$ is an array hosting the current action-value estimate
+      \Statex $H$ is the visit history of state-action pairs,
+      \Statex $\alpha$ is a step-size function,
+      \Statex $\gamma$ is a discount factor.
+
+      \Statex Policy $Q(s, a)$ is initialised arbitrarily
+      \Statex History $H$ is empty
+
+    \Function{Q\_learning}{$s,a,R,a'$}
+      \State $\delta \gets R + 
+              \gamma \cdot$ max_{$a' \in A(s')$} $Q(s', a') - Q(s, a)$
+      \State $Q(s, a) \gets Q(s, a) + \alpha \cdot \delta$
+      \State $H(s, a) \gets H(s, a) + 1$
+      \Return $Q, H$      
     \EndFunction
   \end{algorithmic}
 
