@@ -1,7 +1,7 @@
-\subsection{Software design}
+\subsection{Design}
 
 \subsubsection{A Road Network}
-\label{sec:design:software:network}
+\label{sec:design:network}
 
 The market is represented as a weighted connected graph constructed of edges
 (roads) and vertices (origins/destinations). Each vertex has associated
@@ -34,7 +34,7 @@ graph can be efficiently done using \textit{A-star} algorithm by
 
 
 \subsubsection{Learning}
-\label{sec:design:software:ai}
+\label{sec:design:ai}
 
 State is based on the origin, passenger and intended destination. Actions a
 taxi can take is enquiring a passenger for destination, offering a price or
@@ -158,7 +158,7 @@ for simplicity the function can be fixed as \(\alpha(n)=\frac{1}{n}\).
 
     \Function{Q\_learning}{$s,a,R,a'$}
       \State $\delta \gets R + 
-              \gamma \cdot$ max_{$a' \in A(s')$} $Q(s', a') - Q(s, a)$
+              \gamma \cdot$ max\_{$a' \in A(s')$} $Q(s', a') - Q(s, a)$
       \State $Q(s, a) \gets Q(s, a) + \alpha \cdot \delta$
       \State $H(s, a) \gets H(s, a) + 1$
       \Return $Q, H$      
@@ -177,9 +177,9 @@ A paragraph on Kanban? \parencite{Anderson2010kanban}
 \subsubsection{Software outline}
 \label{sec:design:software}
 
-Expressing the simulation design in Section \ref{sec:design:simulation} and
+Expressing the simulation design in Section \ref{sec:requirements} and
 other software-related considerations discussed in sections
-\ref{sec:design:software:network} and \ref{sec:design:software:ai}
+\ref{sec:design:network} and \ref{sec:design:ai}
 
 Global properties: time; Taxis
 can enquire for the route from A to B at a small cost, and receive distance.
@@ -197,7 +197,8 @@ distance), has a set of actions.
 Passenger model: probabilistic properties with set relative weights to
 calculate demand, responds to bids with Y/N.
 
-Shown in Figure \ref{figure:design:software}.
+Preliminary software class diagram is shown in Figure
+\ref{figure:design:software}.
 
 \begin{figure}
   \begin{center}
@@ -209,6 +210,6 @@ Shown in Figure \ref{figure:design:software}.
   \end{center}
 \end{figure}
 
-% Graph library \'plexus\'. It has not implemented an algorithm to check for
+Graph library 'plexus'. It has not implemented an algorithm to check for
 connectivity of directed graphs, therefore undirected graphs are
 used.
