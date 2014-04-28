@@ -237,12 +237,12 @@
      \end{minipage}\\
    \end{centering}\vspace*{1.0in}
    \begin{minipage}{\textwidth}
-     \cp@DeptAddressFont No portion of the work contained in this
-     document has been submitted in support of an application for a
-     degree or qualification of this or any other university or
-     other institution of learning.  All verbatim extracts have been
-     distinguished by quotation marks, and all sources of
-     information have been specifically acknowledged.\\[5ex]
+     \cp@DeptAddressFont I declare that this document and the accompanying code
+        has been composed by myself, and describes my own work, unless
+        otherwise acknowledged in the text. It has not been accepted in any
+        previous application for a degree. All verbatim extracts have been
+        distinguished by quotation marks, and all sources of information have
+        been specifically acknowledged.\\[5ex]
      Signed:\hspace*{\fill}\\[3ex]
      Date: \@date \hspace*{\fill}
    \end{minipage}%
