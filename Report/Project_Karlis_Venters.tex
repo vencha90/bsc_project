@@ -18,6 +18,9 @@
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 
+\usepackage{color}
+\newcommand{\todo}[1]{\textcolor{red}{@TODO: #1}}
+
 \begin{document}
 
 \maketitle
@@ -37,9 +40,10 @@ Abstract goes here
 \section{Introduction}
 \label{sec:intro}
 \input{./introduction}
+\input{./intro_goals}
 
 \newpage
-\section{Literature survey}
+\section{Background}
 \label{sec:literature}
 \input{./literature_intro}
 \input{./literature_taxis}
@@ -50,10 +54,10 @@ Abstract goes here
 \label{sec:requirements}
 \input{./requirements}
 
-
 \newpage
 \section{Design}
 \label{sec:design}
+\input{./methods}
 \input{./design}
 
 \newpage
@@ -63,7 +67,7 @@ Abstract goes here
 \input{./testing}
 
 \newpage
-\section{Evaluation}
+\section{Results and Evaluation}
 \label{sec:evaluation}
 \input{./evaluation}
 

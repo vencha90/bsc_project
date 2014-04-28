@@ -142,6 +142,7 @@ to calculate a new policy and then updates the existing policy to be closer to
 the newly calculated policy. Most reinforcement learning problems use GPI.
 \parencite{Sutton1998ai+reinforcement}
 
+
 \subsubsection{Traditional MDP Methods}
 \label{sec:ai:mdp:methods}
 
@@ -191,7 +192,8 @@ notes that it is not known if function approximation when used for Q-learning
 will converge to optimal policies, although it has been proven to work and
 converge to an optimal policy in very specific restricted conditions. A
 different approach for continuous state and action spaces using actor-critic
-Monte Carlo methods is described by \textcite{Lazaric2008ai+smc}. \textbf{MORE ON ACTOR-CRITIC OR MONTE CARLO?}
+Monte Carlo methods is described by \textcite{Lazaric2008ai+smc}. \todo{MORE ON ACTOR-CRITIC OR MONTE CARLO?}
+
 
 \subsubsection{Exploration}
 \label{sec:ai:exploration}
@@ -217,11 +219,6 @@ The Boltzmann exploration strategy privileges the execution of actions with
 higher estimated utility values, increasing the bias towards greater
 exploitation over time. Gaussian exploration is a similar approach for
 continuous action spaces. \parencite{Hasselt2012ai+continuous}
-
-
-
-
-
 
 
 \subsubsection{Partially Observable Markov Decision Processes (POMDPs)}
@@ -274,6 +271,7 @@ with environment. Model-based methods have an agent using internal
 representations of the environment and relating that to their learning. Model-
 free method agents do not store any direct representation of the environment,
 instead keeping track of their experiences, often in an approximated form.
+
 
 \subsubsection{Model-based POMDP methods}
 \label{sec:ai:pomdp:model:based}
