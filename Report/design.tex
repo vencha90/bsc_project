@@ -1,4 +1,4 @@
-\subsection{Architecture and Software Design}
+\subsection{Software Design Considerations}
 
 (10, 2100 w)
 
@@ -7,6 +7,8 @@ in sufficient detail to make it easy for someone else to replicate the system?
 
 Has the student justified the design decisions, and discussed alternatives that
 were considered?
+
+\todo{Move algorithm to implementation}
 
 \subsubsection{A Road Network}
 \label{sec:design:network}
@@ -175,15 +177,8 @@ for simplicity the function can be fixed as \(\alpha(n)=\frac{1}{n}\).
 
 \end{algorithm}
 
-
-\subsubsection{Software Development}
-Ask Nir if this is needed at all?
-
-A paragraph on Kanban? \parencite{Anderson2010kanban}
-
-
-\subsubsection{Software outline}
-\label{sec:design:software}
+\subsection{Architecture} 
+\label{sec:design:architecture}
 
 Expressing the simulation design in Section \ref{sec:requirements} and
 other software-related considerations discussed in sections
@@ -217,7 +212,3 @@ Preliminary software class diagram is shown in Figure
     }
   \end{center}
 \end{figure}
-
-Graph library 'plexus'. It has not implemented an algorithm to check for
-connectivity of directed graphs, therefore undirected graphs are
-used.

@@ -4,8 +4,8 @@ Has the student appropriately analysed and defined the requirements for the
 project and presented them clearly?
 
 
-\subsection{Simulation design}
-\label{sec:design:simulation}
+\subsection{Functional Requirements}
+\label{sec:requirements:simulation}
 
 \subsubsection{Market Considerations}
 
@@ -28,11 +28,12 @@ The relationship between taxi demand and supply and vice versa was established
 in Section \ref{sec:literature:taxis:demand}. This relationship largely depends
 on the competitive situation in a taxi market. As the simulation initially
 involves only a single taxi, the competition needs to be replicated by other
-means. When the simulation is expanded to multiple taxis \textbf{EXTEND}
+means. When the simulation is expanded to multiple taxis \todo{extend this
+section}
 
 
 \subsubsection{Demand: Modelling Passengers}
-\label{sec:design:passenger}
+\label{sec:requirements:passenger}
 
 Customer demand was reviewed in Section \ref{sec:literature:taxis:demand} where
 two approaches to modelling demand were shown: aggregate and disaggregate. An
@@ -41,9 +42,9 @@ variables that describe the product or its consumers"
 \parencite{Small2007taxi+urban} The disaggregate approach specifies a set of
 variables for each individual passenger. The project goal is investigating taxi
 pricing on an individual basis, therefore a disaggregate approach is
-preferrable as it allows individual modelling of passengers. \textbf{review
-this claim!} Of course, to express demand as a single variable it needs to be
-an aggregation of the relevant individual variables.
+preferrable as it allows individual modelling of passengers. \todo{claim needs
+backing this claim!} Of course, to express demand as a single variable it needs
+to be an aggregation of the relevant individual variables.
 
 Therefore each passenger's demand is a function that of some variables. The
 different types of variables affecting taxi demand were discussed in Section
@@ -80,7 +81,7 @@ representation for the whole of system. \newline
 Then the probability of a customer accepting a fare \(Q\) for a taxi ride at a
 fare price \(F_{offer}\) can be expressed as: 
 \begin{equation} 
-  \label{eq:design:demand}
+  \label{eq:requirements:demand}
   Q_{o \rightarrow d} (P,F_{offer}) = \frac{F_{expect}}{F_{offer}} \cdot V(P)
 \end{equation}
 This formula is sufficient for the basic case of simulation. It can later be
@@ -96,7 +97,7 @@ whether a trip is for pleasure or business, and others.
 
 
 \subsubsection{Taxis in Taxi Market}
-\label{sec:design:taxi}
+\label{sec:requirements:taxi}
 
 Let taxis have some variable costs \(VC\) for a unit of time directly related
 to driving and some of fixed costs \(FC\) for a unit of time. Examples of fixed
@@ -128,7 +129,7 @@ demand \(Q\). To incentivise the taxi agent, each bid has a cost in time.
 
 
 \subsubsection{Modelling reinforcement learning}
-\label{sec:design:ai}
+\label{sec:requirements:ai}
 
 The research problem needs to be formally defined from a reinforcement learning
 point of view according to the definitions in sections \ref{sec:ai:mdp} and
@@ -140,10 +141,10 @@ reality this set would be infinite but it can be simplified to a finite set.
 This network forms a part of the total state space. The rest of the state space
 is formed of the passenger origin-destination pairs i.e. some state \(s = (o,
 d) \). The passenger demand for each of these origin-destination states is
-stochastic as mentioned in Section \ref{sec:design:passenger}. 
+stochastic as mentioned in Section \ref{sec:requirements:passenger}. 
 
-The actions that a taxi can take were discussed in \ref{sec:design:taxi}. A
-simple reward function is as follows. For each moment of time that a taxi is
+The actions that a taxi can take were discussed in \ref{sec:requirements:taxi}.
+A simple reward function is as follows. For each moment of time that a taxi is
 active, there is an immediate negative reward based on fixed costs and salary
 variable costs. If the taxi takes travels, it suffers a negative reward based
 on travel variable costs. The only positive reward it gains is from passengers
@@ -167,17 +168,26 @@ that the experiment was a success.
 As noted in \ref{sec:literature:taxis:demand}, the demand and supply
 relationship is complex in taxi market. Therefore an equilibrum cannot be
 easily calculated and is unlikely to have real value. However, the expected
-fare from the Equation \ref{eq:design:demand} linearly depends on distance just
-like taxi costs, therefore it is a good indicator for taxi efficiency. The
-exact tarriff can be calculated by fixing probability distributions for the
-stochastic process and using average values. 
+fare from the Equation \ref{eq:requirements:demand} linearly depends on
+distance just like taxi costs, therefore it is a good indicator for taxi
+efficiency. The exact tarriff can be calculated by fixing probability
+distributions for the stochastic process and using average values.
 
 When a tarriff is chosen, the simulation can be run the exact same way as with
 a reinforcement learning, the only difference being the agent having no say
 about the fare. As the agent faces the same costs in both simulations, costs
 need not be taken in account.
 
+\subsection{Non-Functional Requirements}
+
+\subsubsection{Maintainability}
+
+tests as specs, modular agent-based design
+
+version control
+
 \subsubsection{Data}
 
 It is possible to record rewards for each step of time. This data will show
 overall profits and reveal how quickly profitability was reached, if at all.
+\todo{note what data exactly needs recording}
