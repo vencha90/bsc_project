@@ -3,14 +3,17 @@
 Has the student appropriately analysed and defined the requirements for the
 project and presented them clearly?
 
-\todo{Public transport actions are determined by agents trying to reach some
-        objective e.g. maxium profit.}
-
 \todo{High level overview first?}
 
 
 \subsection{Functional Requirements}
 \label{sec:requirements:simulation}
+
+The following requirements follow directly from the project's goals set in
+Section \ref{sec:intro:goals}. This section aims to formalise the goals in
+great detail. Alas, it is unfeasible to structure this section around each goal
+as they contain several requrements that sometimes overlap with other goals.
+
 
 \subsubsection{Market Considerations}
 
@@ -31,10 +34,14 @@ initial experiment is successful.
 
 The relationship between taxi demand and supply and vice versa was established
 in Section \ref{sec:literature:taxis:demand}. This relationship largely depends
-on the competitive situation in a taxi market. As the simulation initially
-involves only a single taxi, the competition needs to be replicated by other
-means. When the simulation is expanded to multiple taxis \todo{extend this
-section}
+on the competitive situation in a taxi market. This is a very complex
+relationship and thus implementing it in software would require considerable
+effort. Because the core goal of the project is comparing variable pricing
+approaches, not correctly modelling the market, this problem can be avoided by
+assuming a constant demand. Furthermore, if the environment is fixed, the
+simulation only needs to support a single taxi at the very least. As the design
+is planned modular, the variable demand can be factored in later when
+necessary.
 
 
 \subsubsection{Demand: Modelling Passengers}
@@ -138,7 +145,8 @@ demand \(Q\). To incentivise the taxi agent, each bid has a cost in time.
 
 The research problem needs to be formally defined from a reinforcement learning
 point of view according to the definitions in sections \ref{sec:ai:mdp} and
-\ref{sec:ai:pomdp}.
+\ref{sec:ai:pomdp}. Maximising the profit can be chosen as the goal of the taxi
+agent's operation.
 
 It can be assumed that taxi has a complete knowledge of the road network it is
 operating in - a realistic assumption given modern GPS navigation systems. In
@@ -162,6 +170,11 @@ discussed in Section \ref{sec:ai:pomdp}. This complexity can be avoided by
 assuming that passengers do not wait for taxis and appear at a location for a
 single moment in time only.
 
+As recognised in \ref{sec:ai:mdp:methods}, the simplest reinforcement learning
+method to implement is Q-learner, and it is adequate for the above
+requirements.
+
+
 \subsubsection{Benchmark} 
 
 To evaluate the variable pricing approach, benchmarks measuring taxi
@@ -183,16 +196,15 @@ a reinforcement learning, the only difference being the agent having no say
 about the fare. As the agent faces the same costs in both simulations, costs
 need not be taken in account.
 
+
 \subsection{Non-Functional Requirements}
 
-\subsubsection{Maintainability}
+\textbf{Maintainability:} the system needs to be maintainable and extendable.
+In addition to a maintenance manual targeted at developers, the code needs to
+be documented. Software needs to be modular, so that components can be easily
+exchanged. The development process needs to be transparent so that history and
+context can be easily traced if need arises, for example, to fix a bug.
 
-tests as specs, modular agent-based design
-
-version control
-
-\subsubsection{Data}
-
-It is possible to record rewards for each step of time. This data will show
-overall profits and reveal how quickly profitability was reached, if at all.
-\todo{note what data exactly needs recording}
+\textbf{Data:} all properties of the simulation need to be logged so that they
+can later be analysed. This means logging every value that has changed at each
+iteration.
