@@ -1,9 +1,8 @@
 \subsection{Reinforcement Learning}
 \label{sec:ai}
 
-\todo{remove irrelevant stuff}
-\todo{reorganize in a more logical order}
 \todo{more critical evaluation?}
+\todo{too much POMDP?}
 
 \subsubsection{Basics}
 \label{sec:ai:basics}
@@ -31,15 +30,15 @@ outlook in contrast to immediate rewards. Searching and learning the value
 function is central to reinforcement learning. \parencite{Russell2010ai+modern,
 Sutton1998ai+reinforcement}
 
-Evolutionary methods \parencite{Sutton1998ai+reinforcement} also known as
-genetic algorithms \parencite{Russell2010ai+modern} are a branch of artificial
-intelligence that could potentially be used for solving reinforcement learning
-problems. Evolutionary methods do not learn from individual experiences, and
-therefore \textcite{Sutton1998ai+reinforcement} do not recommend using them for
-reinforcement learning problems, although they agree that evolutionary methods
-could be useful in specific cases. Similarly \textcite{Russell2010ai+modern}
-states that genetic algorithms do not cope well with increasing complexity and
-are the most useful in optimisation problems.
+Evolutionary methods \parencite{Sutton1998ai+reinforcement} (also referred to
+as genetic algorithms by \textcite{Russell2010ai+modern}) are a branch of
+artificial intelligence that could potentially be used for solving
+reinforcement learning problems. Evolutionary methods do not learn from
+individual experiences, and therefore \textcite{Sutton1998ai+reinforcement} do
+not recommend using them for reinforcement learning problems, although they
+agree that evolutionary methods could be useful in specific cases. Similarly
+\textcite{Russell2010ai+modern} states that genetic algorithms do not cope well
+with increasing complexity and are the most useful in optimisation problems.
 
 
 \subsubsection{Markov Decision Processes (MDPs)}
@@ -186,7 +185,8 @@ can be constructed by simply selecting the action with the highest value in
 each state when the action-value function is learned. Q-learning is proven to
 converge to optimal policies over time. However, Q-learning is believed to be
 limited in complex environments as it cannot simulate possible courses of
-action. \parencite{Russell2010ai+modern}
+action. However, Q-learning is probably the easiest reinforcement learning
+method to implement. \parencite{Russell2010ai+modern}
 
 The space that an agent operates on could be very large, for example, having a
 near infinite set of states or actions. In the case of having multiple states
@@ -195,8 +195,9 @@ and \textcite{Russell2010ai+modern}. \textcite{Szepesvari2010ai+algorithms}
 notes that it is not known if function approximation when used for Q-learning
 will converge to optimal policies, although it has been proven to work and
 converge to an optimal policy in very specific restricted conditions. A
-different approach for continuous state and action spaces using actor-critic
-Monte Carlo methods is described by \textcite{Lazaric2008ai+smc}. \todo{MORE ON ACTOR-CRITIC OR MONTE CARLO?}
+different approach for continuous state and action spaces using TD actor-critic
+Monte Carlo methods is described by \textcite{Lazaric2008ai+smc}, where the
+software agent has a separated policy and value function.
 
 
 \subsubsection{Exploration}
@@ -349,3 +350,6 @@ POMDPs, only a few solution methods have been adapted and no completely unique
 methods developed, showing no significant improvement over POMDPs. This area is
 still relatively young and promising in the future.
 \parencite{Wingate2012ai+psr}
+
+
+\todo{a summary needed?}

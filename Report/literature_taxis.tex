@@ -1,17 +1,16 @@
-\subsection{Taxis}
+\subsection{Transportation Economics}
 \label{sec:literature:taxis}
 
 Taxis (also known as \textit{taxicabs}) are an important part of public
 transportation. Because of their prevalence worldwide and importance in
 transportation a wide range of literature has been produced on taxis. For this
-project, the most relevant area of this literature is economical modelling of
-taxi markets, an overview of which is given by
-\textcite{Salanova2011taxi+review}. A major topic in the research and
-discussion on taxis is taxi market regulation, and parts of it are relevant and
-will be considered in some detail. Three different types of taxi markets can be
-distinguished: cruising taxi market when a passenger hails the taxi on street
-with visual contact, phone-order taxi market, and taxi ranks where multiple
-taxis wait for passengers.
+project, the most relevant area of these works is economical modelling of taxi
+markets, an overview of which is given by \textcite{Salanova2011taxi+review}. A
+major topic in the research and discussion on taxis is taxi market regulation,
+and parts of it are relevant and will be considered in some detail. Three
+different types of taxi markets can be distinguished: cruising taxi market when
+a passenger hails the taxi on street with visual contact, phone-order taxi
+market, and taxi ranks where multiple taxis wait for passengers.
 
 
 \subsubsection{Regulation}
@@ -121,9 +120,9 @@ microeconomic and based on the individual agents in a system. Recently
 disaggregate models have emerged as the main method of modelling demand, but
 these models require detailed microeconomic data for a system. Because of
 difficult processing of the large datasets, applying disaggregate models
-usually involves some form of aggregation. Customers' value of time (VOT) and
-value of reliability (VOR) are the most important quantities determining the
-demand for public transportation, the sum of whom are a customer's total
+usually still involves some form of aggregation. Customers' value of time (VOT)
+and value of reliability (VOR) are the most important quantities determining
+the demand for public transportation, the sum of whom are a customer's total
 willingness to pay for some trip. Both VOT and VOR derive on customers'
 characteristics and environment they are in, for example, their income, whether
 the planned trip is for pleasure or a commute to work, and even the tax rates.
@@ -171,38 +170,3 @@ different approach by modelling customer demand as their willingness to pay to
 reach a destination, based on their subjective monetary value for using
 different modes of transport for reaching a destination; therefore the demand
 for taxis in this study was only a part of the total demand for transportation.
-
-\subsubsection{Simulation Software}
-
-TRANSIMS \parencite{Smith1995taxi+transims} and EMME/2
-\parencite{Gao2010taxi+comparison} aggregate. TRANSIMS is limited to certain
-modules and specific inputs and ways of operating, not supporting agents.
-EMME/2 older software, conventional, top-down approach so not suitable for
-agents.
-
-\textcite{Bernhardt2007taxi+agent} gives an overview of agent-based software
-for traffic modeling, naming MATSim as the most useful of these. MATSim is the
-most noteworthy agent-based simulation and in active development. Very
-extensive capabilities and modules, but complex to use and extend. MATSim
-covered by \textcite{Balmer2008taxi+matsim}.
-
-\textcite[78]{Bernhardt2007taxi+agent} cites Bonabeau(2002a) for the following conditions when agent based modelling is appropriate:
-
-\begin{quote}
-\begin{itemize}
-  \item When there is potential for emergent phenomena--that is, individual 
-  behavior is nonlinear and changes over time, and fluctuations are more 
-  important than averages;
-  \item When describing the system from the perspective of its constituent 
-  units’ activities is more natural--that is, “activities are a more natural way
-  of describing the system than processes”; and
-  \item When the appropriate level of description or complexity is not known 
-  ahead of time.
-\end{itemize}
-\end{quote}
-
-Finally, if an agent-based approach has been deemed appropriate, modelling can
-be started. To create models the following needs to be carefully defined: the
-environment; agents with their types, attributes, allowable and initial values for the attributes;
-agent interaction rules with each other and the environment.
-\parencite{Bernhardt2007taxi+agent}

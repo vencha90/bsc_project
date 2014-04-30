@@ -1,0 +1,64 @@
+\subsection{Related works}
+\label{sec:literature:related}
+
+\subsubsection{Studies}
+
+\parencite{Emele2013pricing+rural}
+
+\parencite{Kaddoura2013social+cost}
+
+\parencite{Neumann2011berlin}
+
+
+\subsubsection{Simulation Software}
+
+Hiistorically the most important simulation software has been TRANSIMS
+\parencite{Smith1995taxi+transims} and EMME \parencite{Gao2010taxi+comparison}.
+TRANSIMS operates on aggregated data in a top-down fashion, and is limited to
+certain software modules and specific inputs operating, and does not support
+agents. TRANSIMS proved to be useful at its time, but agent-based
+microsimulation software has been more popular recently because of the richer functionality. \parencite{Bernhardt2007taxi+agent}
+
+EMME in its latest version 4 is a commercial software, and potentially the most
+advanced according to the claims of its parent company. However, it is of
+limited interest for this project as EMME is a commercial and closed software.
+\parencite{Inro2014emme}
+
+\textcite{Bernhardt2007taxi+agent} gave an overview of agent-based software for
+traffic modeling, naming MATSim as the most useful of these. MATSim is the most
+noteworthy agent-based simulation and in active development. It has very
+extensive capabilities and modules. However, it is complex to use and extend.
+\textcite{2010taxi+comparison} claimed that MATSim and EMME/2 has similar
+performance and even produce compatible outputs.
+
+ITSUMO by \textcite{Silva2006itsumo} is more limited simulation software using
+intelligent agents to model traffic. \textcite{Bazzan2009integrating}
+integrated  MATSim and ITSUMO to produce rich large scale traffic simulations.
+MATSim, ITSUMO and the integrated piece of software are all meant to be
+extendible. Unfortunately none of them have in-built support for agent
+interactions that involve prices.
+
+
+\subsubsection{Traffic Modelling}
+
+\textcite[78]{Bernhardt2007taxi+agent} cited Bonabeau(2002a) for the following
+conditions when agent based modelling is appropriate:
+
+\begin{quote}
+\begin{itemize}
+  \item When there is potential for emergent phenomena--that is, individual 
+  behavior is nonlinear and changes over time, and fluctuations are more 
+  important than averages;
+  \item When describing the system from the perspective of its constituent 
+  units’ activities is more natural--that is, “activities are a more natural way
+  of describing the system than processes”; and
+  \item When the appropriate level of description or complexity is not known 
+  ahead of time.
+\end{itemize}
+\end{quote}
+
+Finally, if an agent-based approach has been deemed appropriate, modelling can
+be started. To create models the following needs to be carefully defined: the
+environment; agents with their types, attributes, allowable and initial values
+for the attributes; agent interaction rules with each other and the
+environment. \parencite{Bernhardt2007taxi+agent}
