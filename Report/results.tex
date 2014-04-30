@@ -20,13 +20,41 @@ Has the student suggested future work?
 
 
 \subsection{Results}
+unless noted otherwise, the following inputs were used
+ 
+time limit = 1000000
 
-Non-regulated price much more successful with when the fixed
-price equals the expected price
+graph:
+  - "0, 1, 2, 4, 2, 1"
+  - "1, 0, 2, 2, 3, 0"
+  - "2, 2, 0, 0, 1, 3"
+  - "4, 2, 0, 0, 1, 0"
+  - "2, 3, 1, 1, 0, 5"
+  - "1, 0, 3, 0, 5, 0"
 
-\todo{control runs:} fixed price higher than expected price; fixed price lower
-than expected; variable price range limited
+passenger: price = 20
 
-ai profitability over time, discover when it becomes profitable etc
+taxi: prices = 5..100, benchmark price = 20
+
+Run 1: Non-regulated price much more successful with when the fixed price
+equals the expected price. non regulated profit = 1000965; fixed fare loss
+-1547613
+
+
+run: benchmark price = 30
+
+\todo{run: benchmark price = 15}
+
+\todo{run: prices = 5..20}
+
+\todo{run: prices = 20..100}
+
+\todo{run: time limit = 50000}
+
+
+\todo{all runs and diagrams}
+
+ai profitability over time, see how much time it takes for it to become
+profitable etc
 
 look at how the prices charged change over time, if at all
