@@ -236,18 +236,9 @@
        \end{centering}
      \end{minipage}\\
    \end{centering}\vspace*{1.0in}
-   \begin{minipage}{\textwidth}
-     \cp@DeptAddressFont I declare that this document and the accompanying code
-        has been composed by myself, and describes my own work, unless
-        otherwise acknowledged in the text. It has not been accepted in any
-        previous application for a degree. All verbatim extracts have been
-        distinguished by quotation marks, and all sources of information have
-        been specifically acknowledged.\\[5ex]
-     Signed:\hspace*{\fill}\\[3ex]
-     Date: \@date \hspace*{\fill}
-   \end{minipage}%
+
    \vspace*{\stretch{1}}
-   \cp@DeptNameFont TODO FINALISE Honours Project\\
+   \cp@DeptNameFont Fourth Year Honours Project\\
    \cprule\vspace*{0.4ex}\\
    \cp@DeptNameFont Department of \cp@deptname\ \hfill 
       \cp@NumberFont\cp@monthyear\\
