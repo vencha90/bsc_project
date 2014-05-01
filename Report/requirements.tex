@@ -1,18 +1,21 @@
+\todo{remove note}
 (5, 1000w)
 
 Has the student appropriately analysed and defined the requirements for the
 project and presented them clearly?
 
-\todo{High level overview first?}
-
 
 \subsection{Functional Requirements}
 \label{sec:requirements:simulation}
 
-The following requirements follow directly from the project's goals set in
-Section \ref{sec:intro:goals}. This section aims to formalise the goals in
-great detail. Alas, it is unfeasible to structure this section around each goal
-as they contain several requrements that sometimes overlap with other goals.
+The following requirements are derived directly from the project's goals set in
+Section \ref{sec:intro:goals}. Alas, it is unfeasible to structure this section
+around each goal as they contain several requrements that sometimes overlap
+with other goals. Each of the following requirement categories is discussed in
+detail, listing what could be implemented in the best case scenario without any
+time pressure. However, to stay realistic and make sure that core functional
+requirements are prioritised, they are clearly noted as MVP (Minimum Viable
+Product) at the end of every section.
 
 
 \subsubsection{Market Considerations}
@@ -43,6 +46,9 @@ simulation only needs to support a single taxi at the very least. As the design
 is planned modular, the variable demand can be factored in later when
 necessary.
 
+\textbf{MVP:} fixed environment with a fixed demand for taxi services, that
+supports a single taxi cruising in a road network.
+
 
 \subsubsection{Demand: Modelling Passengers}
 \label{sec:requirements:passenger}
@@ -53,10 +59,10 @@ aggregate demand model "for some portion of the travel market is a function of
 variables that describe the product or its consumers"
 \parencite{Small2007taxi+urban} The disaggregate approach specifies a set of
 variables for each individual passenger. The project goal is investigating taxi
-pricing on an individual basis, therefore a disaggregate approach is
-preferrable as it allows individual modelling of passengers. \todo{claim needs
-backing this claim!} Of course, to express demand as a single variable it needs
-to be an aggregation of the relevant individual variables.
+pricing on an individual basis, therefore an agent-based approach is
+preferrable as it allows individual modelling of passengers. Of course, to
+express demand as a single variable it needs to be an aggregation of the
+relevant individual variables.
 
 Therefore each passenger's demand is a function that of some variables. The
 different types of variables affecting taxi demand were discussed in Section
@@ -107,6 +113,11 @@ characteristics observed in reality such as demand variance during the day,
 lower passenger income in some areas resulting in lower willingness to pay,
 whether a trip is for pleasure or business, and others.
 
+\textbf{MVP:} passengers are stochastically generated at random points in the
+environment. Each passenger has a destination they wish to travel to, and a
+set of characteristics determining if they agree to pay a certain fare for the
+taxi ride (see above for exact formulas).
+
 
 \subsubsection{Taxis in Taxi Market}
 \label{sec:requirements:taxi}
@@ -130,7 +141,7 @@ regulation, bargaining is likely to happen: passengers state a destination,
 taxis bid passengers a fare, and passengers can agree with it, or decline it
 and give a countering bid or abandon the process. Bargaining allows taxis and
 passengers to agree on a mutually acceptable price. To simulate real-world
-behaviour, a reinforcement learning-based bargaining process can be used as
+behaviour, a reinforcement learning-based bargaining process could be used as
 described in \textcite{Cli1997taxi+bargaining}.
 
 However, sophisticated bargaining can be disregarded in the simulation if the
@@ -138,6 +149,12 @@ horizon is significantly long as the agreed fares should converge, albeit at a
 slower rate. A simpler approach is limiting the bargaining process to a single
 bid which is immediately accepted or declined by the passenger based on the
 demand \(Q\). To incentivise the taxi agent, each bid has a cost in time.
+
+\textbf{MVP:} taxi agents have fixed and variable costs, and they can travel in
+the environment. Taxis have a set of actions that they can take: offer a fare
+to a passenger (if one is present), wait at a location or drive to another
+location. If the offer is accepted, taxi drives the passenger to their
+destination, but the passenger is lost if the offer was declined.
 
 
 \subsubsection{Modelling reinforcement learning}
@@ -174,6 +191,9 @@ As recognised in \ref{sec:ai:mdp:methods}, the simplest reinforcement learning
 method to implement is Q-learner, and it is adequate for the above
 requirements.
 
+\textbf{MVP:} Q-learner agent for the taxi that interacts with the environment,
+taxi and passenger with a goal to maximise taxi's profit.
+
 
 \subsubsection{Benchmark} 
 
@@ -195,6 +215,8 @@ When a tarriff is chosen, the simulation can be run the exact same way as with
 a reinforcement learning, the only difference being the agent having no say
 about the fare. As the agent faces the same costs in both simulations, costs
 need not be taken in account.
+
+\textbf{MVP:} the simulation supports a taxi agent with a single fixed price.
 
 
 \subsection{Non-Functional Requirements}
