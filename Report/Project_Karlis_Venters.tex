@@ -25,23 +25,13 @@
 
 \todo{check spelling in all files}
 \maketitle
-% \input{./abstract}
 
-\newpage
 \pagenumbering{roman}
-\section*{Acknowledgements}
-\addcontentsline{toc}{section}{Acknowledgements}
 
-\newpage
-\section*{Abstract}
-\addcontentsline{toc}{section}{Abstract}
-\begin{abstract}~
-Abstract goes here
-\end{abstract}
+\input{./abstract}
 
-\newpage
-\section*{Declaration}
-\addcontentsline{toc}{section}{Declaration}
+\input{./acknowledgements}
+
 \input{./declaration}
 
 \newpage
@@ -52,63 +42,27 @@ Abstract goes here
 \addcontentsline{toc}{section}{List of Figures}
 \listoffigures
 
-\newpage
 \pagenumbering{arabic}
-\section{Introduction}
-\label{sec:intro}
 \input{./introduction}
-\input{./intro_goals}
 
-\newpage
-\section{Background}
-\label{sec:literature}
-\input{./literature_intro}
-\input{./literature_taxis}
-\input{./literature_ai}
-\input{./literature_related}
+\input{./literature}
 
-\newpage
-\section{Requirements}
-\label{sec:requirements}
 \input{./requirements}
 
-\newpage
-\section{Design}
-\label{sec:design}
-\input{./methods}
 \input{./design}
 
-\newpage
-\section{Implementation and Testing}
-\label{sec:implementation}
 \input{./implementation}
-\input{./testing}
 
-\newpage
-\section{Evaluation}
-\label{sec:evaluation}
-\input{./results}
 \input{./evaluation}
 
-\newpage
-\section{Conclusion}
-\label{sec:conclusion}
 \input{./conclusion}
 
 \newpage
 \printbibliography
 
-
 \appendix
-
-\clearpage
-\pagenumbering{roman}
-\section{Maintenance Manual}
 \input{./maintenance_manual}
 
-\newpage
-\pagenumbering{roman}
-\section{User Manual}
 \input{./user_manual}
 
 \end{document}

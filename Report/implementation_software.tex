@@ -1,0 +1,67 @@
+How well does the implementation work? (as judged from the description in the
+dissertation, and the demo)
+
+What is the quality, sophistication and difficulty of the software (or
+conceptual) implementation as judged from the description in the dissertation,
+and the demo?
+
+Is the programming (or modelling) style adequate and of good quality
+(efficient, reusable, modular, clear code)?
+
+Is the documentation in the code appropriate and useful?
+
+
+\subsection{Implementation}
+
+major system components, including main technologies
+
+\todo{issues either here or in evaluation}
+
+
+\subsubsection{Preliminaries}
+
+automated virtualisation using vagrant, virtualbox, rvm for cross-platform
+operation
+
+Ruby, rubygems and bundler as the base
+
+rspec and guard gems for supporting tdd. simplecov for code coverage to
+identify any untested code (remark that this is no guarantee of correctness)
+
+tests as specs
+
+git for versioning
+
+agent based modular design
+
+
+\subsubsection{User Interface}
+
+rake and text file editing for simple user interface
+
+runner for initialising and parsing input 
+
+
+\subsubsection{The Environment}
+
+world
+
+Network: modelled using graphing library 'plexus'. It has not implemented an
+algorithm to check for connectivity of directed graphs, therefore undirected
+graphs are used.
+
+
+\subsubsection{Learner}
+
+characteristics, initialisation etc.
+
+Q-learner algorithm
+
+
+\subsubsection{Taxi}
+
+taxi itself: characteristics, initialisation
+
+state
+
+action
