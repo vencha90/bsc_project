@@ -116,25 +116,6 @@
 \let\@abstract\relax
 \def\abstractname{Abstract}
 
-\def\@mymaketitle{
-  \begin{center}
-    {\LARGE\bfseries\@title\par}\vskip 1.5em
-    {\large\lineskip .5em
-      \begin{tabular}[t]{c}
-        \@author \vspace{6pt}\\
-        \department\\ \university
-      \end{tabular}\par}%
-    \vskip 1em%
-    {\large \@date}%
-  \end{center}%
-  \par\vskip 1.5em
-
-  \ifx\@abstract\relax\else
-    {\small\quotation\noindent{\bf\abstractname:} \@abstract}\endquotation
-  \fi
-  \null\par
-}
-
 \def\cleartitlevars{
   \global\let\thanks\relax
   \global\let\maketitle\relax
@@ -147,14 +128,6 @@
 \renewcommand{\maketitle}{
     \frontcoverpage
     \par
-    \begingroup
-    \renewcommand{\thefootnote}{\@fnsymbol\c@footnote}%
-    \newpage
-    \global\@topnum\z@   % Prevents figures from going at top of page.
-    \let\footnote\thanks
-    \@mymaketitle
-    \thispagestyle{plain}\@thanks
-    \endgroup
     \setcounter{footnote}{0}
     \cleartitlevars
 }
@@ -238,7 +211,7 @@
    \end{centering}\vspace*{1.0in}
 
    \vspace*{\stretch{1}}
-   \cp@DeptNameFont Fourth Year Honours Project\\
+   \cp@DeptNameFont Level 4 Single Honours Project (45 Credits) \\
    \cprule\vspace*{0.4ex}\\
    \cp@DeptNameFont Department of \cp@deptname\ \hfill 
       \cp@NumberFont\cp@monthyear\\
