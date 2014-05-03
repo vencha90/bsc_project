@@ -9,7 +9,7 @@ in sufficient detail to make it easy for someone else to replicate the system?
 Has the student justified the design decisions, and discussed alternatives that
 were considered?
 
-\todo{Move algorithm to implementation}
+\todo{Move algorithm to implementation??}
 
 \subsubsection{Road Network}
 \label{sec:design:network}
@@ -120,9 +120,7 @@ exploration function (not shown here).
 \subsection{Architecture} 
 \label{sec:design:architecture}
 
-A software overview diagram is shown in Figure \ref{figure:design:software}.
-
-\todo{any other considerations?}
+\todo{reconsider how to write this section}
 
 \begin{figure}
   \begin{center}
@@ -133,3 +131,42 @@ A software overview diagram is shown in Figure \ref{figure:design:software}.
     }
   \end{center}
 \end{figure}
+
+A software overview diagram is shown in Figure \ref{figure:design:software}.
+This section will explain the diagram and how the software operates.
+
+When running the simulation, initially some user inputs are processed by the
+input module. It validates that the input data (initially parsed from files or
+command line parameters) is correct, stopping the program and warning the user
+if any invalid data was found. The rest of the system is then initialised
+according to the parameters, and a simulation is started.
+
+The environment module is the highest hierarchy simulation object where all
+other objects operate in. It is used for keeping track of global variables such
+as time and the road network. The environment can directly affect the taxi and
+passengers, setting their parameters, and taxis can query the environment for
+some information.
+
+The road network is internally represented as a graph, and is where taxis and
+passengers are located and interact in.
+
+Passengers can accept or decline taxis' offers respective to their internal state. If
+accepted, passengers travel with the taxi in the road network and pay the
+agreed fare. Irregardless of the action taken, passengers disappear after any
+action is completed.
+
+Taxi is the most complex object in the software. Over time taxi experiences its
+own costs (fixed costs and variable costs). Taxis can take three types of
+actions: wait at a location, drive to a different location, or offer a fare to
+a passenger (if one is present). Taxi's actions are decided by its learner
+module. The taxi passes information from the environment to the learner and
+receives calls to action. For example, the learner needs to know what prices it
+can set (from taxi itself or the environment), what locations it can drive to
+(from the road network), whether there is a passenger at the current location
+(from the environment), what the passenger's answer to the offer was (from the
+passenger).
+
+Finally, there is an output module that logs simulation data to files for
+analysis.
+
+\todo{what other software components are used}
