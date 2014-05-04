@@ -18,8 +18,8 @@ around each goal as they contain several requrements that sometimes overlap
 with other goals. Each of the following requirement categories is discussed in
 detail, listing what could be implemented in the best case scenario without any
 time pressure. However, to stay realistic and make sure that core functional
-requirements are prioritised, they are clearly noted as MVP (Minimum Viable
-Product) at the end of every section.
+requirements are prioritised, the minimal requirements are separately summed up
+in Table \ref{table:requirements} for each of the following sections.
 
 
 \subsubsection{Market Considerations}
@@ -49,9 +49,6 @@ assuming a constant demand. Furthermore, if the environment is fixed, the
 simulation only needs to support a single taxi at the very least. As the design
 is planned modular, the variable demand can be factored in later when
 necessary.
-
-\textbf{MVP:} fixed environment with a fixed demand for taxi services, that
-supports a single taxi cruising in a road network.
 
 
 \subsubsection{Demand: Modelling Passengers}
@@ -117,11 +114,6 @@ characteristics observed in reality such as demand variance during the day,
 lower passenger income in some areas resulting in lower willingness to pay,
 whether a trip is for pleasure or business, and others.
 
-\textbf{MVP:} passengers are stochastically generated at random points in the
-environment. Each passenger has a destination they wish to travel to, and a
-set of characteristics determining if they agree to pay a certain fare for the
-taxi ride (see above for exact formulas).
-
 
 \subsubsection{Taxis in Taxi Market}
 \label{sec:requirements:taxi}
@@ -154,20 +146,14 @@ slower rate. A simpler approach is limiting the bargaining process to a single
 bid which is immediately accepted or declined by the passenger based on the
 demand \(Q\). To incentivise the taxi agent, each bid has a cost in time.
 
-\textbf{MVP:} taxi agents have fixed and variable costs, and they can travel in
-the environment. Taxis have a set of actions that they can take: offer a fare
-to a passenger (if one is present), wait at a location or drive to another
-location. If the offer is accepted, taxi drives the passenger to their
-destination, but the passenger is lost if the offer was declined.
-
 
 \subsubsection{Modelling reinforcement learning}
 \label{sec:requirements:ai}
 
 The research problem needs to be formally defined from a reinforcement learning
-point of view according to the definitions in sections \ref{sec:ai:mdp} and
-\ref{sec:ai:pomdp}. Maximising the profit can be chosen as the goal of the taxi
-agent's operation.
+point of view according to the definitions in sections
+\ref{sec:literature:ai:mdp} and \ref{sec:literature:ai:pomdp}. Maximising the
+profit can be chosen as the goal of the taxi agent's operation.
 
 It can be assumed that taxi has a complete knowledge of the road network it is
 operating in - a realistic assumption given modern GPS navigation systems. In
@@ -187,16 +173,14 @@ paying their fares.
 If passengers wait at a location for a longer time, then taxis can form
 expectations about the possibility of encountering passengers at each location.
 To keep track of this uncertainty an agent would need a belief model as
-discussed in Section \ref{sec:ai:pomdp}. This complexity can be avoided by
-assuming that passengers do not wait for taxis and appear at a location for a
-single moment in time only.
+discussed in Section \ref{sec:literature:ai:pomdp}. This complexity can be
+avoided by assuming that passengers do not wait for taxis and appear at a
+location for a single moment in time only.
 
-As recognised in \ref{sec:ai:mdp:methods}, the simplest reinforcement learning
-method to implement is Q-learner, and it has been just proven to be adequate
-for the minimum requirements when the complexity is reduced.
-
-\textbf{MVP:} Q-learner agent for the taxi that interacts with the environment,
-taxi and passenger with a goal to maximise taxi's profit.
+As recognised in \ref{sec:literature:ai:mdp:methods}, the simplest
+reinforcement learning method to implement is Q-learner, and it has been just
+proven to be adequate for the minimum requirements when the complexity is
+reduced.
 
 
 \subsubsection{Benchmark} 
@@ -215,13 +199,40 @@ distance just like taxi costs, therefore it is a good indicator for taxi
 efficiency. The exact tarriff can be calculated by fixing probability
 distributions for the stochastic process and using average values.
 
-When a tarriff is chosen, the simulation can be run the exact same way as with
-a reinforcement learning, the only difference being the agent having no say
-about the fare. As the agent faces the same costs in both simulations, costs
-need not be taken in account.
+When a tariff is chosen, the simulation can be run the exact same way as with a
+reinforcement learning, the only difference being the agent having no say about
+the fare. As the agent faces the same costs in both simulations, costs need not
+be taken in account.
 
-\textbf{MVP:} the simulation supports a taxi agent with a single fixed price.
 
+\begin{table}
+\begin{tabular}{| p{0.15 \textwidth} | p{0.8 \textwidth} |}
+  \hline
+  
+  Market considerations & A fixed environment with a fixed demand for taxi
+  services, that supports a single taxi cruising in a road network \\ \hline
+
+  Passengers & Passive agents that are stochastically generated at random
+  points in the environment. Each passenger has a destination they wish to
+  travel to, and a set of characteristics determining if they agree to pay a
+  certain fare for the taxi ride \\ \hline
+
+  Taxi & An active agent that have fixed and variable costs, and that can travel
+  in the environment. Taxi has a set of actions that it can take: offer a fare
+  to a passenger (if one is present), wait at a location or drive to another
+  location. If the offer is accepted, the taxi drives the passenger totheir
+  destination, but the passenger is lost if the offer was declined. \\ \hline
+
+  Reinforcement Learning & A Q-learner agent for the taxi that interacts with
+  the environment, the taxi and the passengers with a goal to maximise the
+  taxi's profit \\ \hline
+
+  Benchmark & The simulation supports a taxi agent with a single fixed price \\
+  \hline
+\end{tabular}
+\caption{Summary of Functional Requirements}
+\label{table:requirements}
+\end{table}
 
 \subsection{Non-Functional Requirements}
 
