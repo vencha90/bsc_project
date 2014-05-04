@@ -13,16 +13,15 @@ were considered?
 
 \subsubsection{Road Network}
 \label{sec:design:network}
+\todo{move to implementation, this is too in-depth for arch}
 
 A real world road network is represented as a weighted connected graph
 constructed of edges (roads) and vertices (origins/destinations). Each vertex
 has associated properties: a list of connected edges with their lengths
-(weights), a list of passengers, potentially a list of taxis. Each edge has
-associated properties: length, potentially speed limit and toll. Taxis can
-travel between vertices using edges. Taxis are assumed to take the shortest
-routes and travel at a constant speed. Passengers appear at nodes and when taxi
-is at a node it is assumed that they can interact, and the passengers wait for
-a set amount of time.
+(weights), a passenger and a taxi (if present). Taxis can travel between
+connected vertices, and are assumed to take the shortest routes and travel at a
+constant speed. Passengers appear at nodes and when taxi is at a node  they can
+interact.
 
 Road networks have a specific structure that is different from generic randomly
 generated graphs. \textcite{Eisenstat2011graphs+quadtree} believes that the
@@ -32,8 +31,8 @@ algorithmic performance greatly differs from that on generic graphs. Uniform
 planar graphs are a reasonably realistic way to represent road networks
 \parencite{Eisenstat2011graphs+quadtree, Masucci2009graphs+london}. A way to
 generate random planar graphs is suggested by
-\textcite{Brinkmann2007graphs+generate}, for which ready-to-use software called
-\textit{plantri} is available.
+\textcite{Brinkmann2007graphs+generate}, including software called
+\textit{plantri}.
 
 Shortest paths in graphs can be calculated by Djikstra's algorithm
 \parencite{Cormen2009algorithms}. However, calculating all possible shortest
@@ -43,9 +42,12 @@ exponentially. Online calculation of a shortest path between two nodes in a
 graph can be efficiently done using \textit{A-star} algorithm by
 \textcite{Hart1968paths}.
 
+\todo{graph library choice}
+
 
 \subsubsection{Q-Learner}
 \label{sec:design:ai}
+\todo{move to implementation, this is too in-depth for arch}
 
 State is based on the origin, passenger and intended destination. Actions a
 taxi can take is enquiring a passenger for destination, offering a price or
@@ -120,7 +122,7 @@ exploration function (not shown here).
 \subsection{Architecture} 
 \label{sec:design:architecture}
 
-\todo{reconsider how to write this section}
+\todo{consider implementation}
 
 \begin{figure}
   \begin{center}
@@ -133,7 +135,7 @@ exploration function (not shown here).
 \end{figure}
 
 A software overview diagram is shown in Figure \ref{figure:design:software}.
-This section will explain the diagram and how the software operates.
+This section explains the diagram and how the software operates.
 
 When running the simulation, initially some user inputs are processed by the
 input module. It validates that the input data (initially parsed from files or
@@ -169,4 +171,94 @@ offer was (from the passenger).
 Finally, there is an output module that logs simulation data to files for
 analysis.
 
-\todo{what other software components are used}
+
+\subsection{Technologies}
+
+One of the core technologies used was \textit{git} \parencite{Git} version
+control software. Git when used in conjunction with \textit{GitHub}
+\parencite{Github} enabled easy code backups to be hosted safely online.
+Besides this, commit messages were aimed to be descriptive so that they serve
+as a form of documentation of programmer's intentions.
+
+The rest of the technologies used for this project form distinct groups and are
+described in the following sections.
+
+\subsubsection{Programming Language}
+
+\textit{Ruby} programming language was chosen as the core technology for this
+project due to author's familiarity with it and its related technologies. Ruby
+is an object-oriented "dynamic, open source programming language with a focus
+on simplicity and productivity. It has an elegant syntax that is natural to
+read and easy to write" \parencite{Ruby}.
+
+Ruby has many open-source libraries called \textit{gems} available, hosted and
+managed locally by \textit{rubygems} software \parencite{Rubygems}. As these
+gems have different versions and depencencies, they need to be managed on a
+per-application basis - this process is made easy by \textit{bundler}
+\parencite{Bundler}. More on these tools can be found in the Maintenance Manual
+in Appendix \ref{sec:maintenance}.
+
+\subsubsection{Cross-Platform Operation and Automation}
+
+Managing different Ruby versions on a single computer can be cumbersome in case
+it is needed for multiple Ruby applications. Furthermore, Ruby development for
+Windows operating systems (OS) is several months behind development on Unix-
+based systems \parencite{Ruby}, rendering the latest versions of Ruby unusable
+directly on Windows, at the time of writing including the one this project is
+using.
+
+Fortunately, this can easily be avoided by using the following software:
+\textit{VirtualBox} \parencite{Virtualbox} virtualisation software to host any
+of the most popular OSs, \textit{Vagrant} \parencite{Vagrant} to automatically
+manage the OSs and software installed on them, and \textit{RVM} \parencite{Rvm}
+to manage Ruby versions on a single OS. Detailed instructions on using this
+software stack with Ruby are in the Maintenance Manual in Appendix
+\ref{sec:maintenance}. This method also means that the programmer can easily
+move between computers as the setup costs are significantly reduced by
+automation.
+
+
+\subsubsection{Supporting Test-Driven Development}
+\label{sec:design:software:tdd}
+
+As was explained in Section \ref{sec:design:tdd}, Test-Driven Development (TDD)
+is an important method for software development in this project. Therefore
+supporting effective TDD is critical. \textit{RSpec} is a TDD testing tool for
+Ruby \parencite{Rspec}. The tests are meant to describe the desired behaviour of
+software in natural English.
+
+An example RSpec test scenario is shown in Figure \ref{figure:RSpec}. This test
+specifies behaviour of some ruby class 'Class' which should have a 'currency'
+method that returns 'EURO'. If multiple tests are written specifying the
+expected behaviour in different conditions, then RSpec tests becomes a form of
+programmer-friendly documentation that is executable and protects the code from
+introducing regression bugs.
+
+\begin{figure}
+  \begin{verbatim}
+    describe Class do
+      describe '#currency' do
+        it 'is EURO' do
+          instance = Class.new
+          expect(instance.currency).to eq('EURO')
+        end
+      end
+    end
+  \end{verbatim}
+  \caption{
+    RSpec test example
+    \label{figure:RSpec}
+  }
+\end{figure}
+
+RSpec can be enhanced by other tools. \textit{Simplecov} \parencite{Simplecov}
+is a code coverage tool that monitors test coverage of a codebase by checking
+how many lines of code are executed when running the test suite. \textit{Guard}
+\parencite{Guard} is a tool that monitors file changes and executes appropriate
+events (i.e. running RSpec tests). This can make a developer's TDD workflow
+streamlined leaving with only tests and code to write.
+
+At the time of submission this project's test coverage according to Simplecov
+was 99.72\% (1053/1056 lines of code covered). Of course, despite the RSpec
+tests and Simplecov test coverage, they in no way guarantee correct and
+effective code and could even lead to a false sense of security.
