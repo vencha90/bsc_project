@@ -150,21 +150,21 @@ some information.
 The road network is internally represented as a graph, and is where taxis and
 passengers are located and interact in.
 
-Passengers can accept or decline taxis' offers respective to their internal state. If
-accepted, passengers travel with the taxi in the road network and pay the
-agreed fare. Irregardless of the action taken, passengers disappear after any
-action is completed.
+Passengers (passive agents) can accept or decline taxis' offers respective to
+their internal state. If accepted, passengers travel with the taxi in the road
+network and pay the agreed fare. Irregardless of the action taken, passengers
+disappear after any action is completed.
 
-Taxi is the most complex object in the software. Over time taxi experiences its
-own costs (fixed costs and variable costs). Taxis can take three types of
-actions: wait at a location, drive to a different location, or offer a fare to
-a passenger (if one is present). Taxi's actions are decided by its learner
-module. The taxi passes information from the environment to the learner and
-receives calls to action. For example, the learner needs to know what prices it
-can set (from taxi itself or the environment), what locations it can drive to
-(from the road network), whether there is a passenger at the current location
-(from the environment), what the passenger's answer to the offer was (from the
-passenger).
+Taxi (an active agent) is the most complex object in the software. Over time
+taxi experiences its own costs (fixed costs and variable costs). Taxis can take
+three types of actions: wait at a location, drive to a different location, or
+offer a fare to a passenger (if one is present). Taxi's actions are decided by
+its learner module. The taxi passes information from the environment to the
+learner and receives calls to action. For example, the learner needs to know
+what prices it can set (from taxi itself or the environment), what locations it
+can drive to (from the road network), whether there is a passenger at the
+current location (from the environment), what the passenger's answer to the
+offer was (from the passenger).
 
 Finally, there is an output module that logs simulation data to files for
 analysis.
