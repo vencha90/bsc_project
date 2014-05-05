@@ -1,3 +1,5 @@
+\todo{remove notes}
+
 (15, 3000w?)
 
 How well does the implementation work? (as judged from the description in the
@@ -15,12 +17,13 @@ Is the documentation in the code appropriate and useful?
 
 \subsection{Implementation}
 
-\todo{intro?}
+This section explains how the system was implemented following the software
+architecture specified in Section \ref{sec:design:architecture}. Besides a
+detailed look at the software modules, this section is concluded by an overview
+of known limitations and issues with the current implementation.
 
-Not mentioning output in detail
 
-
-\subsubsection{User Interface}
+\subsubsection{User Interface: Input and Output}
 
 User interface is a low-priority requirement and needs to provide minimal
 interactivity, therefore command line interface was deemed appropriate. Ruby
@@ -38,10 +41,21 @@ file is given in the User Manual in Appendix \ref{sec:user_manual}.
 
 \todo{include validation specs in maintenance manual?}
 
+Simulation output is provided in log files, important data being written with
+each iteration of the simulation. The output can easily be configured by
+developers following the explanation in the Maintenance Manual in Appendix
+\ref{sec:Maintenance_manual}. The output logging is a code module that can be
+reused in other source files as needed.
+
 
 \subsubsection{The Environment}
 
-
+The environment is initialised based on the user input as discussed in the User
+Manual in Appendix \ref{sec:user_manual}. The environment in turn initialises
+all simulation objects and agents, and runs the smulation twice: once to
+establish a benchmark with a fixed taxi fare price, and once using a range of
+fare prices. To reduce software coupling, the implementation also abstracts
+some methods of the road network that are used by taxis and passengers.
 
 
 \subsubsection{Road Network}
@@ -115,23 +129,24 @@ essentially a tuple of \(\left \langle location, destination \right \rangle\)
 where the destination can be empty.
 
 
+\subsubsection{Passenger}
+\label{sec:implementation:passenger}
+
+As was identified in Section \ref{sec:requirements:passenger}, passengers have
+a set of characteristics and can passively interact with taxis. As each
+characteristic is potentially a complex object with different values and
+probability distributions, it was decided to implement it as a subclass of
+Passenger class. Passengers agents are generated on demand if a taxi is
+present, according to a location's probability of having a passenger.
+
+These software classes were designed with the goal of eventually having user-
+customisable passenger details and characteristics. However, due to time
+pressure and higher priority goals, the passenger details and characteristics
+are fixed and uniform.
+
+
 \subsubsection{Q-Learner}
 \label{sec:implementation:ai}
-
-\todo{Subclass of taxi}
-
-\todo{Move section to architecture or requirements} State is based on the
-origin, passenger and intended destination. Actions a taxi can take is
-enquiring a passenger for destination, offering a price or driving to another
-place. If the passenger accepts the price, taxi drives the passenger to the
-destination and receives a reward. Keeping track of the exact passenger is not
-important. Each time step has a negative reward based on what action the taxi
-is taking, always depending on time but also could depend on distance
-travelled. The probability of the passenger accepting the fare is the
-transition probability. This specifies the research problem as a finite MDP
-according to the definition in Section \ref{sec:literature:ai:mdp} (although it
-can be argued that prices could theoretically be a continuous space, in reality
-they are not).
 
 As described in section \ref{sec:requirements:ai}, Q-Learner is a simple and
 adequate reinforcement learning method fit for the project. Of course, the very
@@ -157,9 +172,9 @@ When the step size function is added to a basic Q-Learner, the algorithm
 adapted from \textcite{Sutton1998ai+reinforcement} can be used as shown in
 Algorithm \ref{algorithm:q}. This algorithm updates action-state pair value
 estimates, and the learner can then select the optimal action depending on the
-exploration function (action selection is not shown here). The required inputs
-for initialisation and for further operation of the algorithm are clearly
-listed.
+exploration function (action selection algorithm is not shown here). The
+required inputs for initialisation and for further operation of the algorithm
+are clearly listed.
 
 \begin{algorithm}
   \caption{
@@ -191,24 +206,28 @@ listed.
 \end{algorithm}
 
 
-\subsubsection{Passenger}
+\subsubsection{Limitations and Issues}
 
-As was identified in Section \ref{sec:requirements:passenger}, passengers have
-a set of characteristics and can passively interact with taxis. As each
-characteristic is potentially a complex object with different values and
-probability distributions, it was decided to implement it as a subclass of
-Passenger class. Passengers agents are generated on demand if a taxi is
-present, according to a location's probability of having a passenger.
+One of the main problems with the existing implementation is the non-
+transparent management of default variables. These variables are used for
+setting some parameters when user input is not supplied, and used for setting
+many parameters where user input is not supported yet (e.g. passenger details).
+At the moment these default settings are stored in their respective class
+source code files. This approach is infeasible because it complicates
+maintainability and configurability of the system. This issue could be solved
+by managing these values in a single file. To compensate for the loss of
+context, this file would need to be commented similarly to a user manual.
 
-These software classes were designed with the goal of eventually having user-
-customisable passenger details and characteristics. However, due to time
-pressure and higher priority goals, the passenger details and characteristics
-are fixed and uniform.
+A less important issue is the taxi action sequence not mimicing real world
+processes. In the simulation the taxi executes actions, travels and selects the
+next actions immideately while it is only rendered inactive for some time
+afterwards; this causes no problems now but could cause issues if multiple taxi
+agents are introduced.
 
+The limited configurability was emphasized with the relation to passengers in
+Section \ref{sec:implementation:passenger}, but other objects are also using a
+few default variables that could be set explicitly.
 
-\subsubsection{Implementation Issues}
-
-Constants are not transparent
-
-Process not entirely realistic as passenger is set and action is chosen before
-the previous action is completed
+Finally, the user interface is primitive and requires the user to be familiar
+with operating a command line terminal. Additionally, there are no progress
+indicators shown to the user when the simulation is running.
