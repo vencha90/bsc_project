@@ -9,13 +9,30 @@ dissertation (e.g. was the software tested for exceptions, scalability, etc.)?
 
 \subsubsection{Automated Tests}
 
-Test-Driven Development was introduced in Section \ref{sec:design:tdd}. The TDD
-process was not followed to the letter: \todo{discuss why, and what actually
-was observed and done and compare to theory}
+Test-Driven Development (TDD) was introduced in Section \ref{sec:design:tdd}.
+The TDD process was not followed to the letter. Firstly, in some cases with
+unfamiliar and unknown problems tests and code were written intermittently as
+uncertainty was slowly reduced. Another reason for not following TDD was the
+lax requirements for user interface, where software development alternated
+between tests-first and code-first trying to find the easiest solutions to
+requirements.
 
-A few examples of tests perhaps
+Most of the tests used are black-box unit tests. These tests allow internal
+refactoring of software without (theoretically) affecting the overall system
+functionality. As expected, black box testing was not sufficient for testing
+the Q-Learner where white-box testing was utilized. Additionally, the Taxi
+class was white-box tested to an extent, potentially suggesting that it could
+have been refactored in separate modules. Integration tests were used for each
+top-level class, for example, integration tests for Taxi class tested how it
+integrates Action and State classes.
 
-simplecov picked up overlooked branches of code
+At the time of submission this project's automated test coverage according to
+Simplecov was 99.72\% (1053/1056 lines of code covered). Of course, despite the
+RSpec tests and Simplecov test coverage, they in no way guarantee correct and
+effective code and could even lead to a false sense of security. Nevertheless,
+it is very likely that usage of Simplecov has improved overall code quality as
+it did identify some code branches that had not been covered by automated
+tests.
 
 
 \subsubsection{User Testing}
@@ -23,18 +40,28 @@ simplecov picked up overlooked branches of code
 user testing was done after software development
 was completed. \todo{User testing needs to be done}
 
-Usability and configurability - problems with limited inputs, problems with
-nontransparent defaults, problems with installing dependencies
-
+complex setup for users not having ruby and on non-unix OS
 
 \subsubsection{Performance Testing}
 
-Scalability, limits of software. 
+Only one performance issue was noticed during the usage of the system: A-star
+search was chosen for calculating distances between locations. However, this
+required repeated graph traversal in the naive form that it was implemented.
+This oversight was quickly mitigated by storing the calculated distances in
+memory and only traversing the graph for unknown distances.
 
-Speed and efficiency: time limit, graph dimensions, price range. 
+The main expected software limitation is caused by the dimensionality of state-
+action space for Q-Learner. After a certain threshold (system-dependent) it is
+likely to exhaust available random access memory and require writing to hard
+drive, thus significantly reducing simulation speed. State-action space depends
+on the size of the road network and the range of prices available to the taxi.
+To be exact, the dimensionality equals \( (n-1) \cdot n \cdot p\), where \(n\)
+is number of locations, \(n-1\) is the number of reachable locations and \(p\)
+is the number of available prices.
 
-Distances are stored in memory and the expensive A* search is only used for
-unknown distances. (Move to Design and architecture Section \ref{sec:design})
+A final less serious issue some users might run into is the considerable
+size of simulation log files that have a data row for each time unit of the
+simulation. Dealing with this issue is covered in User Manual in Appendix \ref{sec:user_manual}.
 
 
 \subsubsection{Known Issues}
