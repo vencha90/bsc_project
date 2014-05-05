@@ -15,21 +15,34 @@ Is the documentation in the code appropriate and useful?
 
 \subsection{Implementation}
 
-\todo{major system components, including main technologies}
+\todo{intro?}
 
-\todo{issues either here or in evaluation}
+Not mentioning output in detail
 
 
 \subsubsection{User Interface}
 
-rake and text file editing for simple user interface
+User interface is a low-priority requirement and needs to provide minimal
+interactivity, therefore command line interface was deemed appropriate. Ruby
+provides many command line commands. However, to comply with a common practice
+for ruby applications it was decided to use \textit{Rake} \parencite{Rake}, a
+software task managament tool to make all application tasks easily available to
+users. A full set of instructions for using Rake and the available commands is
+available in the User Manual in Appendix \ref{sec:user_manual}.
 
-runner for initialising and parsing input 
+User input is provided in a text file which is parsed and instantiates the
+environment and other simulation objects. Some care has been taken to provide
+data validation to ensure a successful simulation and to give users feedback
+about what expected common input mistakes. The full guide to using an input
+file is given in the User Manual in Appendix \ref{sec:user_manual}.
+
+\todo{include validation specs in maintenance manual?}
 
 
 \subsubsection{The Environment}
 
-world
+
+
 
 \subsubsection{Road Network}
 \label{sec:design:network}
@@ -72,15 +85,40 @@ mentioned above.
 
 \subsubsection{Taxi}
 
-taxi itself: characteristics, initialisation
+The taxi agent is arguably the most important component of the simulation. It
+stores its location and reachable destinations in the environment, the last
+reward received, a list of possible prices, and its costs. Taxi initialises the
+Q-Learner (see Section \ref{sec:implementation:ai}) with an initial state and a
+list of available actions that depend on the location, list of available prices
+and presence of a passenger.
 
-state
+A taxi is called to act by the World, when it processes an action and updates
+internal parameters. The Q-Learner is updated with the reward for taking the
+action, and the taxi is marked as engaged for as long as the action takes. Then
+taxi's location and total profit are updated, and it is decided if the new
+location has a passenger present. A new action is then chosen by the Q-Learner,
+which will be executed the next time the taxi is called to act.
 
-action
+Action is a subclass of Taxi. Each action has a known type: \textit{wait},
+\textit{drive} to a location without transporting a passenger or \textit{offer}
+a fare for transporting a passenger to a location. All of the action types have
+a known \textit{fixed cost}, \textit{variable cost} (not used for
+\textit{wait}) and \textit{units} of time the action takes. The costs and units
+are used to calculate a cost for action. \textit{Drive} or \textit{offer}
+actions additionally have a known destination, and \textit{offer} action can
+has different costs depending on whether the offer was accepted by a passenger.
+When the taxi starts an action, it is marked as busy.
+
+Each location has two states that the taxi can discern -- without a passenger
+present or with a passenger going to a certain location. Each state is
+essentially a tuple of \(\left \langle location, destination \right \rangle\)
+where the destination can be empty.
 
 
 \subsubsection{Q-Learner}
-\label{sec:design:ai}
+\label{sec:implementation:ai}
+
+\todo{Subclass of taxi}
 
 \todo{Move section to architecture or requirements} State is based on the
 origin, passenger and intended destination. Actions a taxi can take is
@@ -155,7 +193,22 @@ listed.
 
 \subsubsection{Passenger}
 
+As was identified in Section \ref{sec:requirements:passenger}, passengers have
+a set of characteristics and can passively interact with taxis. As each
+characteristic is potentially a complex object with different values and
+probability distributions, it was decided to implement it as a subclass of
+Passenger class. Passengers agents are generated on demand if a taxi is
+present, according to a location's probability of having a passenger.
+
+These software classes were designed with the goal of eventually having user-
+customisable passenger details and characteristics. However, due to time
+pressure and higher priority goals, the passenger details and characteristics
+are fixed and uniform.
+
 
 \subsubsection{Implementation Issues}
 
 Constants are not transparent
+
+Process not entirely realistic as passenger is set and action is chosen before
+the previous action is completed
