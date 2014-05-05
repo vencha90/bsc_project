@@ -42,10 +42,10 @@ file is given in the User Manual in Appendix \ref{sec:user_manual}.
 \todo{include validation specs in maintenance manual?}
 
 Simulation output is provided in log files, important data being written with
-each iteration of the simulation. The output can easily be configured by
-developers following the explanation in the Maintenance Manual in Appendix
-\ref{sec:Maintenance_manual}. The output logging is a code module that can be
-reused in other source files as needed.
+each iteration of the simulation. The output can easily be configured and
+changed by developers following the explanation in the Maintenance Manual in
+Appendix \ref{sec:Maintenance_manual}. The output logging is a module that can
+be reused in other source files as needed.
 
 
 \subsubsection{The Environment}
@@ -226,8 +226,12 @@ agents are introduced.
 
 The limited configurability was emphasized with the relation to passengers in
 Section \ref{sec:implementation:passenger}, but other objects are also using a
-few default variables that could be set explicitly.
+few default variables that could be set explicitly. 
 
-Finally, the user interface is primitive and requires the user to be familiar
-with operating a command line terminal. Additionally, there are no progress
-indicators shown to the user when the simulation is running.
+User interface is primitive and requires the user to be familiar with operating
+a command line terminal. Additionally, there are no progress indicators shown
+to the user when the simulation is running.
+
+Finally, Ruby is a single threaded language, which could be problematic for a
+future extension to a multi-agent system.
+
