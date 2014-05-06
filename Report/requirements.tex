@@ -151,7 +151,7 @@ demand \(Q\). To incentivise the taxi agent, each bid has a cost in time.
 \label{sec:requirements:ai}
 
 The research problem needs to be formally defined from a reinforcement learning
-point of view according to the definitions in sections
+point of view according to the definitions in Sections
 \ref{sec:literature:ai:mdp} and \ref{sec:literature:ai:pomdp}. Maximising the
 profit can be chosen as the goal of the taxi agent's operation.
 
@@ -163,12 +163,12 @@ is formed of the passenger origin-destination pairs i.e. some state \(s = (o,
 d) \). The passenger demand for each of these origin-destination states is
 stochastic as mentioned in Section \ref{sec:requirements:passenger}. 
 
-The actions that a taxi can take were discussed in \ref{sec:requirements:taxi}.
-A simple reward function is as follows. For each moment of time that a taxi is
-active, there is an immediate negative reward based on fixed costs and salary
-variable costs. If the taxi takes travels, it suffers a negative reward based
-on travel variable costs. The only positive reward it gains is from passengers
-paying their fares.
+The actions that a taxi can take were discussed in Section
+\ref{sec:requirements:taxi}. A simple reward function is as follows. For each
+moment of time that a taxi is active, there is an immediate negative reward
+based on fixed costs and salary variable costs. If the taxi takes travels, it
+suffers a negative reward based on travel variable costs. The only positive
+reward it gains is from passengers paying their fares.
 
 If passengers wait at a location for a longer time, then taxis can form
 expectations about the possibility of encountering passengers at each location.
@@ -177,7 +177,7 @@ discussed in Section \ref{sec:literature:ai:pomdp}. This complexity can be
 avoided by assuming that passengers do not wait for taxis and appear at a
 location for a single moment in time only.
 
-As recognised in \ref{sec:literature:ai:mdp:methods}, the simplest
+As recognised in Section \ref{sec:literature:ai:mdp:methods}, the simplest
 reinforcement learning method to implement is Q-learner, and it has been just
 proven to be adequate for the minimum requirements when the complexity is
 reduced.
@@ -191,7 +191,7 @@ establish the average best-case scenario for both passengers and taxis. If the
 reinforcement learning agent can reach or exceed similar profits it will mean
 that the experiment was a success.
 
-As noted in \ref{sec:literature:taxis:demand}, the demand and supply
+As noted in Section \ref{sec:literature:taxis:demand}, the demand and supply
 relationship is complex in taxi market. Therefore an equilibrum cannot be
 easily calculated and is unlikely to have real value. However, the expected
 fare from the Equation \ref{eq:requirements:demand} linearly depends on

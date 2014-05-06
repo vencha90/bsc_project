@@ -30,38 +30,22 @@ Usage of this software requires basic familiarity with command line terminal.
 
 The software is recommended to run on a computer with at least 1 GB of RAM. All
 of the installation steps are compulsory unless stated otherwise. A fast
-internet connection is required for installation, and as it relies on external
-services a 100\% availability cannot be guaranteed.
+internet connection could be required for installation of some supporting
+software, and as it relies on external services a 100\% availability cannot be
+guaranteed.
 
 
 \subsection{Installation}
+\label{sec:user_manual:installation}
 
-Commands that should be used in command line terminal are marked
-\textit{(cmd)}, commands that require downloading software from the world wide
-web are marked \textit{(web)}.
+If you do not have the source code of the software available, it can be
+downloaded as a \textit{zip} archive from \url{https://github.com/vencha90
+/taxi-sim/archive/master.zip}.
 
-\begin{itemize}
-  \item \textit{(web)} Install Git \parencite{Git} version control from 
-        \url{http://git-scm.com/}.
-  \item \textit{(cmd)} Open a command line terminal.
-  \item \textit{(cmd)} Clone source code to a suitable directory on your local
-        hard drive using this command: 
-        \textit{git clone git@github.com:vencha90/taxi-sim.git}
-  \item \textit{(cmd)} Change the working directory to the project's source
-        code: \textit{cd taxi-sim}. Taxi-sim is the name of the software.
-\end{itemize}
-
-It is recommended that you use virtualisation as described in Section
-\ref{sec:user_manual:installation:virtualisation}. This will ensure that only
-the correct required dependencies are installed and your operating system is
-not corrupted by potentially conflicting software. 
-
-If you still do not wish to use virtualisation, there are alternatives for
-unix-like systems. You can install RVM \parencite{Rvm} from
-\url{http://rvm.io/} and then install Ruby by running \textit{rvm install
-2.1.1} in terminal. You also need to install Bundler \parencite{Bundler} by
-running \textit{gem install bundler \&\& bundle install} to manage
-dependencies. Instead of RVM you could use \textit{rbenv} \parencite{Rbenv}.
+For running the software it is recommended that you use virtualisation as
+described in Section \ref{sec:user_manual:installation:virtualisation}. If you
+wish to install the software stack to your operating system natively, please
+see Maintenance Manual in Appendix \ref{sec:maintenance_manual:native_install}.
 
 
 \subsubsection{Virtualisation}
@@ -70,11 +54,10 @@ dependencies. Instead of RVM you could use \textit{rbenv} \parencite{Rbenv}.
 Virtualisation is recommended for most unix-like operating systems (including
 Mac OS X and Linux derivatives), but absolutely required for Windows. At the
 time of writing, Windows does not support Ruby 2.1.1 which is required for this
-software. Even when 2.1 support is added, using Windows natively could cause
-you nasty surprises!
+software.
 
-Vagrant's configuration used here in \textit{Vagrantfile} and
-\textit{vagrant\_manifest.pp} is adapted from the work of
+Vagrant's configuration files \textit{Vagrantfile} and
+\textit{vagrant\_manifest.pp} used here are adapted from the work of
 \textcite{Rails+dev+box}.
 
 \begin{itemize}
@@ -94,15 +77,15 @@ Vagrant's configuration used here in \textit{Vagrantfile} and
         directory to the software. Vagrant synchronises this directory with the
         software directory you cloned to your machine a few steps ago.
   \item \textit{(cmd)} The final step before you can use Taxi-sim is installing
-        the latest \textit{gem} (software library) dependencies by running 
-        \textit{bundle install}. When this step is finished you are ready to
-        use Taxi-sim!
+        the \textit{gem} (software library) dependencies by running 
+        \textit{bundle install --local}. When this step is finished you are ready to use Taxi-sim!
 \end{itemize}
 
 
 \subsection{Using Taxi-sim}
 \label{sec:user_manual:using}
 
+\todo{update usage instructions for standalone bundle}
 Taxi-sim needs to be used from command line. If you are using Vagrant as
 recommended in Section \ref{sec:user_manual:installation:virtualisation}, run
 \textit{vagrant up \&\& vagrant ssh \&\& cd /vagrant/ \&\& bundle install \&\&
@@ -170,12 +153,11 @@ in the following list in alphabetical order:
 
 \subsubsection{Output files}
 
-\todo{large output file} Simulation output is written to \textit{logs}
-directory in the application's home directory. These files can be opened using
-most text editing software, although some mainstream software might crash due
-to the large file size of \textit{simulation.log}. In this case software that
-supports huge file sizes can be easily found, for example, notepad++
-\parencite{Notepad++}.
+Simulation output is written to \textit{logs} directory in the application's
+home directory. These files can be opened using most text editing software,
+although some mainstream software might crash due to the large file size of
+\textit{simulation.log}. In this case software that supports huge file sizes
+can be easily found, for example, notepad++ \parencite{Notepad++}.
 
 \textit{summary.log} is a summary of the simulation results with six rows. The
 first three rows state the time limit, taxi details and the total profit for

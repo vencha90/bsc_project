@@ -2,8 +2,6 @@
 \section{Maintenance Manual}
 \label{sec:maintenance_manual}
 
-\todo{remove notes}
-
 (5, 500-1000 w?)
 
 Is there a description of the system and any third-party software required
@@ -16,15 +14,128 @@ Is there a list of packages and files and what they are for?
 Is there a description of how the system can be changed for most likely future
 adaptations and extensions?
 
-look at the 'projects' book for advice
+\todo{remove notes}
 
 \todo{More specific references to maintenance manual from the report}
 
-\todo{Virtualbox + vagrant + rvm}
+The Maintenance Manual provides details of the software implementation. To
+readers unfamiliar with Ruby, it is important to know that the term
+\textit{gems} are Ruby software packages.
 
-\todo{ruby + gems + bundler}
+The project is available online at this address:
+\url{https://github.com/vencha90/taxi-sim}. You might also have received a
+\textit{tar} archive file of the software.
 
-\todo{rspec flow} rspec guard etc
+\todo{introduction of contents}
+
+
+\subsection{Installation}
+
+\subsubsection{System Setup}
+
+It is recommended to use virtualisation as described in User Manual in Appendix
+\ref{sec:user_manual:installation:virtualisation}.
+
+
+\subsubsection{Installation Without Virtualisation}
+\label{sec:maintenance_manual:native_install}
+
+Virtualisation will ensure that only the correct required dependencies are
+installed and your operating system is not corrupted by potentially conflicting
+software. If you still do not wish to use virtualisation, there are
+alternatives for unix-like systems.
+
+You can install Ruby Version Manager (RVM) \parencite{Rvm} from
+\url{http://rvm.io/} and then install Ruby by running \textit{rvm install
+2.1.1} in terminal. You also need to install Bundler by
+running \textit{gem install bundler \&\& bundle install --local} to manage
+dependencies.
+
+Instead of RVM you could use \textit{rbenv} \parencite{Rbenv}. Unfortunately
+RVM and rbenv are mutually exclusive and could cause conflicts with other parts
+of an OS. The worst option is installing Ruby completely natively as this
+provides no isolation whatsoever from other OS components.
+
+
+\subsubsection{Developer Setup}
+
+Even if you have the source code, you should use the latest version-controlled
+software from the official code repository at \url{https://github.com/vencha90
+/taxi-sim}.
+
+To acquire the source code for development, please follow the instructions
+below. Commands that should be used in command line terminal are marked
+\textit{(cmd)}, commands that require downloading software from the world wide
+web are marked \textit{(web)}.
+
+\begin{itemize}
+  \item \textit{(web)} Install Git \parencite{Git} version control from
+        \url{http://git-scm.com/}.
+  \item \textit{(cmd)} Open a command line terminal.
+  \item \textit{(cmd)} Clone source code to a suitable directory on your local
+        hard drive using this command:
+        \textit{git clone git@github.com:vencha90/taxi-sim.git}
+  \item \textit{(cmd)} Change the working directory to the project's source
+        code: \textit{cd taxi-sim}.
+\end{itemize}
+
+
+\subsubsection{Dependencies}
+
+Top-level gems are listed in \textit{Gemfile} and explained below. Some gems
+are grouped together and labelled as for development and testing, meaning that
+they are not necessary for simply using the program. Potentially these labels
+could be used to release two separate software versions -- standard and
+developer. The full list of dependencies is listed in \textit{Gemfile.lock} and
+not explained as they only play a supporting role.
+
+\textit{require\_all} \parencite{Require+all} eases source code managament by
+allows to require all source files in a directory on a single line in an OS-
+agnostic way (not supported by Ruby natively).
+
+\textit{plexus} \parencite{Plexus} is a graphing gem. It is discussed in more
+detail in Section ref{sec:design:network}
+
+\textit{thread\_safe, '0.3.1'} is actually a dependency for other top-level
+gems, but was listed explicitly to specify a compatible release version
+(0.3.1).
+
+\textit{guard} and \textit{guard-rspec} \parencite{Guard} can be used for
+monitoring filesystem events. A recommended workflow is suggested in Section
+\ref{sec:maintenance_manual:developing:guard}
+
+\textit{rake} \parencite{Rake} is a common tool used for Ruby command line
+applications.
+
+\textit{simplecov, '~> 0.7.1'} \parencite{Simplecov} monitors code test
+coverage as discussed in Sections \ref{sec:design:software:tdd} and
+\ref{sec:implementation:testing:automated}. The version number is specified due
+to a bug in the latest version.
+
+\textit{rspec} \parencite{Rspec} is a testing framework. It is discussed in
+Sections \ref{sec:design:software:tdd} and
+\ref{sec:implementation:testing:automated}
+
+
+\subsection{Customising Output}
+\label{sec:maintenance_manual:customising_output}
 
 \todo{output}
-\label{sec:maintenance_manual:customising_output}
+
+
+\subsection{Developing Software}
+
+\label{sec:maintenance_manual:developing:guard}
+\todo{using guard}
+
+
+\subsection{Documentation}
+
+\subsubsection{Automated Tests}
+\todo{rspec flow} rspec guard etc
+
+\subsubsection{List of Files}
+
+\todo{List of files}
+table
+code \& spec files | description
