@@ -42,7 +42,7 @@ web are marked \textit{(web)}.
 
 \begin{itemize}
   \item \textit{(web)} Install Git \parencite{Git} version control from 
-        http://git-scm.com/.
+        \url{http://git-scm.com/}.
   \item \textit{(cmd)} Open a command line terminal.
   \item \textit{(cmd)} Clone source code to a suitable directory on your local
         hard drive using this command: 
@@ -57,11 +57,11 @@ the correct required dependencies are installed and your operating system is
 not corrupted by potentially conflicting software. 
 
 If you still do not wish to use virtualisation, there are alternatives for
-unix-like systems. You can install RVM \parencite{Rvm} from http://rvm.io/ and
-then install Ruby by running \textit{rvm install 2.1.1} in terminal. You also
-need to install Bundler \parencite{Bundler} by running \textit{gem install
-bundler && bundle install} to manage dependencies. Instead of RVM you could use
-\textit{rbenv} \parencite{Rbenv}.
+unix-like systems. You can install RVM \parencite{Rvm} from
+\url{http://rvm.io/} and then install Ruby by running \textit{rvm install
+2.1.1} in terminal. You also need to install Bundler \parencite{Bundler} by
+running \textit{gem install bundler \&\& bundle install} to manage
+dependencies. Instead of RVM you could use \textit{rbenv} \parencite{Rbenv}.
 
 
 \subsubsection{Virtualisation}
@@ -74,22 +74,22 @@ software. Even when 2.1 support is added, using Windows natively could cause
 you nasty surprises!
 
 Vagrant's configuration used here in \textit{Vagrantfile} and
-\textit{vagrant_manifest.pp} is adapted from the work of
+\textit{vagrant\_manifest.pp} is adapted from the work of
 \textcite{Rails+dev+box}.
 
 \begin{itemize}
-  \item \textit{(web)} Install VirtualBox version 4.3+
-        \parencite{Virtualbox} from
-        https://www.virtualbox.org/ using the instructions on the website.
+  \item \textit{(web)} Install VirtualBox version 4.3+ \parencite{Virtualbox}
+        from \url{https://www.virtualbox.org/} using the instructions on the
+        website.
   \item \textit{(web)} Install Vagrant version 1.5+ \parencite{Vagrant} from 
-        http://www.vagrantup.com/ following instructions on the website.
+        \url{http://www.vagrantup.com/} following instructions on the website.
   \item \textit{(cmd)} In the taxi-sim directory, run \textit{vagrant up}. This
         will provision and start the virtual machine. It will take slightly
         longer the first time as the operating system image needs to be
         downloaded.
   \item \textit{(cmd)} \textit{vagrant ssh} will connect to the virtual machine 
         using a secure shell connection, giving you control of the virtual
-        machine's terminal.
+        machine's command line terminal.
   \item \textit{(cmd)} \textit{cd /vagrant/} will change the working
         directory to the software. Vagrant synchronises this directory with the
         software directory you cloned to your machine a few steps ago.
@@ -105,8 +105,8 @@ Vagrant's configuration used here in \textit{Vagrantfile} and
 
 Taxi-sim needs to be used from command line. If you are using Vagrant as
 recommended in Section \ref{sec:user_manual:installation:virtualisation}, run
-\textit{vagrant up && vagrant ssh && cd /vagrant/ && bundle install && bundle
-exec rspec} to check that everything is in order. You might notice that
+\textit{vagrant up \&\& vagrant ssh \&\& cd /vagrant/ \&\& bundle install \&\&
+bundle exec rspec} to check that everything is in order. You might notice that
 \textit{bundle exec} is used at the start of most commands: this ensures that
 the commands are executed by bundler using the correct gem (software library)
 versions as a system could have multiple gem versions insatlled.
@@ -124,8 +124,8 @@ changes.
 
 \textit{bundle exec rake run[path/to/file]} is the main command for you as a
 user. You need to specify a path to an input file in the square brackets
-relative to the working directory, e.g. \textit{rake run[sample_input.yml]}.
-The accepted file format is YML. Open \textit{sample_input.yml} in a text
+relative to the working directory, e.g. \textit{rake run[sample\_input.yml]}.
+The accepted file format is YML. Open \textit{sample\_input.yml} in a text
 editor to see a sample input file, a detailed explanation of the accepted
 inputs is in Section \ref{sec:user_manual:using:inputs}
 
@@ -134,7 +134,7 @@ inputs is in Section \ref{sec:user_manual:using:inputs}
 \label{sec:user_manual:using:inputs}
 
 All types of inputs supported by the simulation are used in
-\textit{sample_input.yml} file, their order does not matter. They are explained
+\textit{sample\_input.yml} file, their order does not matter. They are explained
 in the following list in alphabetical order:
 
 \begin{itemize}
@@ -154,7 +154,7 @@ in the following list in alphabetical order:
   \item \textit{taxi} is a top-level entity for taxi details and has the
         following parameters:
         \begin{itemize}
-          \item \textit{benchmark_price}: an integer number of the fixed price
+          \item \textit{benchmark\_price}: an integer number of the fixed price
           that the simulation will be benchmarked against as described in
           Section \ref{sec:requirements:benchmark}.
           \item \textit{prices}: a range of prices that the taxi can choose
@@ -163,7 +163,7 @@ in the following list in alphabetical order:
           format \textit{"x..z"} (includes \textit{z}) or \textit{"x...z"}
           (excludes \textit{z}).
         \end{itemize}
-  \item \textit{time__limit}: an integer number for the units of time the
+  \item \textit{time\_limit}: an integer number for the units of time the
         simulation will run for
 \end{itemize}
 
