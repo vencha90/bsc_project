@@ -31,31 +31,33 @@ provides many command line commands. However, to comply with a common practice
 for ruby applications it was decided to use \textit{Rake} \parencite{Rake}, a
 software task managament tool to make all application tasks easily available to
 users. A full set of instructions for using Rake and the available commands is
-available in the User Manual in Appendix \ref{sec:user_manual}.
+available in the User Manual in Appendix \ref{sec:user_manual:using:interface}.
 
 User input is provided in a text file which is parsed and instantiates the
 environment and other simulation objects. Some care has been taken to provide
 data validation to ensure a successful simulation and to give users feedback
 about what expected common input mistakes. The full guide to using an input
-file is given in the User Manual in Appendix \ref{sec:user_manual}.
+file is given in the User Manual in Appendix
+\ref{sec:user_manual:using:inputs}.
 
 \todo{include validation specs in maintenance manual?}
 
 Simulation output is provided in log files, important data being written with
 each iteration of the simulation. The output can easily be configured and
 changed by developers following the explanation in the Maintenance Manual in
-Appendix \ref{sec:Maintenance_manual}. The output logging is a module that can
-be reused in other source files as needed.
+Appendix \ref{sec:maintenance_manual:customising_output}. The output logging is
+a module that can be reused in other source files as needed.
 
 
 \subsubsection{The Environment}
 
 The environment is initialised based on the user input as discussed in the User
-Manual in Appendix \ref{sec:user_manual}. The environment in turn initialises
-all simulation objects and agents, and runs the smulation twice: once to
-establish a benchmark with a fixed taxi fare price, and once using a range of
-fare prices. To reduce software coupling, the implementation also abstracts
-some methods of the road network that are used by taxis and passengers.
+Manual in Appendix \ref{sec:user_manual:using:inputs}. The environment in turn
+initialises all simulation objects and agents, and runs the smulation twice:
+once to establish a benchmark with a fixed taxi fare price, and once using a
+range of fare prices. To reduce software coupling, the implementation also
+abstracts some methods of the road network that are used by taxis and
+passengers.
 
 
 \subsubsection{Road Network}

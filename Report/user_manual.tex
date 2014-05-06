@@ -18,12 +18,20 @@ What is the overall structure, layout, and use of pictures (where appropriate)?
 
 Look at the 'projects' book for advice
 
+\todo{images?}
+
+Taxi-sim is a piece software for evaluation of variable fare pricing in
+unregulated taxi markets. It simulates the performance of taxi agents in some
+environment and establishes a fixed fare taxi pricing benchmark for reference.
+Usage of this software requires basic familiarity with command line terminal.
+
+
 \subsection{Requirements}
 
 The software is recommended to run on a computer with at least 1 GB of RAM. All
 of the installation steps are compulsory unless stated otherwise. A fast
-internet connection is required for installation, and it relies on external
-services so a 100\% availability cannot be guaranteed.
+internet connection is required for installation, and as it relies on external
+services a 100\% availability cannot be guaranteed.
 
 
 \subsection{Installation}
@@ -43,6 +51,18 @@ web are marked \textit{(web)}.
         code: \textit{cd taxi-sim}. Taxi-sim is the name of the software.
 \end{itemize}
 
+It is recommended that you use virtualisation as described in Section
+\ref{sec:user_manual:installation:virtualisation}. This will ensure that only
+the correct required dependencies are installed and your operating system is
+not corrupted by potentially conflicting software. 
+
+If you still do not wish to use virtualisation, there are alternatives for
+unix-like systems. You can install RVM \parencite{Rvm} from http://rvm.io/ and
+then install Ruby by running \textit{rvm install 2.1.1} in terminal. You also
+need to install Bundler \parencite{Bundler} by running \textit{gem install
+bundler && bundle install} to manage dependencies. Instead of RVM you could use
+\textit{rbenv} \parencite{Rbenv}.
+
 
 \subsubsection{Virtualisation}
 \label{sec:user_manual:installation:virtualisation}
@@ -51,8 +71,7 @@ Virtualisation is recommended for most unix-like operating systems (including
 Mac OS X and Linux derivatives), but absolutely required for Windows. At the
 time of writing, Windows does not support Ruby 2.1.1 which is required for this
 software. Even when 2.1 support is added, using Windows natively could cause
-you nasty surprises! If you have a unix-like system and do not want to use
-virtualisation, skip the list to the last paragraph.
+you nasty surprises!
 
 Vagrant's configuration used here in \textit{Vagrantfile} and
 \textit{vagrant_manifest.pp} is adapted from the work of
@@ -75,44 +94,99 @@ Vagrant's configuration used here in \textit{Vagrantfile} and
         directory to the software. Vagrant synchronises this directory with the
         software directory you cloned to your machine a few steps ago.
   \item \textit{(cmd)} The final step before you can use Taxi-sim is installing
-        the latest dependencies by running \textit{bundle install}. When this
-        step is finished you are ready to use Taxi-sim!
+        the latest \textit{gem} (software library) dependencies by running 
+        \textit{bundle install}. When this step is finished you are ready to
+        use Taxi-sim!
 \end{itemize}
-
-Not recommended: alternative for unix-like systems. You can install RVM
-\parencite{Rvm} from http://rvm.io/ and then install Ruby by running
-\textit{rvm install 2.1.1} in terminal. You also need to install Bundler
-\parencite{Bundler} by running \textit{gem install bundler && bundle install}
-to manage dependencies.
 
 
 \subsection{Using Taxi-sim}
+\label{sec:user_manual:using}
 
 Taxi-sim needs to be used from command line. If you are using Vagrant as
 recommended in Section \ref{sec:user_manual:installation:virtualisation}, run
-\textit{vagrant up && vagrant ssh && cd /vagrant/ && bundle install &&
-bundle exec rspec} to check that everything is in order.
+\textit{vagrant up && vagrant ssh && cd /vagrant/ && bundle install && bundle
+exec rspec} to check that everything is in order. You might notice that
+\textit{bundle exec} is used at the start of most commands: this ensures that
+the commands are executed by bundler using the correct gem (software library)
+versions as a system could have multiple gem versions insatlled.
+
 
 \subsubsection{Interface}
+\label{sec:user_manual:using:interface}
 
 Taxi-sim supports a simple command line interface. You can see the supported
-tasks by running \textit{bundle exec rake -T}.
+tasks and a short description by running \textit{bundle exec rake -T}.
 
-\textit{rake spec} runs the automated test suite and is useful for verifying
-the integrity of the software, especially if you have made any changes.
+\textit{bundle exec rake spec} runs the automated test suite and is useful for
+verifying the integrity of the software, especially if you have made any
+changes.
 
-\textit{rake run[path/to/file]} is the main command for you as a user. You need
-to specify a path to file in the square brackets relative to the working
-directory, e.g. textit{rake run[some_file.yml]}. The accepted file format is
-YML. To see a sample input file, open \textit{sample_input.yml} in a text
-editor.
+\textit{bundle exec rake run[path/to/file]} is the main command for you as a
+user. You need to specify a path to an input file in the square brackets
+relative to the working directory, e.g. \textit{rake run[sample_input.yml]}.
+The accepted file format is YML. Open \textit{sample_input.yml} in a text
+editor to see a sample input file, a detailed explanation of the accepted
+inputs is in Section \ref{sec:user_manual:using:inputs}
 
-\todo{more specific references to user manual from the report}
 
-\todo{input file}
+\subsubsection{Inputs}
+\label{sec:user_manual:using:inputs}
 
-\todo{large output file}
-Some mainstream software might crash due to large file sizes, but compatible 
-software can be easily found such as notepad++ \todo{reference}
+All types of inputs supported by the simulation are used in
+\textit{sample_input.yml} file, their order does not matter. They are explained
+in the following list in alphabetical order:
 
-\todo{output analysis}
+\begin{itemize}
+  \item \textit{graph}: an adjacency matrix representation of a road network.
+        It has to be a connected undirected graph, meaning that the matrix is
+        symmetrical! Self-loops are ignored. The accepted format for each row
+        is \textit{- "x, .., z"} where \textit{x} and \textit{z} are integer
+        number edge weights.
+  \item \textit{passenger} is a top-level entity for passenger details and has
+        this parameter:
+        \begin{itemize} 
+          \item \textit{price} is an integer number of the price that
+                passengers expect to pay for a single unit of distance, used to
+                calculate probability of accepting a fare as described in
+                Section \ref{sec:requirements:passenger}.
+        \end{itemize}
+  \item \textit{taxi} is a top-level entity for taxi details and has the
+        following parameters:
+        \begin{itemize}
+          \item \textit{benchmark_price}: an integer number of the fixed price
+          that the simulation will be benchmarked against as described in
+          Section \ref{sec:requirements:benchmark}.
+          \item \textit{prices}: a range of prices that the taxi can choose
+          from. An integer number, an array of integer numbers in the format 
+          \textit{[x, .., z]}, or a range of integer numbers in the Ruby range
+          format \textit{"x..z"} (includes \textit{z}) or \textit{"x...z"}
+          (excludes \textit{z}).
+        \end{itemize}
+  \item \textit{time__limit}: an integer number for the units of time the
+        simulation will run for
+\end{itemize}
+
+
+\subsubsection{Output files}
+
+\todo{large output file} Simulation output is written to \textit{logs}
+directory in the application's home directory. These files can be opened using
+most text editing software, although some mainstream software might crash due
+to the large file size of \textit{simulation.log}. In this case software that
+supports huge file sizes can be easily found, for example, notepad++
+\parencite{Notepad++}.
+
+\textit{summary.log} is a summary of the simulation results with six rows. The
+first three rows state the time limit, taxi details and the total profit for
+the taxi using a range of prices. The last three rows state the same data for
+the benchmark run with a fixed price.
+
+\textit{simulation.log} is a full log of the simulation as it progressed. It
+has two parts, the first being the run with a range of prices and the second
+run with a fixed taxi price. It has a single row for each time unit in both
+runs, therefore this file is likely to only be useful for data analysis.
+
+If you require customised output, the data written to log files can be changed
+by changing just a few lines of the code. This is explained in the Maintenance
+Manual in Appendix \ref{sec:maintenance_manual:customising_output}.
