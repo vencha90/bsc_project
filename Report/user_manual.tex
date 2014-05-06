@@ -34,6 +34,9 @@ internet connection could be required for installation of some supporting
 software, and as it relies on external services a 100\% availability cannot be
 guaranteed.
 
+Operating systems that are supported are: Mac OS X, Windows, Debian / Ubuntu,
+CentOs / RedHat / Fedora.
+
 
 \subsection{Installation}
 \label{sec:user_manual:installation}
@@ -85,14 +88,15 @@ Vagrant's configuration files \textit{Vagrantfile} and
 \subsection{Using Taxi-sim}
 \label{sec:user_manual:using}
 
-\todo{update usage instructions for standalone bundle}
-Taxi-sim needs to be used from command line. If you are using Vagrant as
-recommended in Section \ref{sec:user_manual:installation:virtualisation}, run
-\textit{vagrant up \&\& vagrant ssh \&\& cd /vagrant/ \&\& bundle install \&\&
-bundle exec rspec} to check that everything is in order. You might notice that
-\textit{bundle exec} is used at the start of most commands: this ensures that
-the commands are executed by bundler using the correct gem (software library)
-versions as a system could have multiple gem versions insatlled.
+\todo{update usage instructions for standalone bundle} Taxi-sim needs to be
+used from command line. If you are using Vagrant as recommended in Section
+\ref{sec:user_manual:installation:virtualisation}, in terminal run
+\textit{vagrant up \&\& vagrant ssh \&\& cd /vagrant/ \&\& bundle install
+--local \&\& bundle exec rspec} to check that everything is in order. You might
+notice that \textit{bundle exec} is used at the start of most commands: this
+ensures that the commands are executed by bundler (dependency manager software)
+using the correct gem (software library) versions as a system could have
+multiple gem versions insatlled.
 
 
 \subsubsection{Interface}
@@ -115,6 +119,8 @@ inputs is in Section \ref{sec:user_manual:using:inputs}
 
 \subsubsection{Inputs}
 \label{sec:user_manual:using:inputs}
+
+\todo{image of sample inputs}
 
 All types of inputs supported by the simulation are used in
 \textit{sample\_input.yml} file, their order does not matter. They are explained
@@ -168,6 +174,8 @@ the benchmark run with a fixed price.
 has two parts, the first being the run with a range of prices and the second
 run with a fixed taxi price. It has a single row for each time unit in both
 runs, therefore this file is likely to only be useful for data analysis.
+
+\todo{output sample image}
 
 If you require customised output, the data written to log files can be changed
 by changing just a few lines of the code. This is explained in the Maintenance

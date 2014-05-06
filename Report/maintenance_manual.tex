@@ -29,7 +29,10 @@ The project is available online at this address:
 \todo{introduction of contents}
 
 
-\subsection{Installation}
+\subsection{Installation of Development Environment}
+
+All commands in this section are supposed to be ran on your main operating
+system.
 
 \subsubsection{System Setup}
 
@@ -102,7 +105,7 @@ gems, but was listed explicitly to specify a compatible release version
 
 \textit{guard} and \textit{guard-rspec} \parencite{Guard} can be used for
 monitoring filesystem events. A recommended workflow is suggested in Section
-\ref{sec:maintenance_manual:developing:guard}
+\ref{sec:maintenance_manual:testing}
 
 \textit{rake} \parencite{Rake} is a common tool used for Ruby command line
 applications.
@@ -114,19 +117,59 @@ to a bug in the latest version.
 
 \textit{rspec} \parencite{Rspec} is a testing framework. It is discussed in
 Sections \ref{sec:design:software:tdd} and
-\ref{sec:implementation:testing:automated}
+\ref{sec:implementation:testing:automated}. Development with Rspec is discussed
+in Section \ref{sec:maintenance_manual:testing}.
 
 
-\subsection{Customising Output}
+\subsection{Developer's Guide}
+\label{sec:maintenance_manual:testing}
+
+All commands in this section are supposed to be ran from a terminal in your
+development environment.
+
+Test-Driven Development (TDD) was followed as much as was reasonable when
+developing this project, and you are recommended to do the same. Please see
+Sections \ref{sec:design:tdd} and \ref{sec:implementation:testing:automated} to
+find out more about TDD.
+
+Documentation and support is readily available online for Rspec. An example
+Rspec scenario was shown in Figure \ref{figure:rspec}, but the simplistic
+language does not limit the functionality of the framework. It can even be
+easily extended if needed.
+
+All Rspec scenarios can be run by entering \textit{bundle exec rspec} in
+terminal, and help displayed by entering \textit{bundle exec rspec -h}.
+
+A typical developer's TDD workflow with Rspec would go as follows: write a test
+in text editor, switch context to command line, run the test in question
+(because running all tests would take a lot of time in a bigger codebase),
+switch context back...
+
+This process can be automated by Guard, ordering it to monitor changes in test
+files and the linked code files. Guard can also be assigned conditions when the
+full test suite needs to be ran. It has already been configured for this
+project and can be started by entering \textit{bundle exec guard}.
+Unfortunately this functionality is not available on virtual machines running
+on Windows. For virtual machines on other OSs, Guard and Vagrant needs
+configuration as shown here: \url{https://github.com/guard/guard#-o--listen-on-
+option}
+
+All tests are located in \textit{specs/} directory. Please see Section
+\ref{sec:maintenance_manual:documentation} for an overview of files and
+locations.
+
+
+\subsubsection{Customising Output}
 \label{sec:maintenance_manual:customising_output}
 
-\todo{output}
+Customised log details is one of the simplest changes to make to the system. It
+will not break tests if changes are made only to the output parameters, as
+tests only check that any output is produced.
+
+To customise the output parameters for any of taxi, world or 
 
 
-\subsection{Developing Software}
 
-\label{sec:maintenance_manual:developing:guard}
-\todo{using guard}
 
 
 \subsection{Documentation}

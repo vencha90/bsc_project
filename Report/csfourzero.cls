@@ -356,7 +356,7 @@
 \renewcommand \subsubsection{\@startsection{subsubsection}{3}{\z@}%
                                         {-.5ex\@plus -.2ex \@minus -.2ex}%
                                         {.3ex \@plus .1ex}%
-                                        {\reset@font \large}}
+                                        {\reset@font \large \itshape}}
 
 \renewcommand \paragraph{\@startsection{paragraph}{4}{\z@}%
                                        {.5ex \@plus .1ex \@minus .2ex}%
