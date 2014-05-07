@@ -156,6 +156,31 @@ in the following list in alphabetical order:
         simulation will run for
 \end{itemize}
 
+A sample input file is shown in Figure \ref{figure:input}.
+
+
+\begin{figure}
+  \begin{verbatim}
+    time_limit: 1000000
+    graph:
+      - "0, 1, 2, 4, 2, 1"
+      - "1, 0, 2, 2, 3, 0"
+      - "2, 2, 0, 0, 1, 3"
+      - "4, 2, 0, 0, 1, 0"
+      - "2, 3, 1, 1, 0, 5"
+      - "1, 0, 3, 0, 5, 0"
+    passenger:
+      price: 20
+    taxi:
+      prices: '5..100'
+      benchmark_price: 20
+  \end{verbatim}
+\caption{
+  Sample Input File
+  \label{figure:input}
+}
+\end{figure}
+
 
 \subsubsection{Output files}
 
@@ -163,19 +188,49 @@ Simulation output is written to \texttt{logs/} directory in the application's
 home directory. These files can be opened using most text editing software,
 although some mainstream software might crash due to the large file size of
 \texttt{simulation.log}. In this case software that supports huge file sizes
-can be easily found, for example, notepad++ \parencite{Notepad++}.
+can be easily found, for example, notepad++ \parencite{Notepad++}. Parameters are logged in this format: \texttt{["name", "value"]}.
 
 \texttt{summary.log} is a summary of the simulation results with six rows. The
-first three rows state the time limit, taxi details and the total profit for
-the taxi using a range of prices. The last three rows state the same data for
-the benchmark run with a fixed price.
+first row is written when the simulation starts stating the time limit, the
+next two rows state taxi details and the total profit for the taxi using a
+range of prices. The last two rows state the same data for the benchmark run
+with a fixed price. Contents of a sample summary file are shown in Figure
+\ref{figure:output:summary}.
+
+\begin{figure}
+  \begin{verbatim}
+["time", "0"]["time_limit", "1000000"]
+["fc", "1"]["vc", "1"]["prices", "5..100"]
+["time", "1000000"]["profit", "839289"]
+["fc", "1"]["vc", "1"]["prices", "[20]"]
+["time", "1000000"]["profit", "-1677056"]
+  \end{verbatim}
+\caption{
+  Sample Simulation Summary File
+  \label{figure:output:summary}
+}
+\end{figure}
 
 \texttt{simulation.log} is a full log of the simulation as it progressed. It
 has two parts, the first being the run with a range of prices and the second
 run with a fixed taxi price. It has a single row for each time unit in both
-runs, therefore this file is likely to only be useful for data analysis.
+runs, therefore this file is likely to only be useful for data analysis. An
+excerpt from a simulation log is shown in Figure \ref{figure:output:log}.
 
-\todo{output sample image}
+\begin{figure}
+  \begin{verbatim}
+["time", "155"]["reward", "-4"]["location", "5"]["busy_for", "3"]["action", "drive"]
+["time", "156"]
+["time", "157"]
+["time", "158"]["passenger", "accepted"]["fare", "15"]["location", "5"]
+        ["destination", "6"]["reward", "9"]["location", "6"]
+        ["busy_for", "3"]["action", "offer"]
+  \end{verbatim}
+\caption{
+  Excerpt from a Sample Simulation Log File
+  \label{figure:output:log}
+}
+\end{figure}
 
 If you require customised output, the data written to log files can be changed
 by changing just a few lines of the code. This is explained in the Maintenance
