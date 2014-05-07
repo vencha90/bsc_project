@@ -24,6 +24,7 @@
 *.ind
 *.out
 *.blg
+*.log
+*.yml
 
 taxi-sim.lnk
-Data/
