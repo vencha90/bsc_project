@@ -27,7 +27,7 @@ suggested areas of further development.
  To readers unfamiliar with Ruby, it is important to know that the term
 \textit{gems} are Ruby software packages. The project is available online at
 this address: \url{https://github.com/vencha90/taxi-sim}. You might also have
-received a \textit{tar} archive file of the software.
+received a \texttt{tar} archive file of the software.
 
 \subsection{Installation of Development Environment}
 \label{sec:maintenance_manual:installation}
@@ -46,12 +46,12 @@ system is not corrupted by potentially conflicting software. If you still do
 not wish to use virtualisation, there are alternatives for unix-like systems.
 
 You can install Ruby Version Manager (RVM) \parencite{Rvm} from
-\url{http://rvm.io/} and then install Ruby by running \textit{rvm install
+\url{http://rvm.io/} and then install Ruby by running \texttt{rvm install
 2.1.1} in terminal. You also need to install Bundler by
-running \textit{gem install bundler \&\& bundle install --local} to manage
+running \texttt{gem install bundler \&\& bundle install --local} to manage
 dependencies.
 
-Instead of RVM you could use \textit{rbenv} \parencite{Rbenv}. Unfortunately
+Instead of RVM you could use \texttt{rbenv} \parencite{Rbenv}. Unfortunately
 RVM and rbenv are mutually exclusive and could cause conflicts with other parts
 of an OS. The worst option is installing Ruby completely natively as this
 provides no isolation whatsoever from other OS components.
@@ -74,45 +74,45 @@ web are marked \textit{(web)}.
   \item \textit{(cmd)} Open a command line terminal.
   \item \textit{(cmd)} Clone source code to a suitable directory on your local
         hard drive using this command:
-        \textit{git clone git@github.com:vencha90/taxi-sim.git}
+        \texttt{git clone git@github.com:vencha90/taxi-sim.git}
   \item \textit{(cmd)} Change the working directory to the project's source
-        code: \textit{cd taxi-sim}.
+        code: \texttt{cd taxi-sim}.
 \end{itemize}
 
 
 \subsubsection{Dependencies}
 
-Top-level gems are listed in \textit{Gemfile} and explained below. Some gems
+Top-level gems are listed in \texttt{Gemfile} and explained below. Some gems
 are grouped together and labelled as for development and testing, meaning that
 they are not necessary for simply using the program. Potentially these labels
 could be used to release two separate software versions -- standard and
-developer. The full list of dependencies is listed in \textit{Gemfile.lock} and
+developer. The full list of dependencies is listed in \texttt{Gemfile.lock} and
 not explained as they only play a supporting role.
 
-\textit{require\_all} \parencite{Require+all} eases source code managament by
+\texttt{require\_all} \parencite{Require+all} eases source code managament by
 allows to require all source files in a directory on a single line in an OS-
 agnostic way (not supported by Ruby natively).
 
-\textit{plexus} \parencite{Plexus} is a graphing gem. It is discussed in more
+\texttt{plexus} \parencite{Plexus} is a graphing gem. It is discussed in more
 detail in Section ref{sec:design:network}
 
-\textit{thread\_safe, '0.3.1'} is actually a dependency for other top-level
+\texttt{thread\_safe, '0.3.1'} is actually a dependency for other top-level
 gems, but was listed explicitly to specify a compatible release version
 (0.3.1).
 
-\textit{guard} and \textit{guard-rspec} \parencite{Guard} can be used for
+\texttt{guard} and \texttt{guard-rspec} \parencite{Guard} can be used for
 monitoring filesystem events. A recommended workflow is suggested in Section
 \ref{sec:maintenance_manual:testing}
 
-\textit{rake} \parencite{Rake} is a common tool used for Ruby command line
+\texttt{rake} \parencite{Rake} is a common tool used for Ruby command line
 applications.
 
-\textit{simplecov, '~> 0.7.1'} \parencite{Simplecov} monitors code test
+\texttt{simplecov, '~> 0.7.1'} \parencite{Simplecov} monitors code test
 coverage as discussed in Sections \ref{sec:design:software:tdd} and
 \ref{sec:implementation:testing:automated}. The version number is specified due
 to a bug in the latest version.
 
-\textit{rspec} \parencite{Rspec} is a testing framework. It is discussed in
+\texttt{rspec} \parencite{Rspec} is a testing framework. It is discussed in
 Sections \ref{sec:design:software:tdd} and
 \ref{sec:implementation:testing:automated}. Development with Rspec is discussed
 in Section \ref{sec:maintenance_manual:testing}.
@@ -142,8 +142,8 @@ Rspec scenario was shown in Figure \ref{figure:rspec}, but the simplistic
 language does not limit the functionality of the framework. It can even be
 easily extended if needed.
 
-All Rspec scenarios can be run by entering \textit{bundle exec rspec} in
-terminal, and help displayed by entering \textit{bundle exec rspec -h}.
+All Rspec scenarios can be run by entering \texttt{bundle exec rspec} in
+terminal, and help displayed by entering \texttt{bundle exec rspec -h}.
 
 A typical developer's TDD workflow with Rspec would go as follows: write a test
 in text editor, switch context to command line, run the test in question
@@ -153,13 +153,13 @@ switch context back...
 This process can be automated by Guard, ordering it to monitor changes in test
 files and the linked code files. Guard can also be assigned conditions when the
 full test suite needs to be ran. It has already been configured for this
-project and can be started by entering \textit{bundle exec guard}.
+project and can be started by entering \texttt{bundle exec guard}.
 Unfortunately this functionality is not available on virtual machines running
 on Windows. For virtual machines on other OSs, Guard and Vagrant needs
 configuration as shown here: \url{https://github.com/guard/guard#-o--listen-on-
 option}
 
-All tests are located in \textit{specs/} directory. Please see Section
+All tests are located in \texttt{specs/} directory. Please see Section
 \ref{sec:maintenance_manual:documentation} for an overview of files and
 locations.
 
@@ -182,13 +182,13 @@ developer's intentions at the time of writing code.
   \hline
   lib/  & Directory for source code files \\ \hline
   spec/ & Directory for Rspec test files \\ \hline
-  \specialcell{lib/file\_parser.rb \\ spec/file\_parser\_spec.rb} & Input file processing -- \textit{FileParser} class \\ \hline
-  \specialcell{lib/graph/ \\ spec/graph/ } & Road Network -- \textit{Graph} and \textit{Graph::Vertex} classes \\ \hline
-  lib/logging.rb & Logging module -- \textit{Logging} \\ \hline
-  \specialcell{lib/passenger/ \\ spec/passenger/} & Passenger -- \textit{Passenger} and \textit{Passenger::Characteristic} classes \\ \hline
-  \specialcell{lib/taxi/ \\ spec/taxi/} & Taxi representation, including the Q-Learner -- \textit{Taxi}, \textit{Taxi::Action}, \textit{Taxi::State} and \textit{Taxi::Learner} classes \\ \hline
-  \specialcell{lib/taxi\_learner.rb \\ spec/taxi\_learner\_spec.rb} & Main class and top-level namespace for the simulation -- \textit{Runner} \\ \hline
-  \specialcell{lib/world.rb \\ spec/world\_spec.rb} & Environment -- \textit{World} class. \\ \hline
+  \specialcell{lib/file\_parser.rb \\ spec/file\_parser\_spec.rb} & Input file processing -- \texttt{FileParser} class \\ \hline
+  \specialcell{lib/graph/ \\ spec/graph/ } & Road Network -- \texttt{Graph} and \texttt{Graph::Vertex} classes \\ \hline
+  lib/logging.rb & Logging module -- \texttt{Logging} \\ \hline
+  \specialcell{lib/passenger/ \\ spec/passenger/} & Passenger -- \texttt{Passenger} and \texttt{Passenger::Characteristic} classes \\ \hline
+  \specialcell{lib/taxi/ \\ spec/taxi/} & Taxi representation, including the Q-Learner -- \texttt{Taxi}, \texttt{Taxi::Action}, \texttt{Taxi::State} and \texttt{Taxi::Learner} classes \\ \hline
+  \specialcell{lib/taxi\_learner.rb \\ spec/taxi\_learner\_spec.rb} & Main class and top-level namespace for the simulation -- \texttt{Runner} \\ \hline
+  \specialcell{lib/world.rb \\ spec/world\_spec.rb} & Environment -- \texttt{World} class. \\ \hline
 \end{tabular}
 \caption{
   Core Software Files
@@ -204,7 +204,7 @@ developer's intentions at the time of writing code.
   spec/fixtures/ & Fixture files for automated tests \\ \hline
   Guardfile & Specifications for Guard runtime \\ \hline
   \specialcell{Gemfile \\ Gemfile.lock} & Bundler gem specifications \\ \hline
-  logs/ & Log files from simulation -- \textit{simulation.log} and \textit{summary.log} \\ \hline
+  logs/ & Log files from simulation -- \texttt{simulation.log} and \texttt{summary.log} \\ \hline
   Rakefile & Specifications for Rake tasks \\ \hline
   \specialcell{.rspec \\ spec/spec\_helper.rb}  & Rspec configuration and support \\ \hline
   \specialcell{Vagrantfile \\ vagrant\_manifest.pp} & Vagrant configuration \\ \hline
@@ -223,11 +223,11 @@ developer's intentions at the time of writing code.
 
 Customised log details is one of the simplest changes to make to the system. It
 will not break automated tests if changes are made only to the output
-parameters, as tests only check that \textit{any} output is produced.
+parameters, as tests only check that \texttt{any} output is produced.
 
 Logs are currently being written from World, Taxi and Passenger classes and are
 handled by Logger module. To change the variables being written, you simply
-have to include them in \textit{log\_params} method.
+have to include them in \texttt{log\_params} method.
 
 Logger module can easily be included in other classes as needed, and variables
 to output can be specified just like in World, Taxi or Passenger classes.
@@ -240,7 +240,7 @@ Some issues with the software were identified in Section
 they could be fixed.
 
 To transparently manage default values, they can be stored in a single
-\textit{.yml} configuration file and retrieved when necessary. YAML parsing is
+\texttt{.yml} configuration file and retrieved when necessary. YAML parsing is
 already included in the system in FileParser class, so the hardest part of this
 task would be referencing the old variables to the new file. It is easier to
 identify the old variables, as they are currently stored as ALL\_CAPS constants

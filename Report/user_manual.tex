@@ -59,8 +59,8 @@ Mac OS X and Linux derivatives), but absolutely required for Windows. At the
 time of writing, Windows does not support Ruby 2.1.1 which is required for this
 software.
 
-Vagrant's configuration files \textit{Vagrantfile} and
-\textit{vagrant\_manifest.pp} used here are adapted from the work of
+Vagrant's configuration files \texttt{Vagrantfile} and
+\texttt{vagrant\_manifest.pp} used here are adapted from the work of
 \textcite{Rails+dev+box}.
 
 \begin{itemize}
@@ -69,19 +69,19 @@ Vagrant's configuration files \textit{Vagrantfile} and
         website.
   \item \textit{(web)} Install Vagrant version 1.5+ \parencite{Vagrant} from 
         \url{http://www.vagrantup.com/} following instructions on the website.
-  \item \textit{(cmd)} In the taxi-sim directory, run \textit{vagrant up}. This
+  \item \textit{(cmd)} In the taxi-sim directory, run \texttt{vagrant up}. This
         will provision and start the virtual machine. It will take slightly
         longer the first time as the operating system image needs to be
         downloaded.
-  \item \textit{(cmd)} \textit{vagrant ssh} will connect to the virtual machine 
+  \item \textit{(cmd)} \texttt{vagrant ssh} will connect to the virtual machine 
         using a secure shell connection, giving you control of the virtual
         machine's command line terminal.
-  \item \textit{(cmd)} \textit{cd /vagrant/} will change the working
+  \item \textit{(cmd)} \texttt{cd /vagrant/} will change the working
         directory to the software. Vagrant synchronises this directory with the
         software directory you cloned to your machine a few steps ago.
   \item \textit{(cmd)} The final step before you can use Taxi-sim is installing
         the \textit{gem} (software library) dependencies by running 
-        \textit{bundle install --local}. When this step is finished you are ready to use Taxi-sim!
+        \texttt{bundle install --local}. When this step is finished you are ready to use Taxi-sim!
 \end{itemize}
 
 
@@ -91,9 +91,9 @@ Vagrant's configuration files \textit{Vagrantfile} and
 \todo{update usage instructions for standalone bundle} Taxi-sim needs to be
 used from command line. If you are using Vagrant as recommended in Section
 \ref{sec:user_manual:installation:virtualisation}, in terminal run
-\textit{vagrant up \&\& vagrant ssh \&\& cd /vagrant/ \&\& bundle install
+\texttt{vagrant up \&\& vagrant ssh \&\& cd /vagrant/ \&\& bundle install
 --local \&\& bundle exec rspec} to check that everything is in order. You might
-notice that \textit{bundle exec} is used at the start of most commands: this
+notice that \texttt{bundle exec} is used at the start of most commands: this
 ensures that the commands are executed by bundler (dependency manager software)
 using the correct gem (software library) versions as a system could have
 multiple gem versions insatlled.
@@ -103,16 +103,16 @@ multiple gem versions insatlled.
 \label{sec:user_manual:using:interface}
 
 Taxi-sim supports a simple command line interface. You can see the supported
-tasks and a short description by running \textit{bundle exec rake -T}.
+tasks and a short description by running \texttt{bundle exec rake -T}.
 
-\textit{bundle exec rake spec} runs the automated test suite and is useful for
+\texttt{bundle exec rake spec} runs the automated test suite and is useful for
 verifying the integrity of the software, especially if you have made any
 changes.
 
-\textit{bundle exec rake run[path/to/file]} is the main command for you as a
+\texttt{bundle exec rake run[path/to/file]} is the main command for you as a
 user. You need to specify a path to an input file in the square brackets
-relative to the working directory, e.g. \textit{rake run[sample\_input.yml]}.
-The accepted file format is YML. Open \textit{sample\_input.yml} in a text
+relative to the working directory, e.g. \texttt{rake run[sample\_input.yml]}.
+The accepted file format is YML. Open \texttt{sample\_input.yml} in a text
 editor to see a sample input file, a detailed explanation of the accepted
 inputs is in Section \ref{sec:user_manual:using:inputs}
 
@@ -123,7 +123,7 @@ inputs is in Section \ref{sec:user_manual:using:inputs}
 \todo{image of sample inputs}
 
 All types of inputs supported by the simulation are used in
-\textit{sample\_input.yml} file, their order does not matter. They are explained
+\texttt{sample\_input.yml} file, their order does not matter. They are explained
 in the following list in alphabetical order:
 
 \begin{itemize}
@@ -159,18 +159,18 @@ in the following list in alphabetical order:
 
 \subsubsection{Output files}
 
-Simulation output is written to \textit{logs} directory in the application's
+Simulation output is written to \texttt{logs/} directory in the application's
 home directory. These files can be opened using most text editing software,
 although some mainstream software might crash due to the large file size of
-\textit{simulation.log}. In this case software that supports huge file sizes
+\texttt{simulation.log}. In this case software that supports huge file sizes
 can be easily found, for example, notepad++ \parencite{Notepad++}.
 
-\textit{summary.log} is a summary of the simulation results with six rows. The
+\texttt{summary.log} is a summary of the simulation results with six rows. The
 first three rows state the time limit, taxi details and the total profit for
 the taxi using a range of prices. The last three rows state the same data for
 the benchmark run with a fixed price.
 
-\textit{simulation.log} is a full log of the simulation as it progressed. It
+\texttt{simulation.log} is a full log of the simulation as it progressed. It
 has two parts, the first being the run with a range of prices and the second
 run with a fixed taxi price. It has a single row for each time unit in both
 runs, therefore this file is likely to only be useful for data analysis.
