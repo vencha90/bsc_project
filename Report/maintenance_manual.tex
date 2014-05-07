@@ -16,37 +16,34 @@ adaptations and extensions?
 
 \todo{remove notes}
 
-\todo{More specific references to maintenance manual from the report}
+The Maintenance Manual provides details of the software implementation. It
+gives an advanced overview of the system setup and installation and lists the
+main dependencies in Section \ref{sec:maintenance_manual:installation}. A
+detailed guide to developing the software is given in Section
+\ref{sec:maintenance_manual:developing}, including testing, documentation and
+suggested areas of further development.
 
-The Maintenance Manual provides details of the software implementation. To
-readers unfamiliar with Ruby, it is important to know that the term
-\textit{gems} are Ruby software packages.
 
-The project is available online at this address:
-\url{https://github.com/vencha90/taxi-sim}. You might also have received a
-\textit{tar} archive file of the software.
-
-\todo{introduction of contents}
-
+ To readers unfamiliar with Ruby, it is important to know that the term
+\textit{gems} are Ruby software packages. The project is available online at
+this address: \url{https://github.com/vencha90/taxi-sim}. You might also have
+received a \textit{tar} archive file of the software.
 
 \subsection{Installation of Development Environment}
+\label{sec:maintenance_manual:installation}
 
 All commands in this section are supposed to be ran on your main operating
 system.
-
-\subsubsection{System Setup}
-
-It is recommended to use virtualisation as described in User Manual in Appendix
-\ref{sec:user_manual:installation:virtualisation}.
 
 
 \subsubsection{Installation Without Virtualisation}
 \label{sec:maintenance_manual:native_install}
 
-Virtualisation will ensure that only the correct required dependencies are
-installed and your operating system is not corrupted by potentially conflicting
-software. If you still do not wish to use virtualisation, there are
-alternatives for unix-like systems.
+It is recommended to use virtualisation as described in User Manual in Appendix
+\ref{sec:user_manual:installation:virtualisation}. Virtualisation will ensure
+that only the correct required dependencies are installed and your operating
+system is not corrupted by potentially conflicting software. If you still do
+not wish to use virtualisation, there are alternatives for unix-like systems.
 
 You can install Ruby Version Manager (RVM) \parencite{Rvm} from
 \url{http://rvm.io/} and then install Ruby by running \textit{rvm install
@@ -122,10 +119,18 @@ in Section \ref{sec:maintenance_manual:testing}.
 
 
 \subsection{Developer's Guide}
-\label{sec:maintenance_manual:testing}
+\label{sec:maintenance_manual:developing}
 
 All commands in this section are supposed to be ran from a terminal in your
-development environment.
+development environment. This section explains how to work with the automated
+tests, where to find documentation and how to customise the software. Class and
+module names are used in this section, please see Section
+\ref{sec:maintenance_manual:documentation} for reference.
+
+
+\subsubsection{Tests}
+
+\label{sec:maintenance_manual:testing}
 
 Test-Driven Development (TDD) was followed as much as was reasonable when
 developing this project, and you are recommended to do the same. Please see
@@ -159,26 +164,92 @@ All tests are located in \textit{specs/} directory. Please see Section
 locations.
 
 
+\subsubsection{Documentation}
+\label{sec:maintenance_manual:documentation}
+
+Documentation for this software is in two forms. Table
+\ref{table:software:classes} in this section provides an overview of classes
+and modules with their related test files, and Table
+\ref{table:software:support} lists the remainder of noteworthy files. Secondly,
+detailed documentation for each class is the automated Rspec tests.
+Additionally, Git commit history may prove useful for understanding the
+developer's intentions at the time of writing code.
+
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+\begin{table}
+\begin{tabular}{| p{0.3 \textwidth} | p{0.6 \textwidth} |}
+  \hline
+  lib/  & Directory for source code files \\ \hline
+  spec/ & Directory for Rspec test files \\ \hline
+  \specialcell{lib/file\_parser.rb \\ spec/file\_parser\_spec.rb} & Input file processing -- \textit{FileParser} class \\ \hline
+  \specialcell{lib/graph/ \\ spec/graph/ } & Road Network -- \textit{Graph} and \textit{Graph::Vertex} classes \\ \hline
+  lib/logging.rb & Logging module -- \textit{Logging} \\ \hline
+  \specialcell{lib/passenger/ \\ spec/passenger/} & Passenger -- \textit{Passenger} and \textit{Passenger::Characteristic} classes \\ \hline
+  \specialcell{lib/taxi/ \\ spec/taxi/} & Taxi representation, including the Q-Learner -- \textit{Taxi}, \textit{Taxi::Action}, \textit{Taxi::State} and \textit{Taxi::Learner} classes \\ \hline
+  \specialcell{lib/taxi\_learner.rb \\ spec/taxi\_learner\_spec.rb} & Main class and top-level namespace for the simulation -- \textit{Runner} \\ \hline
+  \specialcell{lib/world.rb \\ spec/world\_spec.rb} & Environment -- \textit{World} class. \\ \hline
+\end{tabular}
+\caption{
+  Core Software Files
+  \label{table:software:classes}
+}
+\end{table}
+
+\begin{table}
+\begin{tabular}{| p{0.3 \textwidth} | p{0.6 \textwidth} |}
+  \hline
+  bin/taxi\_learner & Executable file for shell \\ \hline
+  .gitignore & File list for Git to ignore from version control \\ \hline
+  spec/fixtures/ & Fixture files for automated tests \\ \hline
+  Guardfile & Specifications for Guard runtime \\ \hline
+  \specialcell{Gemfile \\ Gemfile.lock} & Bundler gem specifications \\ \hline
+  logs/ & Log files from simulation -- \textit{simulation.log} and \textit{summary.log} \\ \hline
+  Rakefile & Specifications for Rake tasks \\ \hline
+  \specialcell{.rspec \\ spec/spec\_helper.rb}  & Rspec configuration and support \\ \hline
+  \specialcell{Vagrantfile \\ vagrant\_manifest.pp} & Vagrant configuration \\ \hline
+  .vagrant & Vagrant-created files for virtualisation \\ \hline
+  vendor/ & Gems stored for offline usage of the software \\ \hline
+\end{tabular}
+\caption{
+  Supporting Software Files
+  \label{table:software:support}
+}
+\end{table}
+
+
 \subsubsection{Customising Output}
 \label{sec:maintenance_manual:customising_output}
 
 Customised log details is one of the simplest changes to make to the system. It
-will not break tests if changes are made only to the output parameters, as
-tests only check that any output is produced.
+will not break automated tests if changes are made only to the output
+parameters, as tests only check that \textit{any} output is produced.
 
-To customise the output parameters for any of taxi, world or 
+Logs are currently being written from World, Taxi and Passenger classes and are
+handled by Logger module. To change the variables being written, you simply
+have to include them in \textit{log\_params} method.
+
+Logger module can easily be included in other classes as needed, and variables
+to output can be specified just like in World, Taxi or Passenger classes.
 
 
+\subsubsection{Future Work}
 
+Some issues with the software were identified in Section
+\ref{sec:implementation:software:issues}. This section will give suggest how
+they could be fixed.
 
+To transparently manage default values, they can be stored in a single
+\textit{.yml} configuration file and retrieved when necessary. YAML parsing is
+already included in the system in FileParser class, so the hardest part of this
+task would be referencing the old variables to the new file. It is easier to
+identify the old variables, as they are currently stored as ALL\_CAPS constants
+in source code files.
 
-\subsection{Documentation}
+Fixing the taxi action sequence is aided by automated tests. However, this task
+will require serious refactoring as it would likely change the Taxi class
+significantly, and may need to change its subclasses as well.
 
-\subsubsection{Automated Tests}
-\todo{rspec flow} rspec guard etc
-
-\subsubsection{List of Files}
-
-\todo{List of files}
-table
-code \& spec files | description
+Probably the easiest issue to fix is providing a progress indicator to users.
+This can easily be done by Runner or World classes that have access to the
+global time.
