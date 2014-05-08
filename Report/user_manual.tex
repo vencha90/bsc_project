@@ -252,3 +252,25 @@ Manual in Appendix \ref{sec:maintenance_manual:customising_output}.
 
 \subsubsection{Data Analysis}
 \label{sec:user_manual:using:output}
+
+\todo{explain usage} 
+
+The R Project provides an open-source statistical programming software package
+\parencite{Rlang}. An R language script file \texttt{analysis.R} for Taxi-sim
+data analysis is included in the project source code. \todo{add to code}
+
+The first step before the script can be used is separation of benchmark data
+from the main data source. Open \texttt{simulation.log} in a text editor and
+make two new files by splitting the original file in half (copy-pasting should
+be fine). Name the file with variable prices \texttt{normal.log} and the file
+with fixed price \textttt{benchmark.log}, and store them in a single directory.
+For the script to work, you have to delete the last line of \texttt{normal.log}
+where no action is selected.
+
+Open the script file in an R work environment. If you followed the step above,
+you only have change line 4. Change the path of your working directory in
+\texttt{setwd("your/path")}, for example, to be
+\texttt{setwd("c:\\Users/Documents/Taxi-sim/Data/")}
+\todo{change the file to match}
+
+\todo{what happens next???}
