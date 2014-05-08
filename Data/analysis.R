@@ -4,28 +4,22 @@
 setwd("c:\\Users/user/Dropbox/Documents/ABDN/Y4/PROJECT/Data/")
 file <- "standard/test.log"
 
-names <- c("time", 'passenger', 'fare', 'location', 'destination', 'reward', 'location', 'busy_for', 'action')
+names <- setNames(1:8, c("time", "action", "reward", "busy_for", "location", "destination", "passenger", "fare"))
 
-unformatted_data <- readLines(file)
+unformatted_data <- c(readLines(file))
 d1 <- gsub(", ", "=", unformatted_data)
 d2 <- gsub('"', "", d1)
 d3 <- gsub("\\[", "", d2)
 data <- gsub("\\]", ";", d3)
 
-unlist.info <- function(names, column){
-  info.mat <- matrix(rep('-', length(column)*length(names)), nrow=length(column), ncol=length(names), dimnames=list(c(), names))
-  info.mat <- as.data.frame(info.mat, stringsAsFactors=F)
-
-  for (i in 1:length(column)){
-    row <- unlist(strsplit(column[i], ";"))
-    for (item in row){
-      item <- unlist(strsplit(item, "\\="))
-      key_index <- which(names == item[1])
-      value <- paste(item[2])
-      info.mat[i,key_index] <- value
-    }
-  }
-  return(info.mat)
+assign <- function(data, names){
+  xx <- sapply(data, function(i) i)
+  z <- rep(NA, length(names))
+  z[names[xx[1, ]]] <- xx[2, ]
+  z
 }
 
-table <- unlist.info(names, data)
+sx <- lapply(strsplit(data, ";"), strsplit, "=")
+ret <- t(sapply(sx, assign, names))
+colnames(ret) <- names(names)
+ret
