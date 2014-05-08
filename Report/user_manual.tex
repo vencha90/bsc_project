@@ -25,17 +25,9 @@ unregulated taxi markets. It simulates the performance of taxi agents in some
 environment and establishes a fixed fare taxi pricing benchmark for reference.
 Usage of this software requires basic familiarity with command line terminal.
 
-
-\subsection{Requirements}
-
-The software is recommended to run on a computer with at least 1 GB of RAM. All
-of the installation steps are compulsory unless stated otherwise. A fast
-internet connection could be required for installation of some supporting
-software, and as it relies on external services a 100\% availability cannot be
-guaranteed.
-
-Operating systems that are supported are: Mac OS X, Windows, Debian / Ubuntu,
-CentOs / RedHat / Fedora.
+This User Manual starts with installation instructions in Section
+\ref{sec:user_manual:installation}. Instructions for operating the software are
+in Section \ref{sec:user_manual:using}.
 
 
 \subsection{Installation}
@@ -49,6 +41,18 @@ For running the software it is recommended that you use virtualisation as
 described in Section \ref{sec:user_manual:installation:virtualisation}. If you
 wish to install the software stack to your operating system natively, please
 see Maintenance Manual in Appendix \ref{sec:maintenance_manual:native_install}.
+
+
+\subsubsection{Requirements}
+
+The software is recommended to run on a computer with at least 1 GB of RAM. All
+of the installation steps are compulsory unless stated otherwise. A fast
+internet connection could be required for installation of some supporting
+software, and as it relies on external services a 100\% availability cannot be
+guaranteed.
+
+Operating systems that are supported are: Mac OS X, Windows, Debian / Ubuntu,
+CentOs / RedHat / Fedora.
 
 
 \subsubsection{Virtualisation}
@@ -88,16 +92,24 @@ Vagrant's configuration files \texttt{Vagrantfile} and
 \subsection{Using Taxi-sim}
 \label{sec:user_manual:using}
 
-\todo{update usage instructions for standalone bundle} Taxi-sim needs to be
-used from command line. If you are using Vagrant as recommended in Section
-\ref{sec:user_manual:installation:virtualisation}, in terminal run
-\texttt{vagrant up \&\& vagrant ssh \&\& cd /vagrant/ \&\& bundle install
---local \&\& bundle exec rspec} to check that everything is in order. You might
-notice that \texttt{bundle exec} is used at the start of most commands: this
-ensures that the commands are executed by bundler (dependency manager software)
-using the correct gem (software library) versions as a system could have
-multiple gem versions insatlled.
+Taxi-sim needs to be used from command line. If you are using Vagrant as
+recommended in Section \ref{sec:user_manual:installation:virtualisation}, in
+terminal from the main software directory run \texttt{vagrant up \&\& vagrant
+ssh \&\& cd /vagrant/ \&\& bundle install --local \&\& bundle exec rspec} to
+check that everything is in order.
 
+You might notice that \texttt{bundle exec} is used at the start of most
+commands: this ensures that the commands are executed by bundler (dependency
+manager software) using the correct gem (software library) versions as a system
+could have multiple gem versions insatlled.
+
+This section covers usage of Taxi-sim. To find out how to operate the software
+from command line terminal, see Section \ref{sec:user_manual:using:interface}.
+For configuring the simulation inputs see Section
+\ref{sec:user_manual:using:inputs}. You can find out about the structiire of
+output files in Section \ref{sec:user_manual:using:output}. An easy way to
+analyse the output data is suggested in Section
+\ref{sec:user_manual:using:analysis}.
 
 \subsubsection{Interface}
 \label{sec:user_manual:using:interface}
@@ -114,7 +126,7 @@ user. You need to specify a path to an input file in the square brackets
 relative to the working directory, e.g. \texttt{rake run[sample\_input.yml]}.
 The accepted file format is YML. Open \texttt{sample\_input.yml} in a text
 editor to see a sample input file, a detailed explanation of the accepted
-inputs is in Section \ref{sec:user_manual:using:inputs}
+inputs is in Section \ref{sec:user_manual:using:inputs}.
 
 
 \subsubsection{Inputs}
@@ -183,6 +195,7 @@ A sample input file is shown in Figure \ref{figure:input}.
 
 
 \subsubsection{Output files}
+\label{sec:user_manual:using:output}
 
 Simulation output is written to \texttt{logs/} directory in the application's
 home directory. These files can be opened using most text editing software,
@@ -233,5 +246,9 @@ excerpt from a simulation log is shown in Figure \ref{figure:output:log}.
 \end{figure}
 
 If you require customised output, the data written to log files can be changed
-by changing just a few lines of the code. This is explained in the Maintenance
+by modifying just a few lines of the code. This is explained in the Maintenance
 Manual in Appendix \ref{sec:maintenance_manual:customising_output}.
+
+
+\subsubsection{Data Analysis}
+\label{sec:user_manual:using:output}
