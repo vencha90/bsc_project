@@ -260,17 +260,21 @@ The R Project provides an open-source statistical programming software package
 data analysis is included in the project source code. \todo{add to code}
 
 The first step before the script can be used is separation of benchmark data
-from the main data source. Open \texttt{simulation.log} in a text editor and
-make two new files by splitting the original file in half (copy-pasting should
-be fine). Name the file with variable prices \texttt{normal.log} and the file
-with fixed price \textttt{benchmark.log}, and store them in a single directory.
-For the script to work, you have to delete the last line of \texttt{normal.log}
-where no action is selected.
+and variable pricing data from the main data source. Open
+\texttt{simulation.log} in a text editor and make two new files by splitting
+the original file in half by copy-pasting each run's data. Name the file with
+variable prices \texttt{variable.log} and the file with fixed price
+\textttt{benchmark.log}, and store them in the same directory. For the script
+to work, you have to delete the first and last line of \texttt{varable.log}
+where no actions are selected.
 
 Open the script file in an R work environment. If you followed the step above,
-you only have change line 4. Change the path of your working directory in
+you only have to modify line 4. Change the path of your working directory in
 \texttt{setwd("your/path")}, for example, to be
-\texttt{setwd("c:\\Users/Documents/Taxi-sim/Data/")}
-\todo{change the file to match}
+\texttt{setwd("c:\\User/Documents/Taxi-sim/Data/")} \todo{change the file to
+match}
 
-\todo{what happens next???}
+Run the script -- it will take some time depending on the amount of data. This
+is a memory expensive operation and depends on the available RAM. When the
+script is finished, it will print a summary pdf file with graphs and stats
+\todo{exactly what}.
