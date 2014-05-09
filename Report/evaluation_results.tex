@@ -23,38 +23,61 @@ Has the student suggested future work?
 
 \todo{open-source results}
 
-\todo{list other hidden constants}
+\todo{list other hidden constants?}
 
-unless noted otherwise, the following inputs were used
- 
-time limit = 1000000
+The experiments and their analysis can be repeated by following the
+instructions in User Manual in Appendix \ref{sec:user_manual}. 
 
-graph:
-  - "0, 1, 2, 4, 2, 1"
-  - "1, 0, 2, 2, 3, 0"
-  - "2, 2, 0, 0, 1, 3"
-  - "4, 2, 0, 0, 1, 0"
-  - "2, 3, 1, 1, 0, 5"
-  - "1, 0, 3, 0, 5, 0"
+\todo{rephrase this horrific text}
+The result datasets can be found in the \texttt{standard} directory in the open
+data set mentioned in \ref{sec:intro:openness}. All of the results used were
+generated using the inputs in Table \ref{table:input_data}.
 
-passenger: price = 20
+\begin{table}
+\begin{tabular}{ | l | l | }
+  \hline
+  Parameter & Value \\ \hline
+  Time Limit & 1 000 000 \\
+  Road network & with 6 locations, distances between 1-5 \\
+  Passengers' expected fare & 20 \\
+  Taxi's variable price range & 5-100 (integers) \\
+  Taxi's benchmark price & 20 \\
+  \hline
+\end{tabular}
+\caption{
+  Simulation inputs
+  \label{table:input_data}
+}
+\end{table}
 
-taxi: prices = 5..100, benchmark price = 20
+The simulation was additionally run for control purposes, varying one input
+parameter at a time. These runs are summarised in Table
+\ref{table:inputs:control}, displaying the parameter in question and its
+changed value, as well as the directory in the open data source where the
+results are located.
+
+\begin{table}
+\begin{tabular}{ | l | l | l | }
+  \hline
+  Parameter & Value & Result Directory \\ \hline
+  Benchmark price & 15 & \texttt{lower\_benchmark} \\
+  Benchmark price & 30 & \texttt{higher\_benchmark} \\
+  Taxi's price range & 5 - 20 & \texttt{lower\_range} \\
+  Taxi's price range & 20 - 100 & \texttt{higher\_range} \\
+  Time limit & 50 000 & \texttt{limited\_time} \\
+  \hline
+\end{tabular}
+\caption{
+  Control parameter changes
+  \label{table:inputs:control}
+}
+\end{table}
+
 
 Run 1: Non-regulated price much more successful with when the fixed price
 equals the expected price. non regulated profit = 1000965; fixed fare loss
 -1547613
 
-
-run: benchmark price = 30
-
-run: benchmark price = 15
-
-run: prices = 5..20
-
-run: prices = 20..100
-
-run: time limit = 50000
 
 \todo{process data and diagrams}
 

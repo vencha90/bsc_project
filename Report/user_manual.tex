@@ -264,9 +264,9 @@ and variable pricing data from the main data source. Open
 \texttt{simulation.log} in a text editor and make two new files by splitting
 the original file in half by copy-pasting each run's data. Name the file with
 variable prices \texttt{variable.log} and the file with fixed price
-\textttt{benchmark.log}, and store them in the same directory. For the script
-to work, you have to delete the first and last line of \texttt{varable.log}
-where no actions are selected.
+\texttt{benchmark.log}, and store them in the same directory. For the script to
+work, you have to delete the first and last line of \texttt{varable.log} where
+no actions are selected.
 
 Open the script file in an R work environment. If you followed the step above,
 you only have to modify line 4. Change the path of your working directory in
@@ -277,4 +277,5 @@ match}
 Run the script -- it will take some time depending on the amount of data. This
 is a memory expensive operation and depends on the available RAM. When the
 script is finished, it will print a summary pdf file with graphs and stats
-\todo{exactly what}.
+\todo{exactly what}. This script uses external libraries available online,
+therefore an internet connection is required.
