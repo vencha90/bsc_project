@@ -3,9 +3,21 @@
 \author{Karlis Venters}
 \date{\today}
 
-\usepackage{url}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+
+\usepackage[backend=biber,
+            style=authoryear,
+            texencoding=utf8,
+            bibencoding=utf8]
+  {biblatex}
+\addbibresource{../literature/ai.bib}
+\addbibresource{../literature/general.bib}
+\addbibresource{../literature/taxi.bib}
+\addbibresource{../literature/technologies.bib}
+
+\usepackage{color}
+
 \usepackage{hyperref}
 \makeatletter
 \hypersetup{
@@ -23,20 +35,12 @@
 }
 \makeatother
 
-\usepackage[backend=biber,
-            style=authoryear,
-            texencoding=utf8,
-            bibencoding=utf8]
-  {biblatex}
-\addbibresource{../literature/ai.bib}
-\addbibresource{../literature/general.bib}
-\addbibresource{../literature/taxi.bib}
-\addbibresource{../literature/technologies.bib}
+\usepackage{pdfpages}
+\usepackage{url}
 
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 
-\usepackage{color}
 \newcommand{\todo}[1]{\textcolor{red}{@TODO: #1}}
 
 \begin{document}
@@ -82,5 +86,6 @@
 \appendix
 \input{./user_manual}
 \input{./maintenance_manual}
+\input{./appendix_data}
 
 \end{document}

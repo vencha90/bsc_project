@@ -19,19 +19,23 @@ not achieved in the project?
 Has the student suggested future work?
 
 
-\subsection{Results}
+\subsection{Simulation}
 
 \todo{open-source results}
 
 \todo{list other hidden constants?}
 
-The experiments and their analysis can be repeated by following the
-instructions in User Manual in Appendix \ref{sec:user_manual}. 
+\subsubsection{Inputs}
 
-\todo{rephrase this horrific text}
-The result datasets can be found in the \texttt{standard} directory in the open
-data set mentioned in \ref{sec:intro:openness}. All of the results used were
-generated using the inputs in Table \ref{table:input_data}.
+The experiments and their analysis can be repeated by following the
+instructions in User Manual in Appendix \ref{sec:user_manual}. The result
+datasets can be found in the directories in the open data set mentioned in
+\ref{sec:intro:openness}.
+
+Initially a baseline of inputs were chosen without any intentional constraints
+on the environmental conditions. These inputs are shown in Table
+\ref{table:input_data} and the full result data can be found in
+\texttt{standard} directory in the data set.
 
 \begin{table}
 \begin{tabular}{ | l | l | }
@@ -60,6 +64,7 @@ results are located.
 \begin{tabular}{ | l | l | l | }
   \hline
   Parameter & Value & Result Directory \\ \hline
+  No changes & - & \texttt{standard} \\
   Benchmark price & 15 & \texttt{lower\_benchmark} \\
   Benchmark price & 30 & \texttt{higher\_benchmark} \\
   Taxi's price range & 5 - 20 & \texttt{lower\_range} \\
@@ -74,14 +79,55 @@ results are located.
 \end{table}
 
 
-Run 1: Non-regulated price much more successful with when the fixed price
-equals the expected price. non regulated profit = 1000965; fixed fare loss
--1547613
+\subsubsection{Summary}
+
+In all simulation runs, the variable pricing approach performed significantly
+better. The summary results are shown in Figure \ref{figure:results:summary}.
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=\textwidth]{../figures/results_summary}
+  \caption{
+    Summary of Simulation Results
+    \label{figure:results:summary}
+  }
+\end{center}
+\end{figure}
+
+Taxi using variable pricing earned a large profit in the simulation runs with
+standard parameters, lower benchmark price and lower price range while the
+fixed price taxi made large losses. The most profitable was the simulation
+where the range of prices was limited to be lower than the expected price,
+interestingly the fixed price taxi agent also performed better. The simulation
+run with a limited time follow the same pattern but on a smaller scale
+(varibale pricing 71382 profit / fixed pricing 74416 loss).
+
+Neither pricing approach made a profit in the runs with a higher benchmark
+price and a higher price range. The higher price range run was the only run
+where the variable pricing agent made a considerable loss, and the profit
+difference between fixed and variable pricing was smaller than in other
+samples.
 
 
-\todo{process data and diagrams}
+\subsubsection{Performance of Reinforcement Learning}
+\todo{what was analysed}
 
-ai profitability over time, see how much time it takes for it to become
-profitable etc
+Analysis of variance was performed on each simulation's dataset (meaning that
+benchmark and variable pricing runs were analysed separately). Detailed
+simulation analysis is included in Appendices \ref{sec:data:standard},
+\ref{sec:data:higher_benchmark}, \ref{sec:data:lower_benchmark},
+\ref{sec:data:higher_range}, \ref{sec:data:lower_range} and
+\ref{sec:data:limited_time}. This data is organised by simulation runs as
+identified in Table \ref{table:inputs:control}, and each run has two parts --
+variable pricing and benchmark.
 
-look at how the prices charged change over time, if at all
+All of the simulation runs show a statistically significant (95\% confidence)
+increase of rewards for variable pricing taxi agents. The increase is
+approximately 0.3 for the standard run, between 0.15-0.18 for all benchmark
+price and price range runs, and a surprisingly high 0.75 for the run with
+limited time.
+
+Data is less conclusive on the simulation runs with a fixed price -- only the
+simulation with a higher benchmark price showed statistically significant
+changes of price. Interestingly, this change was negative, meaning that the
+agent actually got worse over time.
