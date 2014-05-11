@@ -47,12 +47,18 @@ number of achieved goals. Still, some issues could be identified.
 The automated test coverage helps to ensure that it the software is working
 according to specifications in the tests. However, as was noted in Section
 \ref{sec:implementation:testing:automated} it could lead to a false sense of
-security. Indeed, some bugs not picked up by the automated tests were
-identified only when trying to use the software. This could have been prevented
-to an extent by adopting a disciplined approach to automated systems testing
-similar to one that was used for unit testing. This would add the difficulty of
-specifying system tests which admittedly would have been impossible at
-uncertain stages of software development.
+security, which was proved true later when some unexpected bugs were
+discovered. When these bugs were being fixed, a few desing oversights were
+noticed. This was caused by not revising the system architecture as the project
+progressed and uncertainties were being reduced; instead the development was
+ongoing and changes in the design were not systematically docmented.
+
+Some bugs not picked up by the automated tests were identified only when trying
+to use the software. This problem could have been prevented to an extent by
+adopting a disciplined approach to automated systems testing similar to one
+that was used for unit testing. This would add the difficulty of specifying
+system tests which admittedly would have been impossible at uncertain stages of
+software development.
 
 While the final software product has low coupling, it had to be reduced
 intentionally. Following test driven development at times resulted in a very
