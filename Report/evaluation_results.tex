@@ -108,9 +108,15 @@ where the variable pricing agent made a considerable loss, and the profit
 difference between fixed and variable pricing was smaller than in other
 samples.
 
+The fact whether a taxi agent made a profit or a loss is not at all important
+for these results. The actual amount of profit/loss depends on the simulation
+inputs which in this case were not created to resemble a realistic situation.
+
+These results strongly suggest that in identical conditions having a choice to
+charge a varied range of fare prices is advantageous to a taxi's profitability.
+
 
 \subsubsection{Performance of Reinforcement Learning}
-\todo{what was analysed}
 
 Analysis of variance was performed on each simulation's dataset (meaning that
 benchmark and variable pricing runs were analysed separately). Detailed
@@ -127,7 +133,19 @@ approximately 0.3 for the standard run, between 0.15-0.18 for all benchmark
 price and price range runs, and a surprisingly high 0.75 for the run with
 limited time.
 
-Data is less conclusive on the simulation runs with a fixed price -- only the
-simulation with a higher benchmark price showed statistically significant
-changes of price. Interestingly, this change was negative, meaning that the
-agent actually got worse over time.
+However, data is less conclusive on the simulation runs with a fixed price.
+Only the fixed price simulation with a higher benchmark price showed
+statistically significant changes of rewards. Interestingly, this change was
+negative, meaning that the agent actually got worse over time.
+
+These results suggest that the taxi agent was successful at finding a policy
+that increases the average reward when it can choose the price freely. 
+
+However, questions about the effectiveness of the reinforcement learning
+implementation are raised by the inconclusiveness of simulaton runs with a
+fixed price in sharp contrast to the success with variable price simulations.
+Theoretically the agent should have learned the actions that yield a higher
+profit by increasingly favouring travel between more profitable locations.
+Could it be that the agent is good at selecting the price but fails to select
+profitable locations? Could the agent's performance be significantly improved
+by fixing this problem?

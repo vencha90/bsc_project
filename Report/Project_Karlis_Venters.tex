@@ -56,13 +56,15 @@
 
 \input{./acknowledgements}
 
-\newpage
+\cleardoublepage
+\phantomsection
 \addcontentsline{toc}{section}{Table of Contents}
 \tableofcontents{}
 
-\newpage
-\addcontentsline{toc}{section}{List of Figures}
+\cleardoublepage
+\phantomsection
 \listoffigures
+\addcontentsline{toc}{section}{List of Figures}
 
 \newpage
 \pagenumbering{arabic}
@@ -80,7 +82,9 @@
 
 \input{./conclusion}
 
-\newpage
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{section}{References}
 \printbibliography
 
 \appendix
