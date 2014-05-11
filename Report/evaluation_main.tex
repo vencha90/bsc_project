@@ -1,27 +1,112 @@
 \subsection{Goals}
 
-look at goals AND requirements
+Goals for this project were set in Section \ref{sec:intro:goals}. The main
+goals were achieved to a large extent. The lower priority goals were not
+achieved, but have good working inroads for future. The goals are discussed in the same order in the paragraphs below.
+
+\textbf{Software.} A taxi market simulation software was successfully developed
+and it supports both regulated and unregulated pricing. It is grounded in the
+economical theory on  and knowledge about modelling taxi markets. Unfortunately
+insufficient attention was paid to making the software to be easily
+configurable, therefore there are lots of important default variables that
+cannot be transparently changed.
+
+\textbf{Data.} The simulation successfully records its data. It is
+relatively easy to change what data is logged. However, data analysis is
+somewhat complex and even requires manual data manipulation. To help users with
+data analysis, there is an included R language script and instructions on using
+it. However, the script will not work out of the box if the logged data is
+changed and adds more complexity to manage. Overall, achieving this data
+gathering-and-analysis goal required more time and effort than was initially
+expected. Nevertheless, the analysis revealed interesting results.
+
+\textbf{Extensibility.} The software implementation is fully covered by tests
+and coupling has been reduced to be as low as possible. Maintainability is
+ensured by the modularity of software, automated test suite that also serves as
+documentation, and the version control commit messages that reveal developer's
+intentions for code. The developer is further supported by an extensive
+Maintenance Manual (Appendix \ref{sec:maintenance_manual}. Therefore the
+software can be easily changed to work with new reinforcement learning
+strategies or changed support libraries.
+
+\textbf{Reinforcement Learning Strategy.} This goal was not ever considered due
+to time limits. However, as noted above, it is easily achievable due to
+software modularity.
+
+\textbf{User Interface.} This goal was only taken in account towards the end of
+the project, but never had a priority over the above goals. Nevertheless, the
+user interface proved satisfactory in user testing when used in conjunction
+with the User Manual (Appendix \ref{sec:user_manual}).
 
 
 \subsection{Software Development}
 
-discuss how the development went, what worked and how tdd resulted in a few bad
-design decisions
+In hindsight, the software development process was successful as judged by the
+number of achieved goals. Still, some issues could be identified.
 
-compare with how extending MATSim would have gone
+The automated test coverage helps to ensure that it the software is working
+according to specifications in the tests. However, as was noted in Section
+\ref{sec:implementation:testing:automated} it could lead to a false sense of
+security. Indeed, some bugs not picked up by the automated tests were
+identified only when trying to use the software. This could have been prevented
+to an extent by adopting a disciplined approach to automated systems testing
+similar to one that was used for unit testing. This would add the difficulty of
+specifying system tests which admittedly would have been impossible at
+uncertain stages of software development.
+
+While the final software product has low coupling, it had to be reduced
+intentionally. Following test driven development at times resulted in a very
+isolated unit-based outlook on the system, making it hard to keep the
+individual units in line with the whole of architecture. To improve code in
+terms of low coupling and other less tangible quality factors, a helpful
+practice can be code reviews by others -- unfortunately unavailable to an
+useful extent in this project. From a personal point of view, working in a team
+is preferrable to developing a solo software project as there is limited
+feedback one can get when working alone, resulting in a lower quality of work.
+
+The traffic sumulation software MATSim was mentioned in Section
+\ref{sec:literature:related:simulation}. It can be seen now that using MATSim
+could have prevented some of the modelling problems mentioned in this section
+and in Section \ref{sec:implementation:software}. However, the performance
+constraints identified in Section \ref{sec:implementation:testing:performance}
+would likely severely limit the usefulness of using MATSim's micro-grained
+approach to traffic modelling, even if no other issues were encountered.
 
 
 \subsection{Future Work}
 
-Software: fix the shortcomings identified above (TBD); extend to other
-learners, perhaps even non-MDP based
+The analysis of results (Section \ref{sec:results}) revealed that the project
+has been mostly successful and the variable pricing approach could have a
+future. Thus it is worth to consider the future outlook of this project.
 
-Socio-economical: evaluate the effect of deregulated prices on
-passengers; effective way to model passengers
+Most importantly, there were some unexpected results showing no improvement and
+even worsening performance of reinforcement learning when taxi's prices were
+fixed (Section \ref{sec:results:stats}). Before any further work can be done,
+the cause of this contradictory result needs to be found and fixed, whether it
+is a software bug or a faulty algorithm implementation.
 
+When the above issue is out of the way, further problems with the software were
+identified in Section \ref{sec:implementation:software}. These can be fixed in
+the order that is deemed necessary for further experiments. 
 
-\subsection{Summary}
+Even if the smaller issues are not fixed, the simulation can be changed to use
+other machine learning algorithms with minimal effort. Of course, more work
+would be needed to use machine learning algorithms that are not based on Markov
+decision processes.
 
-main points
+Extending the simulation to work with multiple taxis is probably the most
+interesting future possibility from an economics position. However, the
+software would require bigger changes in this case as this change would
+implement a multi-agent system.
 
-personal reflection
+Passenger modelling was only partially implemented due to the time constraints,
+and even having good default values for passenger generation in the simulation
+could increase its believability when compared to reality.
+
+If the project is looked at from a less software-centric point of view, there
+are other interesting considerations. The literature overview in Section
+\ref{sec:literature:taxis} identified taxi regulation as a heated topic in
+transportation economics, but very few works touched the subject of the effect
+that deregulated prices can have on passengers and the socio-economic
+environment. If the variable pricing approach has any future, it needs to be
+considered in conjunction with its effects on the society.

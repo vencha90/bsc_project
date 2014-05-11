@@ -6,16 +6,10 @@ dynamic pricing strategy instead of charging fares calculated by a taximeter.
 The prices can be set by an AI system using reinforcement learning with
 increased profit being the ultimate goal. 
 
-\todo{Too many exact details - move to reqs and leave only high level}
-This hypothesis can experimentally be tested in a software simulation of a
-transport network that consists of: a taxicab (agent) travelling in a network
-(graph) between destinations (vertices) that are connected with routes (edges),
-where the taxicab can transport a passenger between destinations in return for
-a fare. Taxicab offers a fare to a passenger, who in turn can agree or decline
-(losing the passenger if declined). Passengers are ready to pay a fare up to a
-sum that is function of the journey distance and other  characteristics such as
-passenger income and time of day. Thus the taxicab will learn to offer the
-right fares for maximised profits depending on environmental circumstances.
+The suggested approach to research this problem is an experimental software
+simulation. A reinforcement learning controlled taxi agent travels in some
+environment and serves passengers with the aim of maximising its profit. The
+environment, passengers and the taxi can be configured as needed for research.
 
 To establish whether the approach worked, it needs to be evaluated. This can be
 done by comparing the results with a benchmark of running the simulation with an
@@ -24,21 +18,22 @@ Now a clear set of goals can be extracted from the short project vision
 described above:
 
 \begin{itemize}
-  \item Develop a software simulation of a taxi market. The simulation needs to
-        support regulated and unregulated pricing.
-  \item Ensure that essential data is gathered and analysed. Compare the 
-        performance of agents working under price regulation and no price 
-        regulation to determine whether this project's premise is worth any
-        future study.
-  \item Develop the software to be modular and maintainable to be able to
-        simulate various environmental conditions, agents and reinforcement
-        learning strategies.
+  \item \textbf{Software.} Develop a software simulation of a taxi market. 
+        The simulation needs to support regulated and unregulated pricing.
+  \item \textbf{Data.} Ensure that essential data is gathered and analysed.
+        Compare the performance of agents working under price regulation and no
+        price regulation to determine whether this project's premise is worth
+        any future study.
+  \item \textbf{Extensibility.} Develop the software to be modular and
+        maintainable in order to be able to simulate various environmental
+        conditions, agents and reinforcement learning strategies.
 \end{itemize}
 
 Further lower-priority goals that are beneficial to the above core goals can be
 identified as well:
 
 \begin{itemize}
-  \item Compare various reinfocement leraning strategies
-  \item Develop an user-friendly interface
+  \item \textbf{Reinforcement Learning Strategy.} Compare various reinfocement
+        learning strategies,
+  \item \textbf{User Interface.} Develop an user-friendly interface.
 \end{itemize}
