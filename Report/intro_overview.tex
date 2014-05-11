@@ -1,21 +1,33 @@
 \subsection{Overview}
+\label{sec:intro:overview}
 
-\todo{citations here? - probably not}
-\todo{rewrite this section}
+This is a report on an experimental simulation in machine learning and taxi
+economics. It was written in support of an undergraduate project for BSc
+Computing Science degree at University of Aberdeen.
 
-Taxicabs often use taximeters to calculate their fares based on route distance
-and time spent travelling. However, the actual costs and potential profits are
-influenced by more factors. If fare prices were set dynamically, they would
-account for the actual environment and increase profitability of taxicabs.
-Usage of artificial intelligence (AI) has been successfully researched in
-\textcite{Tavares2012ai+routing} for traffic routing, and in
-\textcite{Lou2011ai+highways} for variable pricing of toll lanes. A variable
-pricing approach for public transport fares is suggested in
-\textcite{Emele2013pricing+rural}. Therefore AI could be used to dynamically
-price taxicab fares.
+Taxis (in some literature the term \textit{taxicab} is used) are an important
+part of transportation worldwide and usually are regulated by local
+governments. However, fare regulation creates economic inefficiencies because
+the demand and supply greatly differs based on many different factors.
+Therefore no regulation could be preferrable when the taxi's fare price is set
+freely. This project introduces Taxi-sim, a software for taxi market simulation
+where Q-Learning is used to set taxi's fare prices.
 
-\subsubsection{Openness}
-\label{sec:intro:openness}
+The report starts by introducing main and optional goals for the project in
+Section \ref{sec:intro:goals}. Detailed background information is given in
+Section \ref{sec:literature}, investigating transportation economics,
+reinforcement learning and related works. The core requirements for a software
+implementation are established in Section \ref{sec:requirements}. Section
+\ref{sec:design} describes the chosen software development approach as well as
+the architecture and technologies that are used. The finished software is
+discussed in sections on implementation (\ref{sec:implementation:software}) and
+testing (\ref{sec:implementation:testing}). The simulation experiment and the
+overall success of the project is discussed in Section \ref{sec:evaluation}.
+Finally, the project is summed up in Section \ref{sec:conclusion}.
 
-The results are openly available online at this address \todo{link}.
-The software is openly available at this address \todo{link}.
+The project has a homepage which also serves as the main web page for the
+source code repository, located online at this address:
+\url{https://github.com/vencha90/taxi- sim}. Please use the project homepage to
+find the most up-to-date URLs if any of the URLs specified in the report are
+not working. The results of the experiment are available online at this address
+\url{https://db.tt/zYPt09CL}.
