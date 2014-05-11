@@ -13,8 +13,8 @@ project and presented them clearly?
 \label{sec:requirements:simulation}
 
 The following requirements are derived directly from the project's goals set in
-Section \ref{sec:intro:goals}. Alas, it is unfeasible to structure this section
-around each goal as they contain several requrements that sometimes overlap
+Section \ref{sec:intro:goals}. Alas, it is infeasible to structure this section
+around each goal as they contain several requirements that sometimes overlap
 with other goals. Each of the following requirement categories is discussed in
 detail, listing what could be implemented in the best case scenario without any
 time pressure. However, to stay realistic and make sure that core functional
@@ -61,7 +61,7 @@ variables that describe the product or its consumers"
 \parencite{Small2007taxi+urban} The disaggregate approach specifies a set of
 variables for each individual passenger. The project goal is investigating taxi
 pricing on an individual basis, therefore an agent-based approach is
-preferrable as it allows individual modelling of passengers. Of course, to
+preferable as it allows individual modelling of passengers. Of course, to
 express demand as a single variable it needs to be an aggregation of the
 relevant individual variables.
 
@@ -75,7 +75,7 @@ is a variable directly depending on the number of vacant taxis in an area, this
 is something that passenger's perceive in reality. However, for the simulation,
 taxi availability needs to be assumed a constant, at least until machine
 learning capabilities are added to passengers and a competitive market
-established beyond the very basic simulation, so that passanger agents can
+established beyond the very basic simulation, so that passenger agents can
 learn the availability on their own.
 
 Let \(P\) be the set of relevant characteristic variables \(c_1,..,c_n\) for a
@@ -84,7 +84,7 @@ where each \(c_i : i \in \{1, .., n\}\) has a function \(f_i (c_i) \) that
 returns a unity-based normalised value of \(c_i\), \newline
 and each \(c_i\) has a weight \(w_i\) representing its relative importance
 compared to other variables, where \(\sum_{i=1}^n (w_i) = 1 \). \newline
-Then the total probablilstic value \(V(P)\) of a passenger is \[ V(P) =
+Then the total probabilistic value \(V(P)\) of a passenger is \[ V(P) =
 \sum_{i=1}^{n} (w_i \cdot f_i(c_i) )) \] \newline
 
 Let \(\Delta(o,d)\) be the distance between origin \(o\) to destination \(d\). 
@@ -193,11 +193,11 @@ reinforcement learning agent can reach or exceed similar profits it will mean
 that the experiment was a success.
 
 As noted in Section \ref{sec:literature:taxis:demand}, the demand and supply
-relationship is complex in taxi market. Therefore an equilibrum cannot be
+relationship is complex in taxi market. Therefore an equilibrium cannot be
 easily calculated and is unlikely to have real value. However, the expected
 fare from the Equation \ref{eq:requirements:demand} linearly depends on
 distance just like taxi costs, therefore it is a good indicator for taxi
-efficiency. The exact tarriff can be calculated by fixing probability
+efficiency. The exact tariff can be calculated by fixing probability
 distributions for the stochastic process and using average values.
 
 When a tariff is chosen, the simulation can be run the exact same way as with a
@@ -223,7 +223,7 @@ be taken in account.
   Taxi & An active agent that have fixed and variable costs, and that can travel
   in the environment. Taxi has a set of actions that it can take: offer a fare
   to a passenger (if one is present), wait at a location or drive to another
-  location. If the offer is accepted, the taxi drives the passenger totheir
+  location. If the offer is accepted, the taxi drives the passenger to their
   destination, but the passenger is lost if the offer was declined. \\ \hline
 
   Reinforcement Learning & A Q-learner agent for the taxi that interacts with
@@ -241,7 +241,7 @@ be taken in account.
 
 \subsection{Non-Functional Requirements}
 
-\textbf{Maintainability:} the system needs to be maintainable and extendable.
+\textbf{Maintainability:} the system needs to be maintainable and extensible.
 In addition to a maintenance manual targeted at developers, the code needs to
 be documented. Software needs to be modular, so that components can be easily
 exchanged. The development process needs to be transparent so that history and

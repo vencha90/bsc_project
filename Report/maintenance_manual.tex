@@ -43,7 +43,7 @@ It is recommended to use virtualisation as described in User Manual in Appendix
 \ref{sec:user_manual:installation:virtualisation}. Virtualisation will ensure
 that only the correct required dependencies are installed and your operating
 system is not corrupted by potentially conflicting software. If you still do
-not wish to use virtualisation, there are alternatives for unix-like systems.
+not wish to use virtualisation, there are alternatives for Unix-like systems.
 
 You can install Ruby Version Manager (RVM) \parencite{Rvm} from
 \url{http://rvm.io/} and then install Ruby by running \texttt{rvm install
@@ -89,7 +89,7 @@ could be used to release two separate software versions -- standard and
 developer. The full list of dependencies is listed in \texttt{Gemfile.lock} and
 not explained as they only play a supporting role.
 
-\texttt{require\_all} \parencite{Require+all} eases source code managament by
+\texttt{require\_all} \parencite{Require+all} eases source code management by
 allows to require all source files in a directory on a single line in an OS-
 agnostic way (not supported by Ruby natively).
 
@@ -101,7 +101,7 @@ gems, but was listed explicitly to specify a compatible release version
 (0.3.1).
 
 \texttt{guard} and \texttt{guard-rspec} \parencite{Guard} can be used for
-monitoring filesystem events. A recommended workflow is suggested in Section
+monitoring file system events. A recommended work flow is suggested in Section
 \ref{sec:maintenance_manual:testing}
 
 \texttt{rake} \parencite{Rake} is a common tool used for Ruby command line
@@ -145,7 +145,7 @@ easily extended if needed.
 All Rspec scenarios can be run by entering \texttt{bundle exec rspec} in
 terminal, and help displayed by entering \texttt{bundle exec rspec -h}.
 
-A typical developer's TDD workflow with Rspec would go as follows: write a test
+A typical developer's TDD work flow with Rspec would go as follows: write a test
 in text editor, switch context to command line, run the test in question
 (because running all tests would take a lot of time in a bigger codebase),
 switch context back...

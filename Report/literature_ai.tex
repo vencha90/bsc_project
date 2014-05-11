@@ -6,7 +6,7 @@
 \subsubsection{Basics}
 \label{sec:literature:ai:basics}
 
-Reinforecement learning is software agents being rewarded or punished
+Reinforcement learning is software agents being rewarded or punished
 (receiving negative reward) for their actions so that they can hopefully learn
 an optimal policy for acting in some environment, maximising the economic
 outcome (\textbf{utility}).
@@ -74,10 +74,10 @@ they will find a passenger and if the passenger will accept their offered fare.
 In this case the environment is partially observable, hence the problem could
 be defined as Partially Observable MDP.
 
-According to \textcite{Spaan2012ai+pomdp}, fully observavle finite MDPs can be
+According to \textcite{Spaan2012ai+pomdp}, fully observable finite MDPs can be
 formally defined as follows. Time has discrete steps, and an agent has to
 execute an action at each step (unless the action lasts multiple steps). The
-environment is desccribed by a set of states \(S = \{s_1,..,s_n\}\), and the
+environment is described by a set of states \(S = \{s_1,..,s_n\}\), and the
 agent has a set of actions \(A = \{a_1,..,a_n\}\). Each time the agent takes an
 action \(a\) in a state \(s\), the environment transitions to a new state
 \(s'\) according to a probabilistic transition function \(T(s,a,s')\), and the
@@ -91,7 +91,7 @@ waiting, taxis not in the immediate vicinity will now be aware of it.
 Considerations of solving MDPs will be examined in Sections
 \ref{sec:literature:ai:mdp:solving} and \ref{sec:literature:ai:exploration}
 with an in-depth overview of methods in Section
-\ref{sec:literature:ai:mdp:methods}.Finally, POMDPs that could be improtant for
+\ref{sec:literature:ai:mdp:methods}.Finally, POMDPs that could be important for
 the future outlook of this project will be looked at in Section
 \ref{sec:literature:ai:pomdp}
 
@@ -145,7 +145,7 @@ policy}. Off-policy methods are called that way because they do not operate
 based on the estimated optimal policy, but have a behaviour policy that could
 even be completely unrelated to the estimated optimal policy. This allows for
 exploration, while an on-policy agent operates on and estimates a single
-policy. If an agend does not explore, it can easily settle on a sub-optimal
+policy. If an agent does not explore, it can easily settle on a sub-optimal
 policy.
 
 \textbf{Temporal difference (TD)} methods do not use a transition model and

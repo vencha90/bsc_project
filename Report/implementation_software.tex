@@ -30,7 +30,7 @@ User interface is a low-priority requirement and needs to provide minimal
 interactivity, therefore command line interface was deemed appropriate. Ruby
 provides many command line commands. However, to comply with a common practice
 for ruby applications it was decided to use \textit{Rake} \parencite{Rake}, a
-software task managament tool to make all application tasks easily available to
+software task management tool to make all application tasks easily available to
 users. A full set of instructions for using Rake and the available commands is
 available in the User Manual in Appendix \ref{sec:user_manual:using:interface}.
 
@@ -54,7 +54,7 @@ a module that can be reused in other source files as needed.
 
 The environment is initialised based on the user input as discussed in the User
 Manual in Appendix \ref{sec:user_manual:using:inputs}. The environment in turn
-initialises all simulation objects and agents, and runs the smulation twice:
+initialises all simulation objects and agents, and runs the simulation twice:
 once to establish a benchmark with a fixed taxi fare price, and once using a
 range of fare prices. To reduce software coupling, the implementation also
 abstracts some methods of the road network that are used by taxis and
@@ -83,10 +83,10 @@ generate random planar graphs is suggested by
 \textcite{Brinkmann2007graphs+generate}, including software called
 \textit{plantri}.
 
-Shortest paths in graphs can be calculated by Djikstra's algorithm
+Shortest paths in graphs can be calculated by Dijkstra's algorithm
 \parencite{Cormen2009algorithms}. However, calculating all possible shortest
 paths is not necessary as some routes could never be travelled. Furthermore,
-that may be unfeasible in a very large network as the number of paths grows
+that may be infeasible in a very large network as the number of paths grows
 exponentially. Online calculation of a shortest path between two nodes in a
 graph can be efficiently done using \textit{A-star} algorithm by
 \textcite{Hart1968paths}.
@@ -153,8 +153,8 @@ are fixed and uniform.
 
 As described in section \ref{sec:requirements:ai}, Q-Learner is a simple and
 adequate reinforcement learning method fit for the project. Of course, the very
-basic Q-Learner will need to be extended to accomodate exploration in this
-paricular case of having an active agent (see Section
+basic Q-Learner will need to be extended to accommodate exploration in this
+particular case of having an active agent (see Section
 \ref{sec:literature:ai:exploration}. Therefore an exploration constant
 \(\varepsilon\) needs to be used for action selection, and it can stay fixed as
 the horizon for the simulation will normally be unknown.
@@ -222,9 +222,9 @@ maintainability and configurability of the system. This issue could be solved
 by managing these values in a single file. To compensate for the loss of
 context, this file would need to be commented similarly to a user manual.
 
-A less important issue is the taxi action sequence not mimicing real world
+A less important issue is the taxi action sequence not mimicking real world
 processes. In the simulation the taxi executes actions, travels and selects the
-next actions immideately while it is only rendered inactive for some time
+next actions immediately while it is only rendered inactive for some time
 afterwards; this causes no problems now but could cause issues if multiple taxi
 agents are introduced.
 
