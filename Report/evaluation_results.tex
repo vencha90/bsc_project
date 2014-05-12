@@ -22,10 +22,6 @@ Has the student suggested future work?
 \subsection{Simulation}
 \label{sec:results}
 
-\todo{open-source results}
-
-\todo{list other hidden constants?}
-
 \subsubsection{Inputs}
 
 The experiments and their analysis can be repeated by following the
@@ -78,6 +74,16 @@ results are located.
   \label{table:inputs:control}
 }
 \end{table}
+
+Besides the configurable inputs, some simulation parameters used defaults
+fixed in the source code. Passenger characteristics were manually adjusted so
+that the probability of a passenger accepting a fare would be about 75\% for
+their expected fare, as in preceding test simulation runs it was experimentally
+determined that the formula in Section \ref{sec:requirements::passenger}
+resulted in this probability being lower than 10\%. The other noteworthy fixed
+parameters were used for the Q-Learner: both discount factor and greediness
+factor ($\varepsilon$) were fixed at 0.9, meaning that the agent's focus on
+exploitation and exploration was only 10\%.
 
 
 \subsubsection{Summary}
