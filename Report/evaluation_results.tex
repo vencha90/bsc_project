@@ -41,6 +41,9 @@ on the environmental conditions. These inputs are shown in Table
   Time Limit & 1 000 000 \\
   Road network & with 6 locations, distances between 1-5 \\
   Passengers' expected fare & 20 \\
+  Q-Learner's grediness \(\varepsilon\) & 0.9 \\
+  Q-Learner's discount factor \(\gamma\) & 0.9 \\
+  Q-Learner's default value estimate & 0 \\
   Taxi's variable price range & 5-100 (integers) \\
   Taxi's benchmark price & 20 \\
   \hline
@@ -64,6 +67,12 @@ results are located.
   No changes & - & \texttt{standard} \\
   Benchmark price & 15 & \texttt{lower\_benchmark} \\
   Benchmark price & 30 & \texttt{higher\_benchmark} \\
+  Q-Learner's default value estimate & 10 & \texttt{value\_estimate\_10} \\
+  Q-Learner's default value estimate & 100 & \texttt{value\_estimate\_100} \\
+  Q-Learner's default value estimate & -10 & \texttt{value\_estimate\_neg10} \\
+  Q-Learner's default value estimate & -100 & \texttt{value\_estimate\_neg100} \\
+  Q-Learner's discount factor & 0.4 & \texttt{lower\_discount} \\
+  Q-Learner's greediness & 0.4 & \texttt{lower\_greediness} \\
   Taxi's price range & 5 - 20 & \texttt{lower\_range} \\
   Taxi's price range & 20 - 100 & \texttt{higher\_range} \\
   Time limit & 50 000 & \texttt{limited\_time} \\
@@ -80,13 +89,11 @@ fixed in the source code. Passenger characteristics were manually adjusted so
 that the probability of a passenger accepting a fare would be about 75\% for
 their expected fare, as in preceding test simulation runs it was experimentally
 determined that the formula in Section \ref{sec:requirements::passenger}
-resulted in this probability being lower than 10\%. The other noteworthy fixed
-parameters were used for the Q-Learner: both discount factor and greediness
-factor ($\varepsilon$) were fixed at 0.9, meaning that the agent's focus on
-exploitation and exploration was only 10\%.
+resulted in this probability being lower than 10\%.
 
 
 \subsubsection{Summary}
+\todo{add new results}
 
 In all simulation runs, the variable pricing approach performed significantly
 better. The summary results are shown in Figure \ref{figure:results:summary}.
@@ -133,6 +140,7 @@ the fare prices.
 
 \subsubsection{Performance of Reinforcement Learning}
 \label{sec:results:stats}
+\todo{add new results}
 
 Analysis of variance was performed on each simulation's dataset (meaning that
 benchmark and variable pricing runs were analysed separately). Detailed
