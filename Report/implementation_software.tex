@@ -20,12 +20,18 @@ Is the documentation in the code appropriate and useful?
 
 This section explains how the system was implemented following the software
 architecture specified in Figure \ref{figure:design:software} and its detailed
-description in Section \ref{sec:design:architecture}. Besides a detailed look
-at the software modules, this section is concluded by an overview of known
-limitations and issues with the current implementation.
+description in Section \ref{sec:design:architecture}. The software components
+are: User Interface (Section \ref{sec:implementation:software:ui}), Road
+Network (\ref{sec:implementation:software:roads}), Passenger
+(\ref{sec:implementation:passenger}), Taxi
+(\ref{sec:implementation:software:taxi}) and Q-Learner
+(\ref{sec:implementation:ai}). Besides a detailed look at the software modules,
+this section is concluded by an overview of known limitations and issues with
+the current implementation in Secton \ref{sec:implementation:software:issues}.
 
 
 \subsubsection{User Interface: Input and Output}
+\label{sec:implementation:software:ui}
 
 User interface is a low-priority requirement and needs to provide minimal
 interactivity, therefore command line interface was deemed appropriate. Ruby
@@ -53,6 +59,7 @@ a module that can be reused in other source files as needed.
 
 
 \subsubsection{The Environment}
+\label{sec:implementation:software:environment}
 
 The environment is initialised based on the user input as discussed in the User
 Manual in Appendix \ref{sec:user_manual:using:inputs}. The environment in turn
@@ -64,7 +71,7 @@ passengers.
 
 
 \subsubsection{Road Network}
-\label{sec:design:network}
+\label{sec:implementation:software:roads}
 
 A real world road network is represented as a weighted connected graph
 constructed of edges (roads) and vertices (origins/destinations). Each vertex
@@ -103,6 +110,7 @@ mentioned above.
 
 
 \subsubsection{Taxi}
+\label{sec:implementation:software:taxi}
 
 The taxi agent is arguably the most important component of the simulation. It
 stores its location and reachable destinations in the environment, the last
@@ -213,6 +221,9 @@ are clearly listed.
 
 \subsubsection{Limitations and Issues}
 \label{sec:implementation:software:issues}
+
+Performance limits and issues were discussed in Section
+\ref{sec:implementation:testing:performance}.
 
 One of the main problems with the existing implementation is the non-
 transparent management of default variables. These variables are used for
