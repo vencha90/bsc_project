@@ -1,7 +1,14 @@
 \subsection{Related works}
 \label{sec:literature:related}
 
+Although the subject area of the project is rather specific, some related works
+were found. Research studies are covered in Section
+\ref{sec:literature:related:studies}, traffic simulation software in Section
+\ref{sec:literature:related:simulation} and practical guidance on traffic
+modelling in Section \ref{sec:literature:related:modelling}.
+
 \subsubsection{Studies}
+\label{sec:literature:related:studies}
 
 \textcite{Emele2013pricing+rural} investigated an agent-based scenario for
 variable public transport pricing where both passengers and transport providers
@@ -17,8 +24,8 @@ based microscopic agent-based models can be used in Berlin. It was found that
 the both types of models used are complementary and provide similar results
 most of the time. This study used MATSim, a piece of software described in
 detail in Section \ref{sec:literature:related:simulation}. Although this study
-did not cover pricing in any way, it is worth noting that both bottom-up and
-top-down approaches can provide interchangeable results.
+did not cover pricing in any way, it did discover that both bottom-up and top-
+down approaches provided interchangeable results.
 
 
 \subsubsection{Traffic Simulation Software}
@@ -39,11 +46,11 @@ limited interest for this project as EMME is a commercial and closed software.
 \parencite{Inro2014emme}
 
 \textcite{Bernhardt2007taxi+agent} gave an overview of agent-based software for
-traffic modelling, naming MATSim as the most useful of these. MATSim is the most
-noteworthy agent-based simulation and in active development. It has very
-extensive capabilities and modules. However, it is complex to use and extend.
-\textcite{Gao2010taxi+comparison} claimed that MATSim and EMME/2 has similar
-performance and even produce compatible outputs.
+traffic modelling, naming MATSim as the most useful of these. MATSim is the
+most noteworthy agent-based simulation and is undergoing active development. It
+has very extensive capabilities and modules. However, it is complex to use and
+extend. \textcite{Gao2010taxi+comparison} claimed that MATSim and EMME/2 has
+similar performance and even produce compatible outputs.
 
 ITSUMO by \textcite{Silva2006itsumo} is more limited simulation software using
 intelligent agents to model traffic. \textcite{Bazzan2009integrating}
@@ -57,12 +64,13 @@ has a large codebase under active development, and its documentation is
 fragmented \textcite{Matsim2012}. Extending MATSim is conceptually a good
 alternative to implementing custom software for this project. However, the
 effort required to fully investigate the complexities of MATSim and work with
-an unfamiliar legacy codebase is likely infeasible for the project's time
-frame. MATSim is developed for the purposes of traffic prediction, not
+an unfamiliar legacy codebase was likely to prove infeasible for the project's
+time frame. MATSim is developed for the purposes of traffic prediction, not
 reinforcement learning simulations.
 
 
 \subsubsection{Traffic Modelling}
+\label{sec:literature:related:modelling}
 
 \textcite[78]{Bernhardt2007taxi+agent} cited Bonabeau(2002a) for the following
 conditions when agent based modelling is appropriate:

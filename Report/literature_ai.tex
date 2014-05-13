@@ -59,20 +59,21 @@ stochastic. \parencite{Russell2010ai+modern}
 
 Considering MDPs over time, two cases can be distinguished: finite and infinite
 horizon. While the optimal action in a given state could change when having a
-finite horizon, it never would with an infinite horizon as there is no
-differing time pressure. To solve MDPs with an infinite horizon and no terminal
-states, rewards need to be discounted using a discount parameter \(\gamma\).
-Finding an optimal policy is not always possible due to the large state space,
-therefore approximation may be needed. Approximation can give good results
-because reaching many states has a very small probability and they have very
-low effect on the overall utility of a policy. \parencite{Russell2010ai+modern}
+finite horizon, it never would with an infinite horizon as there is no time
+pressure. To solve MDPs with an infinite horizon and no terminal states,
+rewards need to be discounted using a discount parameter \(\gamma\). Finding an
+optimal policy is not always possible due to the large state space, therefore
+approximation may be needed. Approximation can give good results because
+reaching many states has a very small probability and they have very low effect
+on the overall utility of a policy. \parencite{Russell2010ai+modern}
 
 The simple model of MDPs assumed that the environment was perfectly observable
 i.e. the agent knew which state it is in at all times. This assumption is
 unrealistic in the real world -- for example, a taxi driver does not know when
 they will find a passenger and if the passenger will accept their offered fare.
 In this case the environment is partially observable, hence the problem could
-be defined as Partially Observable MDP.
+be defined as Partially Observable MDP. This case is considered in Section
+\ref{sec:literature:ai:pomdp}
 
 According to \textcite{Spaan2012ai+pomdp}, fully observable finite MDPs can be
 formally defined as follows. Time has discrete steps, and an agent has to
@@ -91,8 +92,8 @@ waiting, taxis not in the immediate vicinity will now be aware of it.
 Considerations of solving MDPs will be examined in Sections
 \ref{sec:literature:ai:mdp:solving} and \ref{sec:literature:ai:exploration}
 with an in-depth overview of methods in Section
-\ref{sec:literature:ai:mdp:methods}.Finally, POMDPs that could be important for
-the future outlook of this project will be looked at in Section
+\ref{sec:literature:ai:mdp:methods}. Finally, POMDPs that could be important
+for the future outlook of this project will be looked at in Section
 \ref{sec:literature:ai:pomdp}
 
 
@@ -164,8 +165,8 @@ transition history is used when updating policy to correct for errors observed
 in the last transition. \textcite(Szepesvari2010ai+algorithms) notes that
 finding the best value of \(\lambda\) is usually done by trial and error.
 However, this only affects the speed at which the method converges to an
-optimal policy, and \(\lambda\) can be adjusted as needed when using the
-method.
+optimal policy, and \(\lambda\) can be adjusted as needed when some experience
+of using the method is known.
 
 A popular off-policy model-free method is \textbf{Q-learning}, which is based
 on the TD approach. A Q-learning agent works by learning an action-value
@@ -194,12 +195,12 @@ software agent has a separated policy and value function.
 \label{sec:literature:ai:exploration}
 
 A final issue not yet covered is exploration. GPI-based methods (see Section
-\ref{sec:literature:ai:mdp:solving}) covered here in their naive forms are greedy,
-meaning that they will often converge to a policy optimal for the subset of
-states they have experienced (a suboptimal policy)
+\ref{sec:literature:ai:mdp:solving}) covered here in their naive forms are
+greedy, meaning that they will often converge to a policy optimal for the
+subset of states they have experienced (a suboptimal policy)
 \parencite{Russell2010ai+modern}. Instead, the agent should find a globally
-optimal policy. The agent faces a trade-off between exploration and
-exploitation. 
+optimal policy. Thus the agent faces a trade-off between exploration and
+exploitation i.e. between current profits and future profits.
 
 \textcite{Sutton1998ai+reinforcement} describe \(\varepsilon\)-greedy methods
 to deal with this trade-off. This simply fixes how inclined an agent is to
@@ -220,7 +221,7 @@ continuous action spaces. \parencite{Hasselt2012ai+continuous}
 \label{sec:literature:ai:pomdp}
 
 \textbf{Partially observable Markov decision processes} (POMDP) add the notion
-of a \textbf{sensor model} specifying the probabilities of perceiving evidence.
+of a \textbf{sensor model} to specify the probabilities of perceiving evidence.
 Therefore now the set of states is a set of probability distributions for a
 POMDP -- the belief state as discussed by \textcite{Russell2010ai+modern}.
 \textcite{Spaan2012ai+pomdp} go in more detail and specify that to form belief
