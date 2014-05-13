@@ -15,9 +15,9 @@ Test-Driven Development (TDD) was introduced in Section \ref{sec:design:tdd}.
 The TDD process was not followed to the letter. Firstly, in some cases with
 unfamiliar and unknown problems tests and code were written intermittently as
 uncertainty was slowly reduced. Another reason for not following TDD was the
-lax requirements for user interface, where software development alternated
-between tests-first and code-first trying to find the easiest solutions to
-requirements.
+relaxed requirements for user interface, where development alternated between
+writing tests first and code first while trying to find the easiest solutions
+to comply with requirements.
 
 Most of the tests used are black-box unit tests. These tests allow internal
 refactoring of software without (theoretically) affecting the overall system
@@ -39,18 +39,18 @@ tests.
 
 \subsubsection{User Testing}
 
-User testing was done when software had matured enough to fix an interface
-implementation. A computer-literate user with minimal experience in using
-command-line applications was tasked with using the software according to the
-User Manual (Appendix \ref{sec:user_manual}). The uses found no problems with
-the software and was able to run the simulation from the instructions alone.
-After suggestions from the user, example input and output files were added to
-the user manual, as the user found that the work flow was complicated by looking
-at examples in external files.
+User testing was done when software had matured enough to have a fixed
+interface implementation and a basic User Manual. A computer-literate user with
+minimal experience in using command-line applications was tasked with using the
+software according to the User Manual (Appendix \ref{sec:user_manual}). The
+user found no problems with the software and was able to run the simulation
+from the instructions alone. After suggestions from the user, example input and
+output files were added to the user manual, as the user found that the work
+flow was complicated by looking at examples in external files.
 
 The user was unimpressed by the complex installation process and the usage of
-virtualisation. However, the user admitted that it was preferable to the
-alternative of possibly encountering compatibility issues.
+virtualisation. However, the user admitted that it was preferable if facing an
+alternative of possible compatibility issues.
 
 \subsubsection{Performance Testing}
 \label{sec:implementation:testing:performance}
@@ -62,16 +62,19 @@ This oversight was quickly mitigated by storing the calculated distances in
 memory and only traversing the graph for unknown distances.
 
 The main expected software limitation is caused by the dimensionality of state-
-action space for Q-Learner. After a certain threshold (system-dependent) it is
-likely to exhaust available random access memory and require writing to hard
-drive, thus significantly reducing simulation speed. State-action space depends
-on the size of the road network and the range of prices available to the taxi.
-To be exact, the dimensionality equals \( (n-1) \cdot n \cdot p\), where \(n\)
-is number of locations, \(n-1\) is the number of reachable locations and \(p\)
-is the number of available prices. Therefore the main factor limiting the
-performance of Taxi-sim is hardware and RAM in particular (assuming the
-software implementation has no unknown bugs).
+action space for Q-Learner. After a certain system-dependent thresholds it is
+likely to exhaust available random access memory and require writing to and
+reading from hard drive, thus significantly reducing simulation speed. State-
+action space depends on the size of the road network and the range of prices
+available to the taxi. To be exact, the dimensionality equals \( (n-1) \cdot n
+\cdot p\), where \(n\) is number of locations, \(n-1\) is the number of
+reachable locations and \(p\) is the number of available prices. Therefore the
+main factor limiting the performance of Taxi-sim is hardware and RAM in
+particular (assuming the software implementation has no unknown bugs) -- this
+has to be kept in mind when specifying inputs for simulations.
 
-A final less serious issue some users might run into is the considerable
-size of simulation log files that have a data row for each time unit of the
-simulation. Dealing with this issue is covered in User Manual in Appendix \ref{sec:user_manual}.
+A final less serious issue some users might run into is the considerable size
+of simulation log files that have a data row for each time unit of the
+simulation, running in hundreds and thousands of megabytes for long
+simulations. Managing this issue is covered in User Manual in Appendix
+\ref{sec:user_manual}.

@@ -91,10 +91,9 @@ in Appendix \ref{sec:maintenance_manual}.
 
 Managing different Ruby versions on a single computer can be cumbersome in case
 it is needed for multiple Ruby applications. Furthermore, Ruby development for
-Windows operating systems (OS) is several months behind development on Unix-
-based systems \parencite{Ruby}, rendering the latest versions of Ruby unusable
-directly on Windows, at the time of writing including the one this project is
-using.
+Windows operating systems (OS) is several months behind development on 
+Unix-based systems \parencite{Ruby}, rendering the latest versions of Ruby unusable
+directly on Windows, which also happens to be the case with this project.
 
 Fortunately, this can easily be avoided by using the following software:
 \textit{VirtualBox} \parencite{Virtualbox} virtualisation software to host any
@@ -113,8 +112,8 @@ automation.
 As was explained in Section \ref{sec:design:tdd}, Test-Driven Development (TDD)
 is an important method for software development in this project. Therefore
 supporting effective TDD is critical. \textit{RSpec} is a TDD testing tool for
-Ruby \parencite{Rspec}. The tests are meant to describe the desired behaviour of
-software in natural English.
+Ruby \parencite{Rspec}. The tests describe the desired behaviour of software in
+a domain-specific language aimed to be very close to natural English.
 
 An example RSpec test scenario is shown in Figure \ref{figure:rspec}. This test
 specifies behaviour of some ruby class 'Class' which should have a 'currency'
@@ -145,4 +144,4 @@ is a code coverage tool that monitors test coverage of a codebase by checking
 how many lines of code are executed when running the test suite. \textit{Guard}
 \parencite{Guard} is a tool that monitors file changes and executes appropriate
 events (i.e. running RSpec tests). This can make a developer's TDD work flow
-streamlined leaving with only tests and code to write.
+streamlined leaving the developer with only tests and code to write.

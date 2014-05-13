@@ -25,30 +25,30 @@ in Table \ref{table:requirements} for each of the following sections.
 \subsubsection{Market Considerations}
 
 The approach suggested by this project is not compatible with a market where
-fares are regulated, at least in the current form of regulation that specifies
-a formula to calculate fares based on some variables, usually time and
-distance. Other ways of regulation that do not affect pricing, for example,
-market entry conditions, are compatible with the suggested variable pricing
-approach.
+fares are regulated, at least in the usual form of regulation that specifies a
+formula to calculate fares based on some variables, usually time and distance.
+Other ways of regulation that do not affect pricing are compatible with the
+suggested variable pricing approach, for example, regulated market entry
+conditions.
 
 Three different operational types of taxi markets were introduced in Section
 \ref{sec:literature:taxis}: phone-order market, cruising taxi market and taxi
 rank market. In the phone-order market and taxi rank customers are actively
 seeking a taxi, while in the cruising taxi market passengers can only wait for
 a taxi to drive by. Therefore the cruising taxi market is chosen as the easiest
-target for simulation, extending it to phone-order and taxi rank markets if the
-initial experiment is successful.
+target for simulation, investigating extensions to phone-order and taxi rank
+markets if the initial experiment is successful.
 
 The relationship between taxi demand and supply and vice versa was established
 in Section \ref{sec:literature:taxis:demand}. This relationship largely depends
 on the competitive situation in a taxi market. This is a very complex
 relationship and thus implementing it in software would require considerable
 effort. Because the core goal of the project is comparing variable pricing
-approaches, not correctly modelling the market, this problem can be avoided by
-assuming a constant demand. Furthermore, if the environment is fixed, the
-simulation only needs to support a single taxi at the very least. As the design
-is planned modular, the variable demand can be factored in later when
-necessary.
+approaches, not correctly modelling the market in every aspect, this problem
+can be avoided by assuming a constant demand. Furthermore, if the environment
+is fixed, the simulation only needs to support a single taxi at the very least.
+As the design is planned to be extensible, the variable demand can be factored
+in later when necessary.
 
 
 \subsubsection{Demand: Modelling Passengers}
@@ -65,7 +65,7 @@ preferable as it allows individual modelling of passengers. Of course, to
 express demand as a single variable it needs to be an aggregation of the
 relevant individual variables.
 
-Therefore each passenger's demand is a function that of some variables. The
+Therefore each passenger's demand is a function of some variables. The
 different types of variables affecting taxi demand were discussed in Section
 \ref{sec:literature:taxis:demand}. Exogenous demand variables are value of time
 and value of reliability that can be derived from a passenger's income, hour of
@@ -129,8 +129,8 @@ it is assumed that the variable cost depends only on the distance covered
 
 Taxis have a set of available actions. When stopped at a location, they can
 decide to drive to another location or wait. If there is a passenger present,
-they can start interacting with the passenger, ask for a desired destination
-and offer a price.
+they can start interacting with the passenger, query the passenger for a
+desired destination and offer a price for travelling there.
 
 When taxis interact with customers in reality in a market with no fare
 regulation, bargaining is likely to happen: passengers state a destination,
@@ -144,7 +144,7 @@ However, sophisticated bargaining can be disregarded in the simulation if the
 horizon is significantly long as the agreed fares should converge, albeit at a
 slower rate. A simpler approach is limiting the bargaining process to a single
 bid which is immediately accepted or declined by the passenger based on the
-demand \(Q\). To incentivise the taxi agent, each bid has a cost in time.
+demand \(Q\). To incentivise the taxi agent, each bid also has a cost in time.
 
 
 \subsubsection{Modelling reinforcement learning}
@@ -166,9 +166,9 @@ stochastic as mentioned in Section \ref{sec:requirements:passenger}.
 The actions that a taxi can take were discussed in Section
 \ref{sec:requirements:taxi}. A simple reward function is as follows. For each
 moment of time that a taxi is active, there is an immediate negative reward
-based on fixed costs and salary variable costs. If the taxi takes travels, it
-suffers a negative reward based on travel variable costs. The only positive
-reward it gains is from passengers paying their fares.
+based on fixed costs and salary variable costs. If the taxi travels, it suffers
+a negative reward based on travel variable costs. The only positive reward it
+gains is from passengers paying their fares.
 
 If passengers wait at a location for a longer time, then taxis can form
 expectations about the possibility of encountering passengers at each location.
@@ -178,7 +178,7 @@ avoided by assuming that passengers do not wait for taxis and appear at a
 location for a single moment in time only.
 
 As recognised in Section \ref{sec:literature:ai:mdp:methods}, the simplest
-reinforcement learning method to implement is Q-learner, and it has been just
+reinforcement learning method to implement is Q-Learner, and it has been just
 proven to be adequate for the minimum requirements when the complexity is
 reduced.
 
@@ -187,23 +187,13 @@ reduced.
 \label{sec:requirements:benchmark}
 
 To evaluate the variable pricing approach, benchmarks measuring taxi
-profitability need to be established using the linear pricing approach. It will
-establish the average best-case scenario for both passengers and taxis. If the
-reinforcement learning agent can reach or exceed similar profits it will mean
-that the experiment was a success.
-
-As noted in Section \ref{sec:literature:taxis:demand}, the demand and supply
-relationship is complex in taxi market. Therefore an equilibrium cannot be
-easily calculated and is unlikely to have real value. However, the expected
-fare from the Equation \ref{eq:requirements:demand} linearly depends on
-distance just like taxi costs, therefore it is a good indicator for taxi
-efficiency. The exact tariff can be calculated by fixing probability
-distributions for the stochastic process and using average values.
-
-When a tariff is chosen, the simulation can be run the exact same way as with a
-reinforcement learning, the only difference being the agent having no say about
-the fare. As the agent faces the same costs in both simulations, costs need not
-be taken in account.
+profitability need to be established using the linear tariff approach i.e. a
+certain price for a unit of time and distance. When a tariff is chosen, the
+simulation can be run the exact same way as with a reinforcement learning, the
+only difference being the agent having no say about the fare. As the agent
+faces the same costs in both simulations, costs need not be taken in account.
+The tarrif can be set to equal the passenger's expected fare price, but this is
+not neccessarily the equilibrium fare price.
 
 
 \begin{table}
@@ -220,17 +210,19 @@ be taken in account.
   travel to, and a set of user-specified characteristics determining if they
   agree to pay a certain fare for the taxi ride \\ \hline
 
-  Taxi & An active agent that have fixed and variable costs, and that can travel
-  in the environment. Taxi has a set of actions that it can take: offer a fare
-  to a passenger (if one is present), wait at a location or drive to another
-  location. If the offer is accepted, the taxi drives the passenger to their
-  destination, but the passenger is lost if the offer was declined. \\ \hline
+  Taxi & An active agent that have fixed and variable costs, and that can 
+  travel in the environment. Taxi has a set of actions that it can take: offer 
+  a fare to a passenger (if one is present), wait at a location or drive to
+  another location. If the offer is accepted, the taxi drives the passenger to
+  their destination, but the passenger is lost if the offer was declined. \\
+  \hline
 
   Reinforcement Learning & A Q-learner agent for the taxi that interacts with
   the environment, the taxi and the passengers with a goal to maximise the
   taxi's profit \\ \hline
 
-  Benchmark & The simulation supports a taxi agent with a single fixed price \\
+  Benchmark & The simulation additionally supports a taxi agent with a single
+  fixed price \\
   \hline
 \end{tabular}
 \caption{
@@ -240,6 +232,11 @@ be taken in account.
 \end{table}
 
 \subsection{Non-Functional Requirements}
+
+\textbf{Usability.} The installation process needs to be simple and fast. As
+the system is very specific, a graphical user interface is not required.
+However, users should be able to easily learn how to use the system and how to
+deal with common issues.
 
 \textbf{Maintainability:} the system needs to be maintainable and extensible.
 In addition to a maintenance manual targeted at developers, the code needs to

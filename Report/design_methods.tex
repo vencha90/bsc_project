@@ -6,13 +6,13 @@
 
 The author has previous satisfactory industrial experience of working with the
 Agile software development philosophy (Scrum framework) and following the Test-
-Driven Development methodology (TDD). Scrum has a lot in common with a
-methodology called eXtreme Programming (XP) \parencite{Copeland2001xp},
-particularly the software development aspects. Agile philosophy, Scrum and XP
-are most useful for teams working on larger projects \parencite(Cohn2010agile),
-so they will not be discussed here any more. Still, TDD is one of the practices
-recommended by Scrum (or XP) to improve software quality, and apart from most
-parts of Scrum (and XP) TDD is aimed at individual software developers
+Driven Development methodology (TDD). Scrum has a lot in common with eXtreme
+Programming (XP) methodology \parencite{Copeland2001xp}, particularly its
+software development aspects. Agile philosophy, Scrum and XP are most useful
+for teams working on larger projects \parencite{Cohn2010agile}, so they will
+not be discussed here any more. Still, TDD is one of the practices recommended
+by Scrum (or XP) to improve software quality, and apart from most parts of
+Scrum (and XP) TDD is aimed at individual software developers
 \parencite{Beck2000xp, Cohn2010agile}.
 
 The TDD cycle goes as follows: automated tests are written first, followed by
@@ -25,23 +25,24 @@ time of writing software. \parencite{Beck2000xp}
 Studies have found that TDD is better for code quality than traditional non-TDD
 fashion: \textcite{Williams2003test} found that software produced in IBM
 following TDD had 40\% less bugs, and \textcite{Bhat2006tdd} found a 50\%
-increase in code quality in two different environments. However,
-\textcite{Bhat2006tdd} also notes that TDD required 15\% more time upfront to
-write tests. Finally, \textcite{Dhh2014tdd} warns about blindly following TDD
-and not employing other tools and practices that could aid software
-development.
+increase in code quality in two different environments at Microsoft.
 
-TDD is heavily focused on black-box unit testing, but does not exclude other
-ways of testing software. White-box unit testing was needed to test complex
-parts of the software such as Q-Learner. Furthermore, integration testing is
-needed to ensure that the system works as a whole.
+However, \textcite{Bhat2006tdd} also notes that TDD required 15\% more time
+upfront to write tests. Finally, \textcite{Dhh2014tdd} warns about blindly
+following TDD and not employing other tools and practices that could aid
+software development.
 
 Therefore it was chosen to follow TDD as closely as possible without
 compromising other aspects of successful software development. This means that
 the traditional Waterfall methodology phases of requirement specification,
 design and testing still apply to this project.
 
-The implemented tests are discussed in more detail in Section
-\ref{sec:implementation:testing} with actual examples and discussion of how the
-author managed TDD. The technologies used for TDD are discussed in Section
-\ref{sec:design:software:tdd}.
+TDD is heavily focused on black-box unit testing, but does not exclude other
+ways of testing software. White-box unit testing was needed to test complex
+parts of the software such as Q-Learner. Furthermore, integration testing is
+needed to ensure that the system works as a whole.
+
+The technologies used for TDD are discussed in Section
+\ref{sec:design:software:tdd}. The implemented tests are discussed in more
+detail in Section \ref{sec:implementation:testing} with actual examples and
+discussion of how the author managed TDD.

@@ -19,9 +19,10 @@ Is the documentation in the code appropriate and useful?
 \label{sec:implementation:software}
 
 This section explains how the system was implemented following the software
-architecture specified in Section \ref{sec:design:architecture}. Besides a
-detailed look at the software modules, this section is concluded by an overview
-of known limitations and issues with the current implementation.
+architecture specified in Figure \ref{figure:design:software} and its detailed
+description in Section \ref{sec:design:architecture}. Besides a detailed look
+at the software modules, this section is concluded by an overview of known
+limitations and issues with the current implementation.
 
 
 \subsubsection{User Interface: Input and Output}
@@ -30,15 +31,18 @@ User interface is a low-priority requirement and needs to provide minimal
 interactivity, therefore command line interface was deemed appropriate. Ruby
 provides many command line commands. However, to comply with a common practice
 for ruby applications it was decided to use \textit{Rake} \parencite{Rake}, a
-software task management tool to make all application tasks easily available to
-users. A full set of instructions for using Rake and the available commands is
-available in the User Manual in Appendix \ref{sec:user_manual:using:interface}.
+command-line software task management tool to make all application tasks easily
+available to users. A full set of instructions for using Rake and the available
+commands is available in the User Manual in Appendix
+\ref{sec:user_manual:using:interface}.
 
 User input is provided in a text file which is parsed and instantiates the
 environment and other simulation objects. Some care has been taken to provide
 data validation to ensure a successful simulation and to give users feedback
-about what expected common input mistakes. The full guide to using an input
-file is given in the User Manual in Appendix
+about what expected common input mistakes. Unfortunately due to time
+constraints the data validation protection is fragmentary, so in some cases it
+may be harder for users to trace the wrongly input data. The full guide to
+using an input file is given in the User Manual in Appendix
 \ref{sec:user_manual:using:inputs}.
 
 Simulation output is provided in log files, important data being written with
@@ -53,8 +57,8 @@ a module that can be reused in other source files as needed.
 The environment is initialised based on the user input as discussed in the User
 Manual in Appendix \ref{sec:user_manual:using:inputs}. The environment in turn
 initialises all simulation objects and agents, and runs the simulation twice:
-once to establish a benchmark with a fixed taxi fare price, and once using a
-range of fare prices. To reduce software coupling, the implementation also
+once using a range of fare prices, and once to establish a benchmark with a
+fixed taxi fare price. To reduce software coupling, the implementation also
 abstracts some methods of the road network that are used by taxis and
 passengers.
 
@@ -64,11 +68,11 @@ passengers.
 
 A real world road network is represented as a weighted connected graph
 constructed of edges (roads) and vertices (origins/destinations). Each vertex
-has associated properties: a list of connected edges with their lengths
-(weights), a passenger and a taxi (if present). Taxis can travel between
-connected vertices, and are assumed to take the shortest routes and travel at a
-constant speed. Passengers appear at nodes and when taxi is at a node  they can
-interact.
+has associated properties: a list of connected vertices with their connection
+distances (weights), a passenger and a taxi (if present). Taxis can travel
+between connected vertices, and are assumed to take the shortest routes and
+travel at a constant speed. Passengers appear at nodes and when taxi is at a
+node  they can interact.
 
 Road networks have a specific structure that is different from generic randomly
 generated graphs. \textcite{Eisenstat2011graphs+quadtree} believes that the
@@ -153,15 +157,15 @@ As described in section \ref{sec:requirements:ai}, Q-Learner is a simple and
 adequate reinforcement learning method fit for the project. Of course, the very
 basic Q-Learner will need to be extended to accommodate exploration in this
 particular case of having an active agent (see Section
-\ref{sec:literature:ai:exploration}. Therefore an exploration constant
+\ref{sec:literature:ai:exploration}). Therefore an exploration constant
 \(\varepsilon\) needs to be used for action selection, and it can stay fixed as
 the horizon for the simulation will normally be unknown.
 
 A further addition required for the Q-Learner is a step-size function. This
 function is used to adjust for the bias of previous estimates. As a state is
 being visited more and more, any new experiences are less and less important
-compared to the old experiences, therefore the TD weights should be adjusted
-less. This issue was discussed in more detail by
+compared to the old experiences, therefore the temporal difference weights
+should be adjusted less. This issue was discussed in more detail by
 \textcite{Sutton1994ai+stepsize}, where three different algorithms are
 introduced for optimising the step sizes for improved reinforcement learning
 performance. Nevertheless, the policy will still converge even if the step size
@@ -225,10 +229,6 @@ processes. In the simulation the taxi executes actions, travels and selects the
 next actions immediately while it is only rendered inactive for some time
 afterwards; this causes no problems now but could cause issues if multiple taxi
 agents are introduced.
-
-The limited configurability was emphasized with the relation to passengers in
-Section \ref{sec:implementation:passenger}, but other objects are also using a
-few default variables that could be set explicitly. 
 
 User interface is primitive and requires the user to be familiar with operating
 a command line terminal. Additionally, there are no progress indicators shown
