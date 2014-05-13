@@ -18,6 +18,7 @@ not achieved in the project?
 
 Has the student suggested future work?
 
+\todo{remove notes}
 
 \subsection{Simulation}
 \label{sec:results}
@@ -41,7 +42,7 @@ on the environmental conditions. These inputs are shown in Table
   Time Limit & 1 000 000 \\
   Road network & with 6 locations, distances between 1-5 \\
   Passengers' expected fare & 20 \\
-  Q-Learner's grediness \(\varepsilon\) & 0.9 \\
+  Q-Learner's greediness \(\varepsilon\) & 0.9 \\
   Q-Learner's discount factor \(\gamma\) & 0.9 \\
   Q-Learner's default value estimate & 0 \\
   Taxi's variable price range & 5-100 (integers) \\
@@ -92,39 +93,65 @@ determined that the formula in Section \ref{sec:requirements:passenger}
 resulted in this probability being lower than 10\%.
 
 
-\subsubsection{Summary}
+\subsubsection{Profitability}
+\label{sec:results:profits}
 \todo{add new results}
 
+Full results and a detailed simulation analysis can be found included in the
+project's data set at the web address specified in Section
+\ref{sec:intro:online}. This data is organised by simulation runs as identified
+in Table \ref{table:inputs:control}, and each simulation run has two parts -- variable
+pricing and benchmark.
+
 In all simulation runs, the variable pricing approach performed significantly
-better. The summary results are shown in Figure \ref{figure:results:summary}.
+better. The summary of total profits are shown in Figure
+\ref{figure:results:total_profit}, ordered descending from left to right by
+total profit in the simulation using variable fares.
 
 \begin{figure}
 \begin{center}
-  \includegraphics[width=\textwidth]{../figures/results_summary}
+  \includegraphics[width=\textwidth]{../figures/total_profit}
   \caption{
-    Summary of Simulation Results
-    \label{figure:results:summary}
+    Summary of Total Profits in Simulation Results
+    \label{figure:results:total_profit}
   }
 \end{center}
 \end{figure}
 
-Taxi using variable pricing earned a large profit in the simulation runs with
-standard parameters, lower benchmark price and lower price range while the
-fixed price taxi made large losses. The most profitable was the simulation
-where the range of prices was limited to be lower than the expected price,
-interestingly the fixed price taxi agent also performed better. The simulation
-run with a limited time follow the same pattern but on a smaller scale
-(variable pricing 71382 profit / fixed pricing 74416 loss).
+\todo{either add more results or remove the extra spaces. use average out of 3?}
 
-Neither pricing approach made a profit in the runs with a higher benchmark
-price and a higher price range. The higher price range run was the only run
-where the variable pricing agent made a considerable loss, and the profit
-difference between fixed and variable pricing was smaller than in other
-samples.
+Before any result analysis is started, it is important to remember from
+\ref{sec:literature:ai:mdp:methods} that Q-Learner if implemented and
+configured correctly bound to converge to an optimal policy over time.
+Therefore these results mostly reveal the effects of the environmental
+configuration and constraints on taxi agent. Similarly, whether a taxi agent
+made a profit or a loss is not at all important for these results. The actual
+amount of profit/loss depends on the simulation inputs that were not created to
+resemble a realistic situation.
 
-The fact whether a taxi agent made a profit or a loss is not at all important
-for these results. The actual amount of profit/loss depends on the simulation
-inputs which in this case were not created to resemble a realistic situation.
+The most profitable simulation runs were the runs with a higher fixed benchmark
+price and the run with default settings. The worst performance (when adjusted
+for the same timescale) was shown by the simulation with a limited timeframe,
+which most likely did not have sufficient time to find a near-optimal policy.
+
+Interestingly, the third most profitable was the simulation where the agent was
+limited to a price range lower than the passenger's expected fare and lower
+than its corresponding fixed benchmark price. This beyond doubt proves that a
+flexible approach is more profitable than sticking to a fixed fare price
+structure. However, the simulation with a higher variable price range seems to
+have performed badly compared to the lower price range, although it is still
+much more profitable than the benchmark simulation.
+
+The effect of initial value estimates on the learner seems to have an important
+role when they are significantly overvalued. The simulation run 'Value Estimate
+100' when comparing the variable price results fared almost as badly as the
+simulations with lowered discount factor and greediness that are impaired in
+turn by overly focusing on current rewards and by selecting a random action
+very often. Additionally the overvalued estimates resulted in an exceptionally
+low profit for the fixed price simulation. However, when the value estimates
+were close to the actual estimates or significantly undervalued, the simulation
+results show only small performance differences that could easily be explained
+by randomness.
 
 Emphasizing that in this simulation taxi's cost for waiting was 1 and time
 limit was 1 000 000, the cost of a taxi not operating at all would be 1 000
@@ -139,38 +166,62 @@ the fare prices.
 
 
 \subsubsection{Performance of Reinforcement Learning}
-\label{sec:results:stats}
+\label{sec:results:ai}
 \todo{add new results}
-\todo{better way to include results in appendices}
+\todo{include results in appendices or not?}
 
 Analysis of variance was performed on each simulation's dataset (meaning that
-benchmark and variable pricing runs were analysed separately). Detailed
-simulation analysis is included in Appendices \ref{sec:data:standard},
-\ref{sec:data:higher_benchmark}, \ref{sec:data:lower_benchmark},
-\ref{sec:data:higher_range}, \ref{sec:data:lower_range} and
-\ref{sec:data:limited_time}. This data is organised by simulation runs as
-identified in Table \ref{table:inputs:control}, and each run has two parts --
-variable pricing and benchmark.
+benchmark and variable pricing runs were analysed separately), and a linear
+trend of reinforcement learning agent's observed rewards extracted. The results
+are available at the web address specified in Section \ref{sec:intro:online}
 
-All of the simulation runs show a statistically significant (95\% confidence)
-increase of rewards for variable pricing taxi agents. The increase is
-approximately 0.3 for the standard run, between 0.15-0.18 for all benchmark
-price and price range runs, and a surprisingly high 0.75 for the run with
-limited time.
+All bar one of the simulation runs show a statistically significant (95\%
+confidence) increase of rewards for variable pricing taxi agents. These reward
+trends are shown in Figure \ref{figure:results:variable_rewards}. The agent in
+the simulation run with a lower range of prices might have settled on a sub-
+optimal policy for a large part of its lifetime, hence the trend of decreasing
+reward.
 
-However, data is less conclusive on the simulation runs with a fixed price.
-Only the fixed price simulation with a higher benchmark price showed
-statistically significant changes of rewards. Interestingly, this change was
-negative, meaning that the agent actually got worse over time.
+\begin{figure}
+\begin{center}
+  \includegraphics[width=\textwidth]{../figures/reward_trend_variable}
+  \caption{
+    Trend of Rewards (Variable Pricing)
+    \label{figure:results:variable_rewards}
+  }
+\end{center}
+\end{figure}
 
-These results suggest that the taxi agent was successful at finding a policy
-that increases the average reward when it can choose the price freely. 
+Data runs with a fixed price paint a similar picture (see Figure
+\ref{figure:results:fixed_rewards}) with most agents steadily increasing their
+rewards. However, there is an outlier here as well: the simulation with a
+significantly overvalued initial value estimate failed to make significant
+improvement over the course of the simulation. Unsurprisingly, this was the
+least profitable simulation with a fixed price as can be seen in
+\ref{figure:results:total_profit} and is described in Section
+\ref{sec:results:profits}.
 
-However, questions about the effectiveness of the reinforcement learning
-implementation are raised by the inconclusiveness and large losses of simulation
-runs with a fixed price, which is in sharp contrast to the success with
-variable price simulations. Theoretically the agent should have learned the
-actions that yield a higher profit by increasingly favouring travel between
-more profitable locations. Could it be that the agent is good at selecting the
-price but fails to select profitable locations? Could the agent's performance
-be significantly improved by fixing this problem?
+\begin{figure}
+\begin{center}
+  \includegraphics[width=\textwidth]{../figures/reward_trend_fixed}
+  \caption{
+    Trend of Rewards (Fixed Pricing)
+    \label{figure:results:fixed_rewards}
+  }
+\end{center}
+\end{figure}
+
+\subsection{Summary}
+
+To conclude, the results suggest that the taxi agent was successful at finding
+a policy that increases the average reward when it can choose the price freely.
+However, the results clearly reveal the importance of setting the environmental
+conditions and constraints, which can have a large influence on the
+effectiveness of the reinforcement learning.
+
+Worryingly, there was a simulation where the agent showed no change in
+rewards. This lack of change raises questions about the correctness of the
+software, as the policy was clearly sub-optimal but the rewards did not change
+unlike in other simulation runs. There is a possibility that this was caused by
+a bug in the implementation, although the remainder of the runs seem to have
+been successful and correct.
