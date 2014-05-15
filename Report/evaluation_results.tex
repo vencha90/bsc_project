@@ -20,14 +20,25 @@ Has the student suggested future work?
 
 \todo{remove notes}
 
+
 \subsection{Simulation}
 \label{sec:results}
 
-\subsubsection{Inputs}
+When software development was nearing completion, the project's hypotheses
+could be tested. This section will describe how that was done, starting with
+explaining how the simulation was set up in Section \ref{sec:results:inputs}.
+Simulation results are discussed in Section \ref{sec:results:profits}, with an
+in-depth look at the performance of the Q-Learner in Section
+\ref{sec:results:ai}. Finally, the results are reviewed in Section
+\ref{sec:results:summary}.
 
-The experiments and their analysis can be repeated by following the
-instructions in User Manual in Appendix \ref{sec:user_manual}. The result
-datasets can be found in the open data set mentioned in
+
+\subsubsection{Inputs}
+\label{sec:results:inputs}
+
+The experiments and their analysis can be repeated by using Taxi-sim and
+following the instructions in User Manual in Appendix \ref{sec:user_manual}.
+The result datasets can be found in the open data set mentioned in
 \ref{sec:intro:overview}.
 
 Initially a baseline of inputs were chosen without any intentional constraints
@@ -40,7 +51,7 @@ on the environmental conditions. These inputs are shown in Table
   \hline
   Parameter & Value \\ \hline
   Time Limit & 1 000 000 \\
-  Road network & with 6 locations, distances between 1-5 \\
+  Road network & as in Figure \ref{figure:results:road_network} \\
   Passengers' expected fare & 20 \\
   Q-Learner's greediness \(\varepsilon\) & 0.9 \\
   Q-Learner's discount factor \(\gamma\) & 0.9 \\
@@ -54,6 +65,16 @@ on the environmental conditions. These inputs are shown in Table
   \label{table:input_data}
 }
 \end{table}
+
+\begin{figure}
+\begin{center}
+  \includegraphics[width=\textwidth]{../figures/road_network}
+  \caption{
+    Simulation's Input Road Network
+    \label{figure:results:road_network}
+  }
+\end{center}
+\end{figure}
 
 The simulation was additionally run for control purposes, varying one input
 parameter at a time. These runs are summarised in Table
@@ -95,13 +116,17 @@ resulted in this probability being lower than 10\%.
 
 \subsubsection{Profitability}
 \label{sec:results:profits}
-\todo{add new results}
 
 Full results and a detailed simulation analysis can be found included in the
 project's data set at the web address specified in Section
 \ref{sec:intro:online}. This data is organised by simulation runs as identified
 in Table \ref{table:inputs:control}, and each simulation run has two parts -- variable
 pricing and benchmark.
+
+Before any result analysis is started, it is important to remember that these
+results are relative and should be treated as such. Even though the data has
+exact numbers, they have no basis in reality. For example, the agents could
+have made a loss in all simulations had the taxi costs been set greater.
 
 In all simulation runs, the variable pricing approach performed significantly
 better. The summary of total profits are shown in Figure
@@ -117,17 +142,6 @@ total profit in the simulation using variable fares.
   }
 \end{center}
 \end{figure}
-
-\todo{either add more results or remove the extra spaces. use average out of 3?}
-
-Before any result analysis is started, it is important to remember from
-\ref{sec:literature:ai:mdp:methods} that Q-Learner if implemented and
-configured correctly bound to converge to an optimal policy over time.
-Therefore these results mostly reveal the effects of the environmental
-configuration and constraints on taxi agent. Similarly, whether a taxi agent
-made a profit or a loss is not at all important for these results. The actual
-amount of profit/loss depends on the simulation inputs that were not created to
-resemble a realistic situation.
 
 The most profitable simulation runs were the runs with a higher fixed benchmark
 price and the run with default settings. The worst performance (when adjusted
@@ -153,12 +167,6 @@ were close to the actual estimates or significantly undervalued, the simulation
 results show only small performance differences that could easily be explained
 by randomness.
 
-Emphasizing that in this simulation taxi's cost for waiting was 1 and time
-limit was 1 000 000, the cost of a taxi not operating at all would be 1 000
-000. It can be noticed that in all but one case the simulation with fixed
-pricing generated larger losses than if the agent had been inactive, suggesting
-that the reinforcement learning is not working to the taxi's benefit.
-
 Nevertheless, these results strongly suggest that in identical conditions
 having a choice to charge a varied range of fare prices is advantageous to a
 taxi's profitability, and that Q-Learning can successfully be used for setting
@@ -171,22 +179,23 @@ the fare prices.
 \todo{include results in appendices or not?}
 
 Analysis of variance was performed on each simulation's dataset (meaning that
-benchmark and variable pricing runs were analysed separately), and a linear
-trend of reinforcement learning agent's observed rewards extracted. The results
-are available at the web address specified in Section \ref{sec:intro:online}
+benchmark and variable pricing runs were analysed separately), and linear
+regression of reinforcement learning agent's observed rewards performed. The
+full results are available at the web address specified in Section
+\ref{sec:intro:online}. The following results have a 95\% confidence rate
+unless mentioned otherwise.
 
-All bar one of the simulation runs show a statistically significant (95\%
-confidence) increase of rewards for variable pricing taxi agents. These reward
-trends are shown in Figure \ref{figure:results:variable_rewards}. The agent in
-the simulation run with a lower range of prices might have settled on a sub-
-optimal policy for a large part of its lifetime, hence the trend of decreasing
-reward.
+All bar one of the simulation runs show an increase of rewards over time for
+variable pricing taxi agents. These reward regressions are shown in Figure
+\ref{figure:results:variable_rewards}. The agent in the simulation run with a
+lower range of prices might have settled on a sub- optimal policy for a large
+part of its lifetime, hence the trend of decreasing reward.
 
 \begin{figure}
 \begin{center}
-  \includegraphics[width=\textwidth]{../figures/reward_trend_variable}
+  \includegraphics[width=\textwidth]{../figures/reward_regression_variable}
   \caption{
-    Trend of Rewards (Variable Pricing)
+    Regression Analysis of Rewards (Variable Pricing)
     \label{figure:results:variable_rewards}
   }
 \end{center}
@@ -195,23 +204,24 @@ reward.
 Data runs with a fixed price paint a similar picture (see Figure
 \ref{figure:results:fixed_rewards}) with most agents steadily increasing their
 rewards. However, there is an outlier here as well: the simulation with a
-significantly overvalued initial value estimate failed to make significant
-improvement over the course of the simulation. Unsurprisingly, this was the
-least profitable simulation with a fixed price as can be seen in
-\ref{figure:results:total_profit} and is described in Section
+considerably overvalued initial value estimate failed to make any statistically
+significant change to their average reward over the course of the simulation.
+Unsurprisingly, this was the least profitable simulation with a fixed price as
+can be seen in \ref{figure:results:total_profit} and is described in Section
 \ref{sec:results:profits}.
 
 \begin{figure}
 \begin{center}
-  \includegraphics[width=\textwidth]{../figures/reward_trend_fixed}
+  \includegraphics[width=\textwidth]{../figures/reward_regression_fixed}
   \caption{
-    Trend of Rewards (Fixed Pricing)
+    Regression Analysis of Rewards (Fixed Pricing)
     \label{figure:results:fixed_rewards}
   }
 \end{center}
 \end{figure}
 
-\subsection{Summary}
+\subsubsection{Summary}
+\label{sec:results:summary}
 
 To conclude, the results suggest that the taxi agent was successful at finding
 a policy that increases the average reward when it can choose the price freely.
@@ -219,9 +229,9 @@ However, the results clearly reveal the importance of setting the environmental
 conditions and constraints, which can have a large influence on the
 effectiveness of the reinforcement learning.
 
-Worryingly, there was a simulation where the agent showed no change in
-rewards. This lack of change raises questions about the correctness of the
-software, as the policy was clearly sub-optimal but the rewards did not change
-unlike in other simulation runs. There is a possibility that this was caused by
-a bug in the implementation, although the remainder of the runs seem to have
-been successful and correct.
+Worryingly, there was a simulation where the agent showed no change in rewards.
+This lack of change raises questions about the correctness of the software, as
+the policy was clearly sub-optimal but the rewards did not change unlike in
+other simulation runs. There is a possibility that this was caused by a design
+oversight or even a bug in the implementation, although the remainder of the
+runs seem to have been successful and correct.

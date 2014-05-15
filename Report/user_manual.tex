@@ -83,7 +83,17 @@ Vagrant's configuration files \texttt{Vagrantfile} and
         software directory you cloned to your machine a few steps ago.
   \item \textit{(cmd)} The final step before you can use Taxi-sim is installing
         the \textit{gem} (software library) dependencies by running 
-        \texttt{bundle install --local}. When this step is finished you are ready to use Taxi-sim!
+        \texttt{bundle install --local}. When this step is finished you are
+        ready to use Taxi-sim!
+\end{itemize}
+
+If you can successfully \texttt{ssh} on the virtual machine but further steps
+are not working, please try the following steps:
+\begin{itemize}
+  \item log out of the virtual machine by entering \texttt{exit},
+  \item delete the virtual machine by entering \texttt{vagrant destroy},
+  \item recreate the virtual machine by entering \texttt{vagrant up},
+  \item continue as normally.
 \end{itemize}
 
 
@@ -196,7 +206,8 @@ Simulation output is written to \texttt{logs/} directory in the application's
 home directory. These files can be opened using most text editing software,
 although some mainstream software might crash due to the large file size of
 \texttt{simulation.log}. In this case software that supports huge file sizes
-can be easily found, for example, notepad++ \parencite{Notepad++}. Parameters are logged in this format: \texttt{["name", "value"]}.
+can be easily found, for example, notepad++ \parencite{Notepad++}. Parameters
+are logged in this format: \texttt{["name", "value"]}.
 
 \texttt{summary.log} is a summary of the simulation results with six rows. The
 first row is written when the simulation starts stating the time limit, the
