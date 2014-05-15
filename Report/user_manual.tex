@@ -148,7 +148,7 @@ in the following list in alphabetical order:
   \item \textit{graph}: an adjacency matrix representation of a road network.
         It has to be a connected undirected graph, meaning that the matrix is
         symmetrical! Self-loops are ignored. The accepted format for each row
-        is \textit{- "x, .., z"} where \textit{x} and \textit{z} are integer
+        is \textit{- ``x, .., z"} where \textit{x} and \textit{z} are integer
         number edge weights.
   \item \textit{passenger} is a top-level entity for passenger details and has
         this parameter:
@@ -167,7 +167,7 @@ in the following list in alphabetical order:
           \item \textit{prices}: a range of prices that the taxi can choose
           from. An integer number, an array of integer numbers in the format 
           \textit{[x, .., z]}, or a range of integer numbers in the Ruby range
-          format \textit{"x..z"} (includes \textit{z}) or \textit{"x...z"}
+          format \textit{``x..z"} (includes \textit{z}) or \textit{``x...z"}
           (excludes \textit{z}).
         \end{itemize}
   \item \textit{time\_limit}: an integer number for the units of time the
@@ -207,7 +207,7 @@ home directory. These files can be opened using most text editing software,
 although some mainstream software might crash due to the large file size of
 \texttt{simulation.log}. In this case software that supports huge file sizes
 can be easily found, for example, notepad++ \parencite{Notepad++}. Parameters
-are logged in this format: \texttt{["name", "value"]}.
+are logged in this format: \texttt{[``name", ``value"]}.
 
 \texttt{summary.log} is a summary of the simulation results with six rows. The
 first row is written when the simulation starts stating the time limit, the
@@ -277,8 +277,7 @@ no actions are selected.
 Open the script file in an R work environment. If you followed the step above,
 you only have to modify line 4. Change the path of your working directory in
 \texttt{setwd("your/path")}, for example, to be
-\texttt{setwd("c:\\User/Documents/Taxi-sim/Data/")} \todo{change the file to
-match}
+\texttt{setwd("c:\\User/Documents/Taxi-sim/Data/")}
 
 Run the script -- it will take some time depending on the amount of data. This
 is a memory expensive operation and depends on the available RAM. When the
