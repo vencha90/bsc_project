@@ -45,10 +45,10 @@ commands is available in the User Manual in Appendix
 User input is provided in a text file which is parsed and instantiates the
 environment and other simulation objects. Some care has been taken to provide
 data validation to ensure a successful simulation and to give users feedback
-about what expected common input mistakes. Unfortunately due to time
-constraints the data validation protection is fragmentary, so in some cases it
-may be harder for users to trace the wrongly input data. The full guide to
-using an input file is given in the User Manual in Appendix
+about expected common input mistakes. Unfortunately due to time constraints the
+data validation protection is fragmentary, so in some cases it may be harder
+for users to trace the wrongly input data. The full guide to using an input
+file is given in the User Manual in Appendix
 \ref{sec:user_manual:using:inputs}.
 
 Simulation output is provided in log files, important data being written with
@@ -235,11 +235,11 @@ maintainability and configurability of the system. This issue could be solved
 by managing these values in a single file. To compensate for the loss of
 context, this file would need to be commented similarly to a user manual.
 
-A less important issue is the taxi action sequence not mimicking real world
-processes. In the simulation the taxi executes actions, travels and selects the
-next actions immediately while it is only rendered inactive for some time
-afterwards; this causes no problems now but could cause issues if multiple taxi
-agents are introduced.
+A less important issue is that the taxi action sequence does not mimick real
+world processes. In the simulation the taxi executes actions, travels and
+selects the next actions immediately while it is only rendered inactive for
+some time afterwards; this causes no problems now but could cause issues if
+multiple taxi agents are introduced.
 
 User interface is primitive and requires the user to be familiar with operating
 a command line terminal. Additionally, there are no progress indicators shown

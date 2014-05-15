@@ -72,8 +72,8 @@ i.e. the agent knew which state it is in at all times. This assumption is
 unrealistic in the real world -- for example, a taxi driver does not know when
 they will find a passenger and if the passenger will accept their offered fare.
 In this case the environment is partially observable, hence the problem could
-be defined as Partially Observable MDP. This case is considered in Section
-\ref{sec:literature:ai:pomdp}
+be defined as Partially Observable MDP (POMDP). This case is considered in
+Section \ref{sec:literature:ai:pomdp}
 
 According to \textcite{Spaan2012ai+pomdp}, fully observable finite MDPs can be
 formally defined as follows. Time has discrete steps, and an agent has to
@@ -232,7 +232,7 @@ is infeasible.
 \textcite{Russell2010ai+modern} noted that to use reinforcement learning
 methods on POMDPs, approximations need to be used for the continuous state
 space. For the transformation of POMDP to a MDP \textcite{Spaan2012ai+pomdp}
-suggested a method developed by Stratonovich (1960), Dynkin (1965) and Åström
+suggested a method developed by Stratonovich (1960), Dynkin (1965) and Astrom
 (1965): summarising agents' observation history to a belief vector \(b\) of
 continuous probability distributions.
 
