@@ -77,9 +77,9 @@ analysis <- function(data_frame, data_anova) {
 
   print(textplot(capture.output(data_anova)))
   print(ggplot(data_frame, aes(x=time, y=reward)) +
-            stat_smooth(method=lm, aes(colour="Trend (95% confidence)")) + 
+            stat_smooth(method=lm, aes(colour="Linear Regression (95% confidence)")) + 
             theme(legend.position = 'top') +
-            ggtitle("Trend of observed rewards over time") +
+            ggtitle("Regression analysis of observed rewards over time") +
             scale_colour_manual("", values = c("blue")))
 }
 
